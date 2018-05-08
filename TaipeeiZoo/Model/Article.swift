@@ -1,0 +1,67 @@
+//
+//  Item.swift
+//  TaipeeiZoo
+//  本例, 可以作為從 OpenData 下載 JSON 資料源,在表格畫出來的定式, 可以在衍伸出來一個轉場到細節視圖.
+//  1. 網路下載放在資料 Model 裡: 根據原始資料的格式決定資料陣列在下載一包的位置. 在本例是第三層.
+//  2. 一包下來,所有的內容,設成一個陣列 arrayDict, 是一個中間陣列.
+//  3. 部署一個資料 Model(Article), 資料從 arrayDict 抓出來放進去包成物件 Article 的陣列.
+//  4. 在部署 Article 的時候,把需要擷取的資料,在本例是 5+1 個,設成屬性.不要擷取的資料可以省掉這動作
+//  5. 轉場到視圖再拆開物件取出屬性指定給 UI 元件.
+//  Created by Teddy on 2018/5/7.
+//  Copyright © 2018年 Teddy Chen. All rights reserved.
+//
+
+import Foundation
+
+let ArticlesUrl = URL (string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613")!
+
+class Article {
+    var name: String
+    var location: String
+    var habit: String
+    var feature: String
+    var diet: String
+    var image_URL: URL?
+    
+    init(rawData: [String: Any]){
+        name = rawData["A_Name_Ch"] as! String
+        location = rawData["A_Location"] as! String
+        habit = rawData["A_Habitat"] as! String
+        feature = rawData["A_Feature"] as! String
+        diet = rawData["A_Diet"] as! String
+        
+        if let image_URLString = rawData["A_Pic01_URL"] as? String{
+            image_URL = URL(string: image_URLString)
+        }
+        else {
+            image_URL = nil
+        }
+    }
+
+    class func downLoadItem(completionHandler:@escaping ([Article]?, Error?) -> Void){
+    
+        let session = URLSession.shared
+        let task = session.dataTask(with: ArticlesUrl){(data,response,error) in
+            if let error = error {
+                print ("下載失敗!!")
+                completionHandler(nil,error)
+                return
+            }
+            let data = data!
+            print("data amount \(data)")
+            
+            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as![String:[String: Any]], let articleArray = jsonObject["result"]!["results"] as? [[String: Any]]{
+                
+                var articles = [Article]()
+                for articleDict in articleArray{
+                    let article = Article(rawData: articleDict)
+                    articles.append(article)
+                }
+                print("下載完成")
+                completionHandler(articles, nil)
+            }
+        }
+        task.resume()
+    }
+}
+
