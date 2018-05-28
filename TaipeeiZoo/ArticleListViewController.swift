@@ -24,6 +24,11 @@ class ArticleListViewController: UITableViewController {
         downLoadLatestArticles()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
+    
     func downLoadLatestArticles(){
         Article.downLoadItem { (articles, error) in
             if let error = error {
@@ -64,17 +69,29 @@ class ArticleListViewController: UITableViewController {
         return cell
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showArticleDetail"{
+//            print("翻頁了...")
+//            let cell = sender as! UITableViewCell
+//            let detailVC = segue.destination as! ArticleDetailViewController
+//            let indexPath = tableView.indexPath(for: cell)!
+//            let article = articles[indexPath.row]
+//            detailVC.article = article
+//        }
+//    }
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showArticleDetail"{
+        if segue.identifier == "ShowDetail"{
             print("翻頁了...")
             let cell = sender as! UITableViewCell
-            let detailVC = segue.destination as! ArticleDetailViewController
+            let detailVC = segue.destination as! DetailViewController
             let indexPath = tableView.indexPath(for: cell)!
             let article = articles[indexPath.row]
             detailVC.article = article
         }
     }
- 
+    
+    
 
 
 }

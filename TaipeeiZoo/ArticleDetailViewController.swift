@@ -24,6 +24,9 @@ class ArticleDetailViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .blue
         
+        navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedStringKey.foregroundColor: UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0) ]
+        
+        
        //  UItableview.contentInsetAdjustmentBehavior = .never
         
         nameLabel.text = article.name
