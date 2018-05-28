@@ -35,7 +35,9 @@ class ArticleDetailViewController: UIViewController {
         downloadArticleImage()
     }
     
+    
     func downloadArticleImage(){
+        
         if let imageURL = article.image_URL {
            // let imageURL = article.image_URL
             print(article.image_URL)

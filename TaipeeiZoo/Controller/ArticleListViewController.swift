@@ -8,9 +8,15 @@
 
 import UIKit
 import SDWebImage         // To Optimize the Photo-download process
-class ArticleListViewController: UITableViewController {
+class ArticleListViewController: UITableViewController, UISearchBarDelegate{
 // 由於下載是非同步事件, 若 tableViewdatasource 錯過了下載完成就不會更新畫面
 // 因此強迫資料更新時(didSet), 要 tableViewdatasource 重新載入資料保證成功.
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchActive : Bool = false
+    var filtered = [Article]()
+    
     var articles = [Article](){
         didSet{
             DispatchQueue.main.async{
@@ -21,6 +27,10 @@ class ArticleListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.delegate = self
+//        tableView.dataSource = self
+        searchBar.delegate = self
+        
         downLoadLatestArticles()
     }
     
@@ -42,6 +52,43 @@ class ArticleListViewController: UITableViewController {
             }
         }
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if(searchText == " "){
+            searchActive = false
+        }else{
+                filtered = articles.filter ({ (article_f) -> Bool in
+                let tmp: String = article_f.name
+                let range = tmp.range(of:searchText, options: String.CompareOptions.caseInsensitive)
+                return range != nil
+            })
+        
+            if(filtered.count == 0){
+                searchActive = false;
+            } else {
+                searchActive = true;
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,34 +98,32 @@ class ArticleListViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\(articles.count)")
+        if(searchActive) {
+            return filtered.count
+        }
         return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
         
-        let article = articles[indexPath.row]
-        print("\(article.name)")
+        var article : Article
+        
+        if(searchActive){
+            article = filtered[indexPath.row]
+        }
+        else{
+            article = articles[indexPath.row]
+        }
+        
         cell.nameLabel?.text = article.name
+        print("\(article.name)")
         cell.locationLabel?.text = article.location
         cell.photoView?.sd_setImage(with: article.image_URL)
-
-        // Configure the cell...
-
+       
         return cell
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showArticleDetail"{
-//            print("翻頁了...")
-//            let cell = sender as! UITableViewCell
-//            let detailVC = segue.destination as! ArticleDetailViewController
-//            let indexPath = tableView.indexPath(for: cell)!
-//            let article = articles[indexPath.row]
-//            detailVC.article = article
-//        }
-//    }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail"{
@@ -90,8 +135,5 @@ class ArticleListViewController: UITableViewController {
             detailVC.article = article
         }
     }
-    
-    
-
 
 }

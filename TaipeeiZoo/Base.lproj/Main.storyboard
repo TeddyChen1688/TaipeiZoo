@@ -20,35 +20,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="請輸入尋找動物" id="It2-Iz-X6Z">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListTableCell" id="kis-pb-3mz" customClass="ListTableCell" customModule="TaipeiZoo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListTableCell" rowHeight="100" id="kis-pb-3mz" customClass="ListTableCell" customModule="TaipeiZoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kis-pb-3mz" id="7Ss-I6-cE7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="0Zg-uu-HXA">
-                                            <rect key="frame" x="21" y="11" width="333" height="22"/>
+                                            <rect key="frame" x="21" y="11" width="333" height="83.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnD-ee-38z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="q5H-Qh-9wh"/>
                                                         <constraint firstAttribute="width" secondItem="LnD-ee-38z" secondAttribute="height" multiplier="1:1" id="xoY-u8-HD0"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0oj-HJ-Ohd">
-                                                    <rect key="frame" x="59" y="0.0" width="274" height="22"/>
+                                                    <rect key="frame" x="117" y="0.0" width="216" height="83.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hQ-82-KZj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="274" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2X-Ba-fOb">
-                                                            <rect key="frame" x="0.0" y="22" width="274" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="36" width="216" height="47.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -64,7 +69,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="0Zg-uu-HXA" firstAttribute="leading" secondItem="7Ss-I6-cE7" secondAttribute="leadingMargin" constant="5" id="5Lb-ge-dzf"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0Zg-uu-HXA" secondAttribute="bottom" id="Xsr-21-iqK"/>
+                                        <constraint firstAttribute="bottom" secondItem="0Zg-uu-HXA" secondAttribute="bottom" constant="5" id="ans-xb-h5J"/>
                                         <constraint firstItem="0Zg-uu-HXA" firstAttribute="top" secondItem="7Ss-I6-cE7" secondAttribute="topMargin" id="mOo-v2-tTS"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="0Zg-uu-HXA" secondAttribute="trailing" constant="5" id="miB-c1-o6s"/>
                                     </constraints>
@@ -85,8 +90,36 @@
                     <navigationItem key="navigationItem" title="台北市立動物園" largeTitleDisplayMode="always" id="JAv-eH-wA6" userLabel="Zoo">
                         <barButtonItem key="backBarButtonItem" title=" " id="nNb-o0-QxZ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="It2-Iz-X6Z" id="jFp-GT-QKe"/>
+                        <outlet property="searchDisplayController" destination="M6w-W6-Ivn" id="AgX-4i-tn6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pi1-F0-fmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="dVJ-Zi-cpp">
+                    <connections>
+                        <outlet property="delegate" destination="pvO-sn-BKP" id="njY-EC-uK3"/>
+                        <outlet property="searchContentsController" destination="pvO-sn-BKP" id="sH6-aM-icN"/>
+                        <outlet property="searchResultsDataSource" destination="pvO-sn-BKP" id="da8-ce-1s9"/>
+                        <outlet property="searchResultsDelegate" destination="pvO-sn-BKP" id="y3j-BU-xJ3"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="5sl-YN-B9d">
+                    <connections>
+                        <outlet property="delegate" destination="pvO-sn-BKP" id="ymF-9H-p2L"/>
+                        <outlet property="searchContentsController" destination="pvO-sn-BKP" id="fEQ-HV-U2M"/>
+                        <outlet property="searchResultsDataSource" destination="pvO-sn-BKP" id="3Bz-fO-hEZ"/>
+                        <outlet property="searchResultsDelegate" destination="pvO-sn-BKP" id="2Aa-mo-VC7"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="M6w-W6-Ivn">
+                    <connections>
+                        <outlet property="delegate" destination="pvO-sn-BKP" id="gcL-lt-thZ"/>
+                        <outlet property="searchContentsController" destination="pvO-sn-BKP" id="eIR-5x-D5a"/>
+                        <outlet property="searchResultsDataSource" destination="pvO-sn-BKP" id="I6Z-NK-0AY"/>
+                        <outlet property="searchResultsDelegate" destination="pvO-sn-BKP" id="dXx-nK-6E0"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1072.8" y="22.938530734632685"/>
         </scene>
