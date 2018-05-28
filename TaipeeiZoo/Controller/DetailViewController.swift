@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
@@ -30,7 +31,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         headerView.nameLabel.text = article.name
         headerView.locationLabel.text = article.location
-        downloadArticleImage()
+        headerView.headerImageView?.sd_setImage(with: article.image_URL)
+ //       downloadArticleImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +52,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
-            
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailTextCell_0.self), for: indexPath) as! DetailTextCell_0
                     cell.habitLabel.text = article.habit
-            
             return cell
             
         case 1:
@@ -73,25 +73,26 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func downloadArticleImage(){
-        if let imageURL = article.image_URL {
-            // let imageURL = article.image_URL
-            print(article.image_URL)
-            let session = URLSession.shared
-            let task = session.dataTask(with: imageURL){ data, response, error in
-                if let error = error {
-                    print("fail")
-                    return
-                }
-                let data = data!
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    self.headerView.headerImageView.image = image
-                }
-            }
-            task.resume()
-        }
-    }
+//    func downloadArticleImage(){
+//        if let imageURL = article.image_URL {
+//            // let imageURL = article.image_URL
+//            print(article.image_URL)
+//            let session = URLSession.shared
+//            let task = session.dataTask(with: imageURL){ data, response, error in
+//                if let error = error {
+//                    print("fail")
+//                    return
+//                }
+//                let data = data!
+//                let image = UIImage(data: data)
+//                DispatchQueue.main.async {
+//                    self.headerView.headerImageView.image = image
+//                }
+//            }
+//            task.resume()
+//        }
+//    }
+    
 }
 
 

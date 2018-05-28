@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AD86DDC9505FE78339ADFD8 /* Pods_TaipeiZoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4898B491C6CCADB8AE7C57D /* Pods_TaipeiZoo.framework */; };
 		9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD72563209F0FF700451EEB /* AppDelegate.swift */; };
 		9FD72569209F0FF700451EEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD72567209F0FF700451EEB /* Main.storyboard */; };
 		9FD7256B209F0FFA00451EEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FD7256A209F0FFA00451EEB /* Assets.xcassets */; };
@@ -20,9 +21,12 @@
 		A6C1D7F820BB9680000593AD /* DetailTextCell_0.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F720BB9680000593AD /* DetailTextCell_0.swift */; };
 		A6C1D7FA20BBA228000593AD /* DetailTextCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F920BBA228000593AD /* DetailTextCell_1.swift */; };
 		A6C1D7FC20BBA23C000593AD /* DetailTextCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7FB20BBA23C000593AD /* DetailTextCell_2.swift */; };
+		A6C1D7FE20BBB7E8000593AD /* ListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FCE317970BB44152134333E /* Pods-TaipeiZoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiZoo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiZoo/Pods-TaipeiZoo.release.xcconfig"; sourceTree = "<group>"; };
+		1C734489C7F2B07152F94BF9 /* Pods-TaipeiZoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiZoo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiZoo/Pods-TaipeiZoo.debug.xcconfig"; sourceTree = "<group>"; };
 		9FD72560209F0FF700451EEB /* TaipeiZoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaipeiZoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD72563209F0FF700451EEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FD72568209F0FF700451EEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,6 +34,7 @@
 		9FD7256D209F0FFA00451EEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FD7256F209F0FFA00451EEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FD7257520A08C7200451EEB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		A4898B491C6CCADB8AE7C57D /* Pods_TaipeiZoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaipeiZoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A683B2BC20A179A70090E60B /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		A683B2BE20A197AE0090E60B /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		A6C1D7F020BB873E000593AD /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
@@ -38,6 +43,7 @@
 		A6C1D7F720BB9680000593AD /* DetailTextCell_0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextCell_0.swift; sourceTree = "<group>"; };
 		A6C1D7F920BBA228000593AD /* DetailTextCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextCell_1.swift; sourceTree = "<group>"; };
 		A6C1D7FB20BBA23C000593AD /* DetailTextCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextCell_2.swift; sourceTree = "<group>"; };
+		A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD86DDC9505FE78339ADFD8 /* Pods_TaipeiZoo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,8 @@
 			children = (
 				9FD72562209F0FF700451EEB /* TaipeeiZoo */,
 				9FD72561209F0FF700451EEB /* Products */,
+				BEBD5315B1C5A8C53C9D0AF3 /* Pods */,
+				F7C3B20517550BC4DA9C145A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,20 +79,15 @@
 		9FD72562209F0FF700451EEB /* TaipeeiZoo */ = {
 			isa = PBXGroup;
 			children = (
+				A6C1D80020BBC3B7000593AD /* Controller */,
+				A6C1D7FF20BBC3A4000593AD /* View */,
 				A6C1D7F420BB93BB000593AD /* Extension */,
 				9FD7257720A08C7D00451EEB /* Model */,
-				A683B2BE20A197AE0090E60B /* ArticleDetailViewController.swift */,
 				9FD72563209F0FF700451EEB /* AppDelegate.swift */,
 				9FD72567209F0FF700451EEB /* Main.storyboard */,
 				9FD7256A209F0FFA00451EEB /* Assets.xcassets */,
 				9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */,
 				9FD7256F209F0FFA00451EEB /* Info.plist */,
-				A683B2BC20A179A70090E60B /* ArticleListViewController.swift */,
-				A6C1D7F020BB873E000593AD /* DetailHeaderView.swift */,
-				A6C1D7F220BB892B000593AD /* DetailViewController.swift */,
-				A6C1D7F720BB9680000593AD /* DetailTextCell_0.swift */,
-				A6C1D7F920BBA228000593AD /* DetailTextCell_1.swift */,
-				A6C1D7FB20BBA23C000593AD /* DetailTextCell_2.swift */,
 			);
 			path = TaipeeiZoo;
 			sourceTree = "<group>";
@@ -104,6 +108,45 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		A6C1D7FF20BBC3A4000593AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6C1D7F020BB873E000593AD /* DetailHeaderView.swift */,
+				A6C1D7F720BB9680000593AD /* DetailTextCell_0.swift */,
+				A6C1D7F920BBA228000593AD /* DetailTextCell_1.swift */,
+				A6C1D7FB20BBA23C000593AD /* DetailTextCell_2.swift */,
+				A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6C1D80020BBC3B7000593AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A6C1D7F220BB892B000593AD /* DetailViewController.swift */,
+				A683B2BC20A179A70090E60B /* ArticleListViewController.swift */,
+				A683B2BE20A197AE0090E60B /* ArticleDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BEBD5315B1C5A8C53C9D0AF3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C734489C7F2B07152F94BF9 /* Pods-TaipeiZoo.debug.xcconfig */,
+				0FCE317970BB44152134333E /* Pods-TaipeiZoo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F7C3B20517550BC4DA9C145A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4898B491C6CCADB8AE7C57D /* Pods_TaipeiZoo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,9 +154,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FD72572209F0FFA00451EEB /* Build configuration list for PBXNativeTarget "TaipeiZoo" */;
 			buildPhases = (
+				104CBF2D5F5D4FB4A673EE51 /* [CP] Check Pods Manifest.lock */,
 				9FD7255C209F0FF700451EEB /* Sources */,
 				9FD7255D209F0FF700451EEB /* Frameworks */,
 				9FD7255E209F0FF700451EEB /* Resources */,
+				7A1A1DD22464A1B420B2330A /* [CP] Embed Pods Frameworks */,
+				4DE90CDC9DC9536FA0DF516A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,6 +216,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		104CBF2D5F5D4FB4A673EE51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TaipeiZoo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4DE90CDC9DC9536FA0DF516A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaipeiZoo/Pods-TaipeiZoo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A1A1DD22464A1B420B2330A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TaipeiZoo/Pods-TaipeiZoo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaipeiZoo/Pods-TaipeiZoo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9FD7255C209F0FF700451EEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -178,6 +278,7 @@
 				A6C1D7F820BB9680000593AD /* DetailTextCell_0.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
 				A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */,
+				A6C1D7FE20BBB7E8000593AD /* ListTableCell.swift in Sources */,
 				9FD7257620A08C7200451EEB /* Article.swift in Sources */,
 				A6C1D7FA20BBA228000593AD /* DetailTextCell_1.swift in Sources */,
 				A6C1D7FC20BBA23C000593AD /* DetailTextCell_2.swift in Sources */,
@@ -326,6 +427,7 @@
 		};
 		9FD72573209F0FFA00451EEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C734489C7F2B07152F94BF9 /* Pods-TaipeiZoo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -344,6 +446,7 @@
 		};
 		9FD72574209F0FFA00451EEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FCE317970BB44152134333E /* Pods-TaipeiZoo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

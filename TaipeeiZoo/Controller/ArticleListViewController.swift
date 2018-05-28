@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage         // To Optimize the Photo-download process
 class ArticleListViewController: UITableViewController {
 // 由於下載是非同步事件, 若 tableViewdatasource 錯過了下載完成就不會更新畫面
 // 因此強迫資料更新時(didSet), 要 tableViewdatasource 重新載入資料保證成功.
@@ -56,13 +56,13 @@ class ArticleListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
         
         let article = articles[indexPath.row]
         print("\(article.name)")
-        cell.textLabel?.text = article.name
-        cell.detailTextLabel?.text = article.location
-        
+        cell.nameLabel?.text = article.name
+        cell.locationLabel?.text = article.location
+        cell.photoView?.sd_setImage(with: article.image_URL)
 
         // Configure the cell...
 

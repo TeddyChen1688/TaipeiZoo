@@ -1,0 +1,6 @@
+framework module Pods_TaipeiZoo {
+  umbrella header "Pods-TaipeiZoo-umbrella.h"
+
+  export *
+  module * { export * }
+}
