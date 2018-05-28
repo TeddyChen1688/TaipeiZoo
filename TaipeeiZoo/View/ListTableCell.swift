@@ -17,6 +17,7 @@ class ListTableCell: UITableViewCell {
         }
     }
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var name_ENLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
 
 }

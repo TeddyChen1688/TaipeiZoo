@@ -30,7 +30,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
 //        tableView.delegate = self
 //        tableView.dataSource = self
         searchBar.delegate = self
-        
         downLoadLatestArticles()
     }
     
@@ -42,11 +41,10 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     func downLoadLatestArticles(){
         Article.downLoadItem { (articles, error) in
             if let error = error {
-                print("下載失敗了 \(error)")
+                print("fail \(error)")
                 return
             }
             if let articles = articles {
-                // self 專指本 class 的屬性
                 self.articles = articles
                 self.refreshControl?.endRefreshing()
             }
@@ -117,10 +115,13 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         }
         
         cell.nameLabel?.text = article.name
+        cell.name_ENLabel?.text = article.name_EN
         print("\(article.name)")
         cell.locationLabel?.text = article.location
-        cell.photoView?.sd_setImage(with: article.image_URL)
-       
+       // cell.photoView?.sd_setImage(with: article.image_URL)
+        
+        cell.photoView.sd_setImage(with: article.image_URL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
+       //.sd_setImage(with: URL(string: objUserData.back_image!), placeholderImage:UIImage(named: "cardBack"), options: .refreshCached)
         return cell
     }
     

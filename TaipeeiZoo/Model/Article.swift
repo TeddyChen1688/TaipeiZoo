@@ -17,6 +17,7 @@ let ArticlesUrl = URL (string: "http://data.taipei/opendata/datalist/apiAccess?s
 
 class Article {
     var name: String
+    var name_EN: String
     var location: String
     var habit: String
     var feature: String
@@ -25,6 +26,7 @@ class Article {
     
     init(rawData: [String: Any]){
         name = rawData["A_Name_Ch"] as! String
+        name_EN = rawData["A_Name_En"] as! String
         location = rawData["A_Location"] as! String
         habit = rawData["A_Habitat"] as! String
         feature = rawData["A_Feature"] as! String

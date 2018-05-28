@@ -31,7 +31,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         headerView.nameLabel.text = article.name
         headerView.locationLabel.text = article.location
-        headerView.headerImageView?.sd_setImage(with: article.image_URL)
+        headerView.headerImageView?.sd_setImage(with: article.image_URL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
  //       downloadArticleImage()
     }
     
