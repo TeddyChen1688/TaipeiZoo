@@ -29,6 +29,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         super.viewDidLoad()
 //        tableView.delegate = self
 //        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         searchBar.delegate = self
         downLoadLatestArticles()
     }
@@ -118,10 +120,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         cell.name_ENLabel?.text = article.name_EN
         print("\(article.name)")
         cell.locationLabel?.text = article.location
-       // cell.photoView?.sd_setImage(with: article.image_URL)
-        
         cell.photoView.sd_setImage(with: article.image_URL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
-       //.sd_setImage(with: URL(string: objUserData.back_image!), placeholderImage:UIImage(named: "cardBack"), options: .refreshCached)
+
         return cell
     }
     
