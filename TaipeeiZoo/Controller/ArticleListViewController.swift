@@ -35,10 +35,11 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         downLoadLatestArticles()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.hidesBarsOnSwipe = true
+//    }
+
     
     func downLoadLatestArticles(){
         Article.downLoadItem { (articles, error) in
@@ -53,28 +54,26 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if(searchText == " "){
-            searchActive = false
-        }else{
-                filtered = articles.filter ({ (article_f) -> Bool in
+        if(searchText == ""){print("search");searchActive = false
+        }else{print("searchText");                filtered = articles.filter ({ (article_f) -> Bool in
                 let tmp: String = article_f.name
                 let range = tmp.range(of:searchText, options: String.CompareOptions.caseInsensitive)
                 return range != nil
@@ -87,7 +86,11 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         self.tableView.reloadData()
+       //  self.view.endEditing(true)
+       
     }
+    
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -127,12 +130,23 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "ShowDetail"{
             print("翻頁了...")
             let cell = sender as! UITableViewCell
             let detailVC = segue.destination as! DetailViewController
             let indexPath = tableView.indexPath(for: cell)!
-            let article = articles[indexPath.row]
+            
+        //    let article = articles[indexPath.row]
+            var article : Article
+            
+            if(searchActive){
+                article = filtered[indexPath.row]
+            }
+            else{
+                article = articles[indexPath.row]
+            }
+            
             detailVC.article = article
         }
     }
