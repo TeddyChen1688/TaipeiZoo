@@ -20,10 +20,18 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     var articles = [Article](){
         didSet{
             DispatchQueue.main.async{
+                self.spinner.stopAnimating()
                 self.tableView.reloadData()
             }
         }
     }
+    
+    
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +41,27 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         tableView.rowHeight = UITableViewAutomaticDimension
         searchBar.delegate = self
         downLoadLatestArticles()
+        
+        spinner.activityIndicatorViewStyle = .gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        // 定義旋轉指示器的佈局約束條件
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+                                      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        
+        // 啟用旋轉指示器
+        spinner.startAnimating()
+        
+        
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.hidesBarsOnSwipe = true
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.endEditing(true)
+        navigationController?.hidesBarsOnSwipe = true
+    }
 
     
     func downLoadLatestArticles(){
@@ -85,12 +108,12 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 searchActive = true;
             }
         }
-        self.tableView.reloadData()
-       //  self.view.endEditing(true)
-       
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+         //   self.view.endEditing(false)
+        }
     }
-    
-    
     
 
     override func didReceiveMemoryWarning() {

@@ -12,6 +12,10 @@ class DetailHeaderView: UIView {
 
      @IBOutlet var headerImageView: UIImageView!
      @IBOutlet var nameLabel: UILabel!
-     @IBOutlet var locationLabel: UILabel!
-
+    @IBOutlet var locationLabel: UILabel! {
+        didSet {
+            locationLabel.layer.cornerRadius = 5.0
+            locationLabel.layer.masksToBounds = true
+    }
+    }
 }

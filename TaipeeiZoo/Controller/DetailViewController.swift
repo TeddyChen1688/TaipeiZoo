@@ -28,7 +28,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         navigationItem.largeTitleDisplayMode = .never
         tableView.contentInsetAdjustmentBehavior = .never
-        
+
         headerView.nameLabel.text = article.name
         headerView.locationLabel.text = article.location
         headerView.headerImageView?.sd_setImage(with: article.image_URL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)

@@ -24,6 +24,7 @@
 		A6C1D7FE20BBB7E8000593AD /* ListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */; };
 		A6F04E6A20BE2E1100FAE8F7 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */; };
 		A6F04E6C20BE3E1B00FAE8F7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */; };
+		A6F04E6E20BE65EB00FAE8F7 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableCell.swift; sourceTree = "<group>"; };
 		A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				A683B2BE20A197AE0090E60B /* ArticleDetailViewController.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
+				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				A6C1D7F320BB892B000593AD /* DetailViewController.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,
 				A6C1D7F120BB873E000593AD /* DetailHeaderView.swift in Sources */,
+				A6F04E6E20BE65EB00FAE8F7 /* FavoriteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
