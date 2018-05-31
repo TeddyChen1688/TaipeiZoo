@@ -22,7 +22,9 @@ class Article {
     var habit: String
     var feature: String
     var diet: String
-    var image_URL: URL?
+  //  var image_URL: URL?
+    var image_URLString: String?
+    var video_URLString: String?
     
     init(rawData: [String: Any]){
         name = rawData["A_Name_Ch"] as! String
@@ -31,13 +33,17 @@ class Article {
         habit = rawData["A_Habitat"] as! String
         feature = rawData["A_Feature"] as! String
         diet = rawData["A_Diet"] as! String
+        image_URLString = rawData["A_Pic01_URL"] as? String
         
-        if let image_URLString = rawData["A_Pic01_URL"] as? String{
-            image_URL = URL(string: image_URLString)
-        }
-        else {
-            image_URL = nil
-        }
+//        if let image_URLString = rawData["A_Pic01_URL"] as? String{
+//            image_URL = URL(string: image_URLString)
+//        }
+//        else {
+//            image_URL = nil
+//        }
+        
+        video_URLString = rawData["A_Vedio_URL"] as? String
+        
     }
 
     class func downLoadItem(completionHandler:@escaping ([Article]?, Error?) -> Void){

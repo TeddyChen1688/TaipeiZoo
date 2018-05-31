@@ -1,5 +1,5 @@
 //
-//  DetailTextCell_0.swift
+//  DetailTextCell_1.swift
 //  TaipeiZoo
 //
 //  Created by eva on 2018/5/28.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class DetailTextCell_0: UITableViewCell {
+class FeatureCell_2: UITableViewCell {
     
-    @IBOutlet var habitLabel: UILabel! {
+    
+    @IBOutlet weak var featureLabel: UILabel!{
         didSet {
-            habitLabel.numberOfLines = 0
+            featureLabel.numberOfLines = 0
         }
     }
 

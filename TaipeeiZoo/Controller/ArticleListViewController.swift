@@ -146,8 +146,19 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         cell.name_ENLabel?.text = article.name_EN
         print("\(article.name)")
         cell.locationLabel?.text = article.location
-        cell.photoView.sd_setImage(with: article.image_URL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
-
+        
+        let imageURL: URL?
+        if let imageURLString = article.image_URLString {
+            imageURL = URL (string: imageURLString)
+        }
+        else {
+            imageURL = nil
+        }
+        
+        cell.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
+        
+        
+       
         return cell
     }
     
@@ -157,7 +168,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         if segue.identifier == "ShowDetail"{
             print("翻頁了...")
             let cell = sender as! UITableViewCell
-            let detailVC = segue.destination as! DetailViewController
+            let detailVC = segue.destination as! DetailTableViewController
             let indexPath = tableView.indexPath(for: cell)!
             
         //    let article = articles[indexPath.row]
@@ -171,6 +182,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             }
             
             detailVC.article = article
+            print(article)
         }
     }
 

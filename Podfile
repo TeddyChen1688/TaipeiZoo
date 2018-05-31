@@ -7,5 +7,6 @@ target 'TaipeiZoo' do
 
   # Pods for TaipeiZoo
   pod 'SDWebImage'
+  pod 'ActionKit'
 
 end

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class DetailTextCell_1: UITableViewCell {
-
-    @IBOutlet var featureLabel: UILabel! {
+class DetailTextCell_3: UITableViewCell {
+    
+    @IBOutlet weak var dietLabel: UILabel!{
         didSet {
-            featureLabel.numberOfLines = 0
+            dietLabel.numberOfLines = 0
         }
     }
 
