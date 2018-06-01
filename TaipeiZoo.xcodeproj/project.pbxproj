@@ -33,6 +33,7 @@
 		A6F04EFF20C0E08000FAE8F7 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */; };
 		A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6F04F0020C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld */; };
 		A6F04F0620C0E32C00FAE8F7 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04F0420C0E32B00FAE8F7 /* UIColor+Ext.swift */; };
+		A6F04F0920C0F52C00FAE8F7 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04F0820C0F52C00FAE8F7 /* RoundedTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		A6F04F0120C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaipeiZoo.xcdatamodel; sourceTree = "<group>"; };
 		A6F04F0420C0E32B00FAE8F7 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		A6F04F0820C0F52C00FAE8F7 /* RoundedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		A6C1D7FF20BBC3A4000593AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A6F04F0820C0F52C00FAE8F7 /* RoundedTextField.swift */,
 				A6F04E9620BFAC3A00FAE8F7 /* imageCell.swift */,
 				A6C1D7F720BB9680000593AD /* TextCell_1.swift */,
 				A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */,
@@ -154,8 +157,8 @@
 				A6F04E9420BFA81300FAE8F7 /* DetailTableViewController.swift */,
 				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
-				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
+				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */,
 				9FD7257620A08C7200451EEB /* Article.swift in Sources */,
 				A6F04E6A20BE2E1100FAE8F7 /* ContactsViewController.swift in Sources */,
+				A6F04F0920C0F52C00FAE8F7 /* RoundedTextField.swift in Sources */,
 				A6F04E6C20BE3E1B00FAE8F7 /* MapViewController.swift in Sources */,
 				A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */,
 				A6C1D7FC20BBA23C000593AD /* DetailTextCell_3.swift in Sources */,

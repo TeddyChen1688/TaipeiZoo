@@ -7,14 +7,46 @@
 //
 
 import UIKit
+import CoreData
 
-class FavoriteTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-
+class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    
+    @IBOutlet weak var nameTextField: RoundedTextField! {
+        didSet {
+            nameTextField.tag = 1
+                nameTextField.becomeFirstResponder()
+                nameTextField.delegate = self
+        }
+    }
+    
+    
+    @IBOutlet var descriptionTextView: UITextView! {
+        didSet {
+            descriptionTextView.tag = 2
+            descriptionTextView.layer.cornerRadius = 5.0
+            descriptionTextView.layer.masksToBounds = true
+        }
+    }
+    
     @IBOutlet weak var photoImageView: UIImageView!
-
+    
+    var favorite: FavoriteMO!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
+        
+        // Configure navigation bar appearance
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        tableView.separatorStyle = .none
     }
+    
+    // MARK: - UITableViewDelegate methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
@@ -24,6 +56,7 @@ class FavoriteTableViewController: UITableViewController, UIImagePickerControlle
             let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .camera
                     
@@ -34,6 +67,7 @@ class FavoriteTableViewController: UITableViewController, UIImagePickerControlle
             let photoLibraryAction = UIAlertAction(title: "Photo library", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .photoLibrary
                     
@@ -48,8 +82,11 @@ class FavoriteTableViewController: UITableViewController, UIImagePickerControlle
             
         }
     }
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            print("selectedImage is \(selectedImage)")
             photoImageView.image = selectedImage
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
@@ -69,6 +106,52 @@ class FavoriteTableViewController: UITableViewController, UIImagePickerControlle
         
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: - UITextFieldDelegate methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextTextField = view.viewWithTag(textField.tag + 1) {
+            textField.resignFirstResponder()
+            nextTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
+    
+    // MARK: - Action method (Exercise #2)
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        
+        if nameTextField.text == "" || descriptionTextView.text == "" {
+            let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+        
+        print("Name: \(nameTextField.text ?? "")")
+        print("Description: \(descriptionTextView.text ?? "")")
+        
+        // Saving the restaurant to database
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            favorite = FavoriteMO(context: appDelegate.persistentContainer.viewContext)
+            favorite.name = nameTextField.text
+            favorite.summary = descriptionTextView.text
+            favorite.isVisited = false
+            
+            if let favoriteImage = photoImageView.image {
+                favorite.image = UIImagePNGRepresentation(favoriteImage)
+            }
+            
+            print("Saving data to context ...")
+            appDelegate.saveContext()
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     
 }
