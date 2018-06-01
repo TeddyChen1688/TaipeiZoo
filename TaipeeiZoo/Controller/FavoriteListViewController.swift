@@ -5,6 +5,7 @@
 //  Created by eva on 2018/6/1.
 //  Copyright © 2018年 Teddy Chen. All rights reserved.
 //
+// Update at 11:12
 
 import UIKit
 import CoreData
@@ -109,7 +110,110 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         return cell
     }
    
-
- 
+    // MARK: - UITableViewDelegate Protocol
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+            // Delete the row from the data store
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let restaurantToDelete = self.fetchResultController.object(at: indexPath)
+                context.delete(restaurantToDelete)
+                
+                appDelegate.saveContext()
+            }
+            
+            // Call completion handler with true to indicate
+            completionHandler(true)
+        }
+        
+        let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
+            let defaultText = "Just checking in at " + self.favorites[indexPath.row].name!
+            
+            let activityController: UIActivityViewController
+            
+            if let favoriteImage = self.favorites[indexPath.row].image,
+                let imageToShare = UIImage(data: favoriteImage as Data) {
+                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            } else  {
+                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            }
+            
+            if let popoverController = activityController.popoverPresentationController {
+                if let cell = tableView.cellForRow(at: indexPath) {
+                    popoverController.sourceView = cell
+                    popoverController.sourceRect = cell.bounds
+                }
+            }
+            
+            self.present(activityController, animated: true, completion: nil)
+            completionHandler(true)
+        }
+        
+        // Customize the action buttons
+        deleteAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        deleteAction.image = UIImage(named: "delete")
+        shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+        shareAction.image = UIImage(named: "share")
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
+        
+        return swipeConfiguration
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let checkInAction = UIContextualAction(style: .normal, title: "Check-in") { (action, sourceView, completionHandler) in
+            let cell = tableView.cellForRow(at: indexPath) as! FavoriteCell
+            self.favorites[indexPath.row].isVisited = (self.favorites[indexPath.row].isVisited) ? false : true
+            cell.heartImageView.isHidden = self.favorites[indexPath.row].isVisited ? false : true
+            
+            completionHandler(true)
+        }
+        
+        // Customize the action button
+        checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
+        checkInAction.image = self.favorites[indexPath.row].isVisited ? UIImage(named: "undo") : UIImage(named: "tick")
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
+        
+        return swipeConfiguration
+    }
+    
+    
+    // MARK: - NSFetchedResultsControllerDelegate methods
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            favorites = fetchedObjects as! [FavoriteMO]
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
 
 }

@@ -546,7 +546,7 @@
                                     <outlet property="playVideo" destination="LQH-Jg-9Fg" id="15u-VI-RWM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTextCell_1" rowHeight="200" id="ba4-TP-pjm" userLabel="TextCell_1" customClass="TextCell_1" customModule="TaipeiZoo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextCell_1" rowHeight="200" id="ba4-TP-pjm" userLabel="TextCell_1" customClass="TextCell_1" customModule="TaipeiZoo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="356" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ba4-TP-pjm" id="rr3-4w-iHk">
