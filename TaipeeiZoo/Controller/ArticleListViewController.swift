@@ -135,32 +135,36 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         
         var article : Article
         
-        if(searchActive){
-            article = filtered[indexPath.row]
-        }
-        else{
-            article = articles[indexPath.row]
-        }
-        
-        cell.nameLabel?.text = article.name
-        cell.name_ENLabel?.text = article.name_EN
-        print("\(article.name)")
-        cell.locationLabel?.text = article.location
+        if(searchActive){   article = filtered[indexPath.row]   }
+        else{   article = articles[indexPath.row]       }
         
         let imageURL: URL?
         if let imageURLString = article.image_URLString {
             imageURL = URL (string: imageURLString)
         }
-        else {
-            imageURL = nil
+        else {  imageURL = nil   }
+        
+        if let c = cell as? ListTableCell {
+            
+            c.photoView?.sd_setImage(with: imageURL) {(img, err, cachetype, url) in
+                
+                let screenWidth:CGFloat = UIScreen.main.bounds.width
+                if let width = img?.size.width , let height = img?.size.height {
+                    self.articles[indexPath.row].imageHeight = screenWidth / width * height
+                }
+            }
+            c.nameLabel?.text = article.name;
+            c.name_ENLabel?.text = article.name_EN;
+            print("\(article.name)");
+            c.locationLabel?.text = article.location
         }
-        
-        cell.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
-        
-        
        
         return cell
     }
+        
+        //             cell.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
+        
+        //        }
     
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

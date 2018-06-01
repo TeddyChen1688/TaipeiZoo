@@ -53,8 +53,12 @@ class DetailTableViewController: UITableViewController {
             
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath)
-            if let c = cell as? imageCell
-            {
+            
+            if let c = cell as? imageCell {
+                if( article.imageHeight > 0){
+                    c.imageHeight.constant = article.imageHeight
+                    print("imageHeight is \(c.imageHeight.constant)")
+                }
                 c.nameLabel.text = article.name
                 print("\(String(describing: c.nameLabel.text))")
                 c.locationLabel.text = article.location
@@ -63,27 +67,21 @@ class DetailTableViewController: UITableViewController {
                 if let imageURLString = article.image_URLString {
                     imageURL = URL (string: imageURLString)
                 }
-                else {
-                    imageURL = nil
-                }
+                else {   imageURL = nil  }
                 
                 c.headerViewImage?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
             
-            c.playVideo?.addControlEvent(.touchUpInside) {
-                let videoURL = URL(string: self.article.video_URLString!)
-                let player = AVPlayer(url: videoURL!)
-                let avpvv = AVPlayerViewController()
-                avpvv.player = player
-                self.present(avpvv, animated: true){
+                c.playVideo?.addControlEvent(.touchUpInside) {
+                    let videoURL = URL(string: self.article.video_URLString!)
+                    let player = AVPlayer(url: videoURL!)
+                    let avpvv = AVPlayerViewController()
+                    avpvv.player = player
+                    self.present(avpvv, animated: true){
                     avpvv.player!.play()
+                    }
                 }
-
             }
-                
-                }
-            else {
-                print ("error to get cell back")
-            }
+            else {   print ("error to get cell back")    }
             
             return cell
             

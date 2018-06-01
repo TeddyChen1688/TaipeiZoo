@@ -12,22 +12,22 @@ import CoreData
 class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     
-    @IBOutlet weak var nameTextField: RoundedTextField! {
+    @IBOutlet weak var nameTextField: RoundedTextField!{
         didSet {
             nameTextField.tag = 1
-                nameTextField.becomeFirstResponder()
-                nameTextField.delegate = self
+            nameTextField.becomeFirstResponder()
+            nameTextField.delegate = self
         }
     }
     
     
-    @IBOutlet var descriptionTextView: UITextView! {
-        didSet {
-            descriptionTextView.tag = 2
-            descriptionTextView.layer.cornerRadius = 5.0
-            descriptionTextView.layer.masksToBounds = true
-        }
-    }
+    @IBOutlet weak var descriptionTextField: UITextField!{
+                didSet {
+                    descriptionTextField.tag = 2
+                    descriptionTextField.delegate = self
+                }
+            }
+    
     
     @IBOutlet weak var photoImageView: UIImageView!
     
@@ -44,6 +44,8 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         navigationController?.navigationBar.shadowImage = UIImage()
         
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 450
     }
     
     // MARK: - UITableViewDelegate methods
@@ -88,7 +90,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             print("selectedImage is \(selectedImage)")
             photoImageView.image = selectedImage
-            photoImageView.contentMode = .scaleAspectFill
+            photoImageView.contentMode = .scaleAspectFit
             photoImageView.clipsToBounds = true
         }
         
@@ -122,7 +124,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
         
-        if nameTextField.text == "" || descriptionTextView.text == "" {
+        if nameTextField.text == "" || descriptionTextField.text == "" {
             let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
@@ -132,13 +134,13 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
         
         print("Name: \(nameTextField.text ?? "")")
-        print("Description: \(descriptionTextView.text ?? "")")
+        print("Description: \(descriptionTextField.text ?? "")")
         
         // Saving the restaurant to database
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             favorite = FavoriteMO(context: appDelegate.persistentContainer.viewContext)
             favorite.name = nameTextField.text
-            favorite.summary = descriptionTextView.text
+            favorite.summary = descriptionTextField.text
             favorite.isVisited = false
             
             if let favoriteImage = photoImageView.image {

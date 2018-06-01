@@ -11,6 +11,7 @@
 //  Copyright © 2018年 Teddy Chen. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 let ArticlesUrl = URL (string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613")!
@@ -25,6 +26,7 @@ class Article {
   //  var image_URL: URL?
     var image_URLString: String?
     var video_URLString: String?
+    var imageHeight: CGFloat = 0.0
     
     init(rawData: [String: Any]){
         name = rawData["A_Name_Ch"] as! String
@@ -43,6 +45,7 @@ class Article {
 //        }
         
         video_URLString = rawData["A_Vedio_URL"] as? String
+        
         
     }
 

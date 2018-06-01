@@ -19,7 +19,7 @@ class FavoriteCell: UITableViewCell {
     
     @IBOutlet var thumbnailImageView: UIImageView! {
         didSet {
-            thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.width / 2
+           //  thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.width / 2
             thumbnailImageView.clipsToBounds = true
         }
     }
