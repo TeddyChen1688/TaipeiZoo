@@ -28,6 +28,8 @@
 		A6F04E9F20BFC57E00FAE8F7 /* UIBarButtonItem+ActionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E9B20BFC57E00FAE8F7 /* UIBarButtonItem+ActionKit.swift */; };
 		A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E9C20BFC57E00FAE8F7 /* UIControl+ActionKit.swift */; };
 		A6F04EA120BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E9D20BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift */; };
+		A6F04EFB20C0DE0B00FAE8F7 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */; };
+		A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		A6F04E9B20BFC57E00FAE8F7 /* UIBarButtonItem+ActionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+ActionKit.swift"; sourceTree = "<group>"; };
 		A6F04E9C20BFC57E00FAE8F7 /* UIControl+ActionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionKit.swift"; sourceTree = "<group>"; };
 		A6F04E9D20BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+ActionKit.swift"; sourceTree = "<group>"; };
+		A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 				A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */,
 				A6C1D7FB20BBA23C000593AD /* DetailTextCell_3.swift */,
 				A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */,
+				A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
+				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				A6F04E9520BFA81300FAE8F7 /* DetailTableViewController.swift in Sources */,
 				A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */,
 				A6C1D7FE20BBB7E8000593AD /* ListTableCell.swift in Sources */,
+				A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */,
 				9FD7257620A08C7200451EEB /* Article.swift in Sources */,
 				A6F04E6A20BE2E1100FAE8F7 /* ContactsViewController.swift in Sources */,
 				A6F04E6C20BE3E1B00FAE8F7 /* MapViewController.swift in Sources */,
@@ -326,6 +333,7 @@
 				A6F04E9720BFAC3A00FAE8F7 /* imageCell.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,
 				A6F04EA120BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift in Sources */,
+				A6F04EFB20C0DE0B00FAE8F7 /* FavoriteCell.swift in Sources */,
 				A6F04E6E20BE65EB00FAE8F7 /* FavoriteTableViewController.swift in Sources */,
 				A6F04E9F20BFC57E00FAE8F7 /* UIBarButtonItem+ActionKit.swift in Sources */,
 			);
