@@ -30,6 +30,8 @@
 		A6F04EA120BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04E9D20BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift */; };
 		A6F04EFB20C0DE0B00FAE8F7 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */; };
 		A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */; };
+		A6F04EFF20C0E08000FAE8F7 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */; };
+		A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6F04F0020C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		A6F04E9D20BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+ActionKit.swift"; sourceTree = "<group>"; };
 		A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		A6F04F0120C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaipeiZoo.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		9FD72557209F0FF600451EEB = {
 			isa = PBXGroup;
 			children = (
+				A6F04F0020C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld */,
 				9FD72562209F0FF700451EEB /* TaipeeiZoo */,
 				9FD72561209F0FF700451EEB /* Products */,
 				BEBD5315B1C5A8C53C9D0AF3 /* Pods */,
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9FD7257520A08C7200451EEB /* Article.swift */,
+				A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */,
 				A6F04E9520BFA81300FAE8F7 /* DetailTableViewController.swift in Sources */,
 				A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */,
+				A6F04EFF20C0E08000FAE8F7 /* Favorite.swift in Sources */,
 				A6C1D7FE20BBB7E8000593AD /* ListTableCell.swift in Sources */,
 				A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */,
 				9FD7257620A08C7200451EEB /* Article.swift in Sources */,
@@ -330,6 +337,7 @@
 				A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */,
 				A6C1D7FC20BBA23C000593AD /* DetailTextCell_3.swift in Sources */,
 				A6F04E9E20BFC57E00FAE8F7 /* ActionKit.swift in Sources */,
+				A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */,
 				A6F04E9720BFAC3A00FAE8F7 /* imageCell.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,
 				A6F04EA120BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift in Sources */,
@@ -535,6 +543,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A6F04F0020C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A6F04F0120C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodel */,
+			);
+			currentVersion = A6F04F0120C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodel */;
+			path = TaipeiZoo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9FD72558209F0FF600451EEB /* Project object */;
 }

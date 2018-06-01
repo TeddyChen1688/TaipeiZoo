@@ -348,15 +348,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ir7-rJ-J4R">
-                                            <rect key="frame" x="28" y="12" width="99" height="94"/>
+                                            <rect key="frame" x="28" y="9" width="99" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="7dQ-GM-JVN"/>
                                                 <constraint firstAttribute="height" constant="100" id="qnf-An-gfY"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx3-en-xyY">
-                                            <rect key="frame" x="167" y="36" width="120" height="47"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx3-en-xyY">
+                                            <rect key="frame" x="154" y="45" width="133" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -366,6 +365,10 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ir7-rJ-J4R" firstAttribute="centerY" secondItem="up0-65-3ab" secondAttribute="centerY" id="bfH-4T-ZMF"/>
+                                        <constraint firstItem="Rx3-en-xyY" firstAttribute="centerY" secondItem="up0-65-3ab" secondAttribute="centerY" id="blX-mr-mOB"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="heartImageView" destination="Oga-9a-ddO" id="fRs-dD-bFS"/>
