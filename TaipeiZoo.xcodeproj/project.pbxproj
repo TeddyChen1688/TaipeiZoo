@@ -32,6 +32,7 @@
 		A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */; };
 		A6F04EFF20C0E08000FAE8F7 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */; };
 		A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6F04F0020C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld */; };
+		A6F04F0620C0E32C00FAE8F7 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F04F0420C0E32B00FAE8F7 /* UIColor+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		A6F04F0120C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaipeiZoo.xcdatamodel; sourceTree = "<group>"; };
+		A6F04F0420C0E32B00FAE8F7 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		9FD72562209F0FF700451EEB /* TaipeeiZoo */ = {
 			isa = PBXGroup;
 			children = (
+				A6F04F0320C0E32B00FAE8F7 /* Extensions */,
 				9FD7257720A08C7D00451EEB /* Model */,
 				A6C1D80020BBC3B7000593AD /* Controller */,
 				A6C1D7FF20BBC3A4000593AD /* View */,
@@ -174,6 +177,14 @@
 				A6F04E9D20BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift */,
 			);
 			path = ActionKit;
+			sourceTree = "<group>";
+		};
+		A6F04F0320C0E32B00FAE8F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A6F04F0420C0E32B00FAE8F7 /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BEBD5315B1C5A8C53C9D0AF3 /* Pods */ = {
@@ -338,6 +349,7 @@
 				A6C1D7FC20BBA23C000593AD /* DetailTextCell_3.swift in Sources */,
 				A6F04E9E20BFC57E00FAE8F7 /* ActionKit.swift in Sources */,
 				A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */,
+				A6F04F0620C0E32C00FAE8F7 /* UIColor+Ext.swift in Sources */,
 				A6F04E9720BFAC3A00FAE8F7 /* imageCell.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,
 				A6F04EA120BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift in Sources */,
@@ -468,6 +480,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -478,7 +491,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
