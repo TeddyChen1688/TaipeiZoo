@@ -44,7 +44,7 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,6 +102,19 @@ class DetailTableViewController: UITableViewController {
     
             return cell
             
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
+            
+            let lat = article.lat
+            print("lat is \(lat)")
+            let lng = article.lng
+             print("lng is \(lng)")
+            
+            cell.configure(lat: lat, lng: lng)
+            
+            return cell
+            
+            
         default:
             fatalError("Failed to instantiate the table view cell for detail view controller")
         }
@@ -126,6 +139,13 @@ class DetailTableViewController: UITableViewController {
     //            task.resume()
     //        }
     //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailMap" {
+            let destinationController = segue.destination as! DetailMapViewController
+            destinationController.article = article
+        }
+    }
     
 
     override func didReceiveMemoryWarning() {

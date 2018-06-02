@@ -6,6 +6,7 @@
 //  Copyright © 2018年 Teddy Chen. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import SDWebImage         // To Optimize the Photo-download process
 class ArticleListViewController: UITableViewController, UISearchBarDelegate{
@@ -157,8 +158,26 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             c.name_ENLabel?.text = article.name_EN;
             print("\(article.name)");
             c.locationLabel?.text = article.location
+            if let geo = article.geo {
+                print("Geo is \(geo)")
+           
+            
+                let geo_StringA = geo.split(separator: "(", maxSplits: 3)[1]
+                let geo_StringB = geo_StringA.split(separator: ")", maxSplits: 3)[0]
+                let geo_array = geo_StringB.split(separator: " ", maxSplits: 3)
+            
+                let lng_String = String(geo_array.first!) as NSString
+                let lng = lng_String.doubleValue
+                self.articles[indexPath.row].lng = lng
+                print("lng is \(lng)")
+            
+                let lat_String = String(geo_array.last!) as NSString
+                let lat = lat_String.doubleValue
+                self.articles[indexPath.row].lat = lat
+                print("lat is \(lat)")
+            }
+            
         }
-       
         return cell
     }
         

@@ -27,6 +27,9 @@ class Article {
     var image_URLString: String?
     var video_URLString: String?
     var imageHeight: CGFloat = 0.0
+    var geo: String?
+    var lng: Double = 0.0
+    var lat: Double = 0.0
     
     init(rawData: [String: Any]){
         name = rawData["A_Name_Ch"] as! String
@@ -36,6 +39,8 @@ class Article {
         feature = rawData["A_Feature"] as! String
         diet = rawData["A_Diet"] as! String
         image_URLString = rawData["A_Pic01_URL"] as? String
+        video_URLString = rawData["A_Vedio_URL"] as? String
+        geo = rawData["A_Geo"] as? String
         
 //        if let image_URLString = rawData["A_Pic01_URL"] as? String{
 //            image_URL = URL(string: image_URLString)
@@ -44,7 +49,7 @@ class Article {
 //            image_URL = nil
 //        }
         
-        video_URLString = rawData["A_Vedio_URL"] as? String
+        
         
         
     }

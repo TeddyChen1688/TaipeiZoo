@@ -498,6 +498,35 @@
             </objects>
             <point key="canvasLocation" x="2937" y="23"/>
         </scene>
+        <!--Detail Map View Controller-->
+        <scene sceneID="eXo-hk-Bz3">
+            <objects>
+                <viewController id="mVP-yx-OXJ" customClass="DetailMapViewController" customModule="TaipeiZoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nwp-Xl-zjz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-a2-CUD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W3v-ox-dKY" firstAttribute="trailing" secondItem="iA9-a2-CUD" secondAttribute="trailing" id="5KI-Vl-WUQ"/>
+                            <constraint firstItem="W3v-ox-dKY" firstAttribute="bottom" secondItem="iA9-a2-CUD" secondAttribute="bottom" id="ls3-sz-S3w"/>
+                            <constraint firstItem="iA9-a2-CUD" firstAttribute="top" secondItem="W3v-ox-dKY" secondAttribute="top" id="qGJ-nO-bfj"/>
+                            <constraint firstItem="iA9-a2-CUD" firstAttribute="leading" secondItem="W3v-ox-dKY" secondAttribute="leading" id="uOI-Bx-e7Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="W3v-ox-dKY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="iA9-a2-CUD" id="CjZ-fb-LYb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUd-rf-BkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3601" y="888"/>
+        </scene>
         <!--Detail Table View Controller-->
         <scene sceneID="UrZ-CY-ZsO">
             <objects>
@@ -697,6 +726,32 @@
                                     <outlet property="dietLabel" destination="bnx-I6-j20" id="Up4-3d-oiY"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapCell_4" rowHeight="200" id="fqm-VX-Mva" userLabel="MapCell_4" customClass="MapCell_4" customModule="TaipeiZoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="586" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fqm-VX-Mva" id="Ooy-80-eln">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GjU-N9-O2y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="gu8-Cf-hqp"/>
+                                            </constraints>
+                                        </mapView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="GjU-N9-O2y" secondAttribute="bottom" id="1LB-P5-cFc"/>
+                                        <constraint firstAttribute="trailing" secondItem="GjU-N9-O2y" secondAttribute="trailing" id="fxL-td-sFM"/>
+                                        <constraint firstItem="GjU-N9-O2y" firstAttribute="leading" secondItem="Ooy-80-eln" secondAttribute="leading" id="g1B-k8-foW"/>
+                                        <constraint firstItem="GjU-N9-O2y" firstAttribute="top" secondItem="Ooy-80-eln" secondAttribute="top" id="oxd-e3-Cbp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mapView" destination="GjU-N9-O2y" id="iu3-pq-5LP"/>
+                                    <segue destination="mVP-yx-OXJ" kind="show" identifier="showDetailMap" id="0wH-oE-W24"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="d7x-my-Qyo" id="Q8C-fF-r5M"/>
@@ -707,7 +762,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQ2-Na-Djd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2870" y="881"/>
+            <point key="canvasLocation" x="2869.5999999999999" y="880.65967016491766"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3YF-uP-dYv">

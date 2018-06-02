@@ -14,6 +14,9 @@
 		9FD7256E209F0FFA00451EEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */; };
 		9FD7257620A08C7200451EEB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7257520A08C7200451EEB /* Article.swift */; };
 		A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A683B2BC20A179A70090E60B /* ArticleListViewController.swift */; };
+		A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEA20C24D9D00744235 /* MapCell_4.swift */; };
+		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
+		A6B70BEF20C26BC300744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEE20C26BC300744235 /* MyLocationManager.swift */; };
 		A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */; };
 		A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F720BB9680000593AD /* TextCell_1.swift */; };
 		A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */; };
@@ -48,6 +51,9 @@
 		9FD7257520A08C7200451EEB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		A4898B491C6CCADB8AE7C57D /* Pods_TaipeiZoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaipeiZoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A683B2BC20A179A70090E60B /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
+		A6B70BEA20C24D9D00744235 /* MapCell_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell_4.swift; sourceTree = "<group>"; };
+		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
+		A6B70BEE20C26BC300744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
 		A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A6C1D7F720BB9680000593AD /* TextCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell_1.swift; sourceTree = "<group>"; };
 		A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell_2.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 				A6C1D7FB20BBA23C000593AD /* DetailTextCell_3.swift */,
 				A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */,
 				A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */,
+				A6B70BEA20C24D9D00744235 /* MapCell_4.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,9 +162,11 @@
 			children = (
 				A683B2BC20A179A70090E60B /* ArticleListViewController.swift */,
 				A6F04E9420BFA81300FAE8F7 /* DetailTableViewController.swift */,
+				A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */,
 				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
 				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
+				A6B70BEE20C26BC300744235 /* MyLocationManager.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 			);
 			path = Controller;
@@ -339,6 +348,7 @@
 			files = (
 				A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
+				A6B70BEF20C26BC300744235 /* MyLocationManager.swift in Sources */,
 				A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */,
 				A6F04E9520BFA81300FAE8F7 /* DetailTableViewController.swift in Sources */,
 				A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */,
@@ -348,6 +358,8 @@
 				9FD7257620A08C7200451EEB /* Article.swift in Sources */,
 				A6F04E6A20BE2E1100FAE8F7 /* ContactsViewController.swift in Sources */,
 				A6F04F0920C0F52C00FAE8F7 /* RoundedTextField.swift in Sources */,
+				A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */,
+				A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */,
 				A6F04E6C20BE3E1B00FAE8F7 /* MapViewController.swift in Sources */,
 				A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */,
 				A6C1D7FC20BBA23C000593AD /* DetailTextCell_3.swift in Sources */,
