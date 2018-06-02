@@ -147,10 +147,27 @@ class DetailTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Navigation
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showMap" {
+//            let destinationController = segue.destination as! MapViewController
+//            destinationController.restaurant = restaurant
+//
+//        } else if segue.identifier == "showReview" {
+//            let destinationController = segue.destination as! ReviewViewController
+//            destinationController.restaurant = restaurant
+//        }
+//    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
 
 }

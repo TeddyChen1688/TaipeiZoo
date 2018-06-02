@@ -45,6 +45,8 @@
 	<string>We need it</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need it</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need it</string>
 	<key>AFHTTPSessionManager</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>

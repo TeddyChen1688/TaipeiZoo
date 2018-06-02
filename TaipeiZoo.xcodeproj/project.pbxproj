@@ -16,7 +16,7 @@
 		A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A683B2BC20A179A70090E60B /* ArticleListViewController.swift */; };
 		A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEA20C24D9D00744235 /* MapCell_4.swift */; };
 		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
-		A6B70BEF20C26BC300744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEE20C26BC300744235 /* MyLocationManager.swift */; };
+		A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF020C2883800744235 /* MyLocationManager.swift */; };
 		A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */; };
 		A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F720BB9680000593AD /* TextCell_1.swift */; };
 		A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */; };
@@ -53,7 +53,7 @@
 		A683B2BC20A179A70090E60B /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		A6B70BEA20C24D9D00744235 /* MapCell_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell_4.swift; sourceTree = "<group>"; };
 		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
-		A6B70BEE20C26BC300744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
+		A6B70BF020C2883800744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
 		A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A6C1D7F720BB9680000593AD /* TextCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell_1.swift; sourceTree = "<group>"; };
 		A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell_2.swift; sourceTree = "<group>"; };
@@ -92,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F04F0020C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld */,
+				9FD72563209F0FF700451EEB /* AppDelegate.swift */,
 				9FD72562209F0FF700451EEB /* TaipeeiZoo */,
 				9FD72561209F0FF700451EEB /* Products */,
 				BEBD5315B1C5A8C53C9D0AF3 /* Pods */,
@@ -114,13 +115,11 @@
 				9FD7257720A08C7D00451EEB /* Model */,
 				A6C1D80020BBC3B7000593AD /* Controller */,
 				A6C1D7FF20BBC3A4000593AD /* View */,
-				A6F04E9820BFC57E00FAE8F7 /* Utilities */,
-				A6C1D7F420BB93BB000593AD /* Extension */,
-				9FD72563209F0FF700451EEB /* AppDelegate.swift */,
 				9FD72567209F0FF700451EEB /* Main.storyboard */,
 				9FD7256A209F0FFA00451EEB /* Assets.xcassets */,
 				9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */,
 				9FD7256F209F0FFA00451EEB /* Info.plist */,
+				A6F04E9820BFC57E00FAE8F7 /* Utilities */,
 			);
 			path = TaipeeiZoo;
 			sourceTree = "<group>";
@@ -132,14 +131,6 @@
 				A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A6C1D7F420BB93BB000593AD /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		A6C1D7FF20BBC3A4000593AD /* View */ = {
@@ -166,7 +157,7 @@
 				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
 				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
-				A6B70BEE20C26BC300744235 /* MyLocationManager.swift */,
+				A6B70BF020C2883800744235 /* MyLocationManager.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 			);
 			path = Controller;
@@ -195,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F04F0420C0E32B00FAE8F7 /* UIColor+Ext.swift */,
+				A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,7 +340,6 @@
 			files = (
 				A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
-				A6B70BEF20C26BC300744235 /* MyLocationManager.swift in Sources */,
 				A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */,
 				A6F04E9520BFA81300FAE8F7 /* DetailTableViewController.swift in Sources */,
 				A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */,
@@ -368,6 +359,7 @@
 				A6F04F0620C0E32C00FAE8F7 /* UIColor+Ext.swift in Sources */,
 				A6F04E9720BFAC3A00FAE8F7 /* imageCell.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,
+				A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */,
 				A6F04EA120BFC57E00FAE8F7 /* UIGestureRecognizer+ActionKit.swift in Sources */,
 				A6F04EFB20C0DE0B00FAE8F7 /* FavoriteCell.swift in Sources */,
 				A6F04E6E20BE65EB00FAE8F7 /* FavoriteTableViewController.swift in Sources */,
@@ -520,13 +512,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6394V6UJJX;
 				INFOPLIST_FILE = TaipeeiZoo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lextronic.TaipeiZoo.TaipeeiZoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -539,13 +532,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6394V6UJJX;
 				INFOPLIST_FILE = TaipeeiZoo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lextronic.TaipeiZoo.TaipeeiZoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

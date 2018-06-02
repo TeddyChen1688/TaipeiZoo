@@ -144,7 +144,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             favorite.isVisited = false
             
             if let favoriteImage = photoImageView.image {
-                favorite.image = UIImagePNGRepresentation(favoriteImage)
+                favorite.image = UIImagePNGRepresentation(favoriteImage) as! NSData
             }
             
             print("Saving data to context ...")
