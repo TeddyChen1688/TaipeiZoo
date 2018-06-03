@@ -18,7 +18,6 @@
 		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
 		A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF020C2883800744235 /* MyLocationManager.swift */; };
 		A6B70BFB20C3AB9300744235 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF820C3AB9200744235 /* TripViewController.swift */; };
-		A6B70BFC20C3AB9300744235 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF920C3AB9200744235 /* Trip.swift */; };
 		A6B70BFD20C3AB9300744235 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */; };
 		A6B70BFF20C3C33200744235 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B70BFE20C3C33200744235 /* Onboarding.storyboard */; };
 		A6B70C0120C3C35C00744235 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */; };
@@ -62,7 +61,6 @@
 		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		A6B70BF020C2883800744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
 		A6B70BF820C3AB9200744235 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
-		A6B70BF920C3AB9200744235 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
 		A6B70BFE20C3C33200744235 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 			children = (
 				9FD7257520A08C7200451EEB /* Article.swift */,
 				A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */,
-				A6B70BF920C3AB9200744235 /* Trip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B70BFC20C3AB9300744235 /* Trip.swift in Sources */,
 				A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
 				A6B70C0120C3C35C00744235 /* WalkthroughContentViewController.swift in Sources */,

@@ -175,7 +175,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             
 //        }
             print("id is \(article.id)");
-            c.idLabel.text = article.id;
+   //         c.idLabel.text = article.id;
             c.nameLabel?.text = article.name;
             print("\(article.name)");
             c.name_ENLabel?.text = article.name_EN

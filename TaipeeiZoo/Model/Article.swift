@@ -31,6 +31,7 @@ class Article {
     var geo: String?
     var lng: Double = 0.0
     var lat: Double = 0.0
+    var chk_flag: Bool = false
     
     init(rawData: [String: Any]){
         id = rawData["_id"] as! String
@@ -71,28 +72,42 @@ class Article {
                 for articleDict in articleArray{
                     let article = Article(rawData: articleDict)
                     
-                    if article.name_EN == "" {
-                        print("name_EN 抓取失敗")
-                        article.name_EN = "To Be Determined"
+                    for article_OK in articles {
+                        
+                        if article.name == article_OK.name  {
+                            article.chk_flag = true
+                        }
                     }
-                    else { print("name_EN 抓取成功")}
                     
-                    if article.location == "" {
-                        print("Location 抓取失敗")
-                        article.location = "展館待定"
+                    if article.chk_flag == true {
+                        print("same data is downloaded")
                     }
-                    else { print("Location 抓取成功")}
                     
-                    if article.geo == ""
-                    {
-                        article.geo = "MULTIPOINT ((121.5831587 24.9971109))"
-                        print("assign a Geo")
-                    }
-                    else { print("geo 抓取成功")}
+                    else {
+
+                        if article.name_EN == "" {
+                            print("name_EN 抓取失敗")
+                            article.name_EN = "To Be Determined"
+                        }
+                        else { print("name_EN 抓取成功")}
                     
-                    articles.append(article)
+                        if article.location == "" {
+                            print("Location 抓取失敗")
+                            article.location = "展館待定"
+                        }
+                        else { print("Location 抓取成功")}
+                    
+                        if article.geo == ""
+                        {
+                            article.geo = "MULTIPOINT ((121.5831587 24.9971109))"
+                            print("assign a Geo")
+                        }
+                        else { print("geo 抓取成功")}
+                        
+                        articles.append(article)                    }
+                    
                 }
-                print("下載完成")
+                print("下載完成 \(articles.count)")
                 completionHandler(articles, nil)
             }
         }
