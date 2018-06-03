@@ -64,7 +64,7 @@ class DetailTableViewController: UITableViewController {
                 c.locationLabel.text = article.location
                 
                 let imageURL: URL?
-                if let imageURLString = article.image_URLString {
+                if let imageURLString = article.Pic02_URLString {
                     imageURL = URL (string: imageURLString)
                 }
                 else {   imageURL = nil  }

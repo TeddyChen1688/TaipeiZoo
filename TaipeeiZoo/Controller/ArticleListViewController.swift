@@ -156,7 +156,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         else{   article = articles[indexPath.row]       }
         
         let imageURL: URL?
-        if let imageURLString = article.image_URLString {
+        if let imageURLString = article.Pic01_URLString {
             imageURL = URL (string: imageURLString)
         }
         else {  imageURL = nil   }

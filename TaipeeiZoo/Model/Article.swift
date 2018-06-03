@@ -25,8 +25,10 @@ class Article {
     var feature: String?
     var diet: String?
   //  var image_URL: URL?
-    var image_URLString: String?
+    var Pic01_URLString: String?
+    var Pic02_URLString: String?
     var video_URLString: String?
+    var Voice01_URLString: String?
     var imageHeight: CGFloat = 0.0
     var geo: String?
     var lng: Double = 0.0
@@ -41,8 +43,11 @@ class Article {
         habit = rawData["A_Habitat"] as? String
         feature = rawData["A_Feature"] as? String
         diet = rawData["A_Diet"] as? String
-        image_URLString = rawData["A_Pic01_URL"] as? String
+        Pic01_URLString = rawData["A_Pic01_URL"] as? String
+        Pic02_URLString = rawData["A_Pic02_URL"] as? String
         video_URLString = rawData["A_Vedio_URL"] as? String
+        Voice01_URLString = rawData["A_Voice01_URL"] as? String
+        
         geo = rawData["A_Geo"] as? String
         
 //        if let image_URLString = rawData["A_Pic01_URL"] as? String{
@@ -96,6 +101,31 @@ class Article {
                             article.location = "展館待定"
                         }
                         else { print("Location 抓取成功")}
+                        
+                        
+                        if article.habit == "" {
+                            print("habit 抓取失敗")
+                            article.habit = "( 目前查無資料 )"
+                        }
+                        else { print(" feature 抓取成功")}
+                        if article.feature == "" {
+                            print("habit 抓取失敗")
+                            article.feature = "( 目前查無資料 )"
+                        }
+                        else { print("feature 抓取成功")}
+                        
+                        if article.diet == "" {
+                            print("habit 抓取失敗")
+                            article.diet = "( 目前查無資料 )"
+                        }
+                        else { print("diet 抓取成功")}
+                        
+                        if article.Pic02_URLString == "" {
+                            print("Pic02_URLString 抓取失敗")
+                            article.Pic02_URLString = article.Pic01_URLString
+                        }
+                        else { print("Pic02_URLString 抓取成功")}
+                    
                     
                         if article.geo == ""
                         {
