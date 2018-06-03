@@ -120,25 +120,7 @@ class DetailTableViewController: UITableViewController {
         }
     }
     
-    //    func downloadArticleImage(){
-    //        if let imageURL = article.image_URL {
-    //            // let imageURL = article.image_URL
-    //            print(article.image_URL)
-    //            let session = URLSession.shared
-    //            let task = session.dataTask(with: imageURL){ data, response, error in
-    //                if let error = error {
-    //                    print("fail")
-    //                    return
-    //                }
-    //                let data = data!
-    //                let image = UIImage(data: data)
-    //                DispatchQueue.main.async {
-    //                    self.headerView.headerImageView.image = image
-    //                }
-    //            }
-    //            task.resume()
-    //        }
-    //    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMap" {
@@ -167,7 +149,25 @@ class DetailTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //    func downloadArticleImage(){
+    //        if let imageURL = article.image_URL {
+    //            // let imageURL = article.image_URL
+    //            print(article.image_URL)
+    //            let session = URLSession.shared
+    //            let task = session.dataTask(with: imageURL){ data, response, error in
+    //                if let error = error {
+    //                    print("fail")
+    //                    return
+    //                }
+    //                let data = data!
+    //                let image = UIImage(data: data)
+    //                DispatchQueue.main.async {
+    //                    self.headerView.headerImageView.image = image
+    //                }
+    //            }
+    //            task.resume()
+    //        }
+    //    }
     
 
 }

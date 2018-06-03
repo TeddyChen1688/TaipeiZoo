@@ -17,12 +17,13 @@ import Foundation
 let ArticlesUrl = URL (string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613")!
 
 class Article {
+    var id: String
     var name: String
-    var name_EN: String
-    var location: String
-    var habit: String
-    var feature: String
-    var diet: String
+    var name_EN: String?
+    var location: String?
+    var habit: String?
+    var feature: String?
+    var diet: String?
   //  var image_URL: URL?
     var image_URLString: String?
     var video_URLString: String?
@@ -32,12 +33,13 @@ class Article {
     var lat: Double = 0.0
     
     init(rawData: [String: Any]){
+        id = rawData["_id"] as! String
         name = rawData["A_Name_Ch"] as! String
-        name_EN = rawData["A_Name_En"] as! String
-        location = rawData["A_Location"] as! String
-        habit = rawData["A_Habitat"] as! String
-        feature = rawData["A_Feature"] as! String
-        diet = rawData["A_Diet"] as! String
+        name_EN = rawData["A_Name_En"] as? String
+        location = rawData["A_Location"] as? String
+        habit = rawData["A_Habitat"] as? String
+        feature = rawData["A_Feature"] as? String
+        diet = rawData["A_Diet"] as? String
         image_URLString = rawData["A_Pic01_URL"] as? String
         video_URLString = rawData["A_Vedio_URL"] as? String
         geo = rawData["A_Geo"] as? String

@@ -28,6 +28,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     }
     
     
+    
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
@@ -36,6 +37,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 //        tableView.delegate = self
 //        tableView.dataSource = self
         tableView.estimatedRowHeight = 100
@@ -66,13 +69,35 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
 
     
     func downLoadLatestArticles(){
-        Article.downLoadItem { (articles, error) in
+        Article.downLoadItem { (articles_raw, error) in
             if let error = error {
                 print("fail \(error)")
                 return
             }
-            if let articles = articles {
-                self.articles = articles
+            if let articles_raw = articles_raw {
+                
+                var articles = [Article]()
+                for article in articles_raw {
+                    
+                    print("\(article.name_EN)")
+                    if article.name_EN == " " {
+                         article.name_EN = "A"
+                        
+                        print("\(article.name_EN)")
+                    }
+                    else {
+                        // print("name_EN 資料存在")
+                        print(article)
+                        
+                    }
+                    articles.append(article)
+                   
+                }
+                
+                
+                print(articles)
+
+                self.articles = articles.sorted(by: { $0.name_EN! < $1.name_EN! })
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -136,6 +161,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         
         var article : Article
         
+        
+        
         if(searchActive){   article = filtered[indexPath.row]   }
         else{   article = articles[indexPath.row]       }
         
@@ -147,43 +174,78 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         
         if let c = cell as? ListTableCell {
             
-            c.photoView?.sd_setImage(with: imageURL) {(img, err, cachetype, url) in
+            c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
                 
                 let screenWidth:CGFloat = UIScreen.main.bounds.width
                 if let width = img?.size.width , let height = img?.size.height {
                     self.articles[indexPath.row].imageHeight = screenWidth / width * height
                 }
             }
+            
+//          cell.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
+            
+//        }
+            print("id is \(article.id)");
             c.nameLabel?.text = article.name;
-            c.name_ENLabel?.text = article.name_EN;
             print("\(article.name)");
+            
+            var name_EN = article.name_EN
+            
+            if name_EN == "" {
+                print("name_EN 抓取失敗")
+               c.name_ENLabel?.text = "To Be Determined"
+            }
+            
+            else {
+                c.name_ENLabel?.text = article.name_EN
+            }
+            
+            var location = article.location
+    
+            if location == "" {
+                print("location 抓取失敗")
+                c.locationLabel?.text = "位置待定"
+                
+            }
+            else {
+                
             c.locationLabel?.text = article.location
-            if let geo = article.geo {
+            
+            }
+            
+
+            var geo = article.geo
+            
+            if geo == ""
+            {
+                geo = "MULTIPOINT ((121.5831587 24.9971109))"
+                print("assign a Geo")
+            }
+
+            else
+            {
                 print("Geo is \(geo)")
-           
+                let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
+                let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
+                let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
             
-                let geo_StringA = geo.split(separator: "(", maxSplits: 3)[1]
-                let geo_StringB = geo_StringA.split(separator: ")", maxSplits: 3)[0]
-                let geo_array = geo_StringB.split(separator: " ", maxSplits: 3)
-            
-                let lng_String = String(geo_array.first!) as NSString
+                let lng_String = String((geo_array?.first!)!) as NSString
                 let lng = lng_String.doubleValue
                 self.articles[indexPath.row].lng = lng
                 print("lng is \(lng)")
             
-                let lat_String = String(geo_array.last!) as NSString
+                let lat_String = String((geo_array?.last!)!) as NSString
                 let lat = lat_String.doubleValue
                 self.articles[indexPath.row].lat = lat
                 print("lat is \(lat)")
+            
             }
             
         }
         return cell
     }
         
-        //             cell.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
-        
-        //        }
+
     
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
