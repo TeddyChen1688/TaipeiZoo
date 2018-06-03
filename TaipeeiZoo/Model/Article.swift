@@ -85,43 +85,60 @@ class Article {
                     }
                     
                     if article.chk_flag == true {
-                        print("same data is downloaded")
+                     //   print("same data is downloaded")
                     }
                     
                     else {
-
+                        
                         if article.name_EN == "" {
-                            print("name_EN 抓取失敗")
+                           //  print("name_EN 抓取失敗")
                             article.name_EN = "To Be Determined"
                         }
-                        else { print("name_EN 抓取成功")}
+                        else { print("name_EN 抓取成功 \(String(describing: article.name_EN))\(String(describing: article.name_EN!.first))")}
+                        
+                        if article.id == "191" || article.id == "192" || article.id == "194" {
+                            print("=========================================================")
+                            let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
+                            article.name_EN = article.name_EN?.substring(from: startIndex!)
+                            print(article.name_EN!)
+                    
+                        }
+                            
+                        if article.id == "27" || article.id == "71" || article.id == "84" || article.id == "237" || article.id == "72" || article.id == "86"{
+                            print("=========================================================")
+                            let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
+                            article.name_EN = article.name_EN?.substring(from: startIndex!)
+                            print(article.name_EN!)
+                        }
+                            
+                        else { print("字首正確")}
                     
                         if article.location == "" {
-                            print("Location 抓取失敗")
+//                            print("Location 抓取失敗")
                             article.location = "展館待定"
                         }
                         else { print("Location 抓取成功")}
                         
                         
                         if article.habit == "" {
-                            print("habit 抓取失敗")
+//                            print("habit 抓取失敗")
                             article.habit = "( 目前查無資料 )"
                         }
                         else { print(" feature 抓取成功")}
                         if article.feature == "" {
-                            print("habit 抓取失敗")
+//                            print("habit 抓取失敗")
                             article.feature = "( 目前查無資料 )"
                         }
                         else { print("feature 抓取成功")}
                         
                         if article.diet == "" {
-                            print("habit 抓取失敗")
+//                            print("habit 抓取失敗")
                             article.diet = "( 目前查無資料 )"
                         }
                         else { print("diet 抓取成功")}
                         
                         if article.Pic02_URLString == "" {
-                            print("Pic02_URLString 抓取失敗")
+//                            print("Pic02_URLString 抓取失敗")
                             article.Pic02_URLString = article.Pic01_URLString
                         }
                         else { print("Pic02_URLString 抓取成功")}
@@ -143,5 +160,6 @@ class Article {
         }
         task.resume()
     }
+    
 }
 

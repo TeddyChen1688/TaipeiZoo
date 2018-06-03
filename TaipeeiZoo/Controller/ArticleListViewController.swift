@@ -86,6 +86,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 print(articles)
                 // self.articles = articles
                 self.articles = articles.sorted(by: { $0.name_EN! < $1.name_EN! })
+               // self.articles = articles.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedDescending }
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -175,7 +176,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             
 //        }
             print("id is \(article.id)");
-   //         c.idLabel.text = article.id;
+            c.idLabel.text = article.id;
             c.nameLabel?.text = article.name;
             print("\(article.name)");
             c.name_ENLabel?.text = article.name_EN

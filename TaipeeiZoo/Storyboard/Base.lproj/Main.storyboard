@@ -56,9 +56,15 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="X45-Mu-r28">
-                                                                    <rect key="frame" x="87" y="0.0" width="169" height="54"/>
+                                                                    <rect key="frame" x="87" y="0.0" width="132.5" height="54"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZN-oQ-XDy">
+                                                                    <rect key="frame" x="224.5" y="0.0" width="31.5" height="54"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="g9u-eK-Ol8" secondAttribute="bottom" id="6VL-Mh-BPh"/>
@@ -107,6 +113,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="idLabel" destination="eZN-oQ-XDy" id="dRa-p5-kUC"/>
                                     <outlet property="locationLabel" destination="Y2X-Ba-fOb" id="JJi-R7-65A"/>
                                     <outlet property="nameLabel" destination="7hQ-82-KZj" id="63n-gN-bF3"/>
                                     <outlet property="name_ENLabel" destination="g9u-eK-Ol8" id="zoE-bu-h60"/>
