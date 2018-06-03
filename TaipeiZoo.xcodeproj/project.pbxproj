@@ -17,8 +17,9 @@
 		A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEA20C24D9D00744235 /* MapCell_4.swift */; };
 		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
 		A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF020C2883800744235 /* MyLocationManager.swift */; };
-		A6B70BF520C2CBD600744235 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF420C2CBD600744235 /* AlbumViewController.swift */; };
-		A6B70BF720C2CDD700744235 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF620C2CDD700744235 /* AlbumCollectionViewCell.swift */; };
+		A6B70BFB20C3AB9300744235 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF820C3AB9200744235 /* TripViewController.swift */; };
+		A6B70BFC20C3AB9300744235 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF920C3AB9200744235 /* Trip.swift */; };
+		A6B70BFD20C3AB9300744235 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */; };
 		A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */; };
 		A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F720BB9680000593AD /* TextCell_1.swift */; };
 		A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */; };
@@ -56,8 +57,9 @@
 		A6B70BEA20C24D9D00744235 /* MapCell_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell_4.swift; sourceTree = "<group>"; };
 		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		A6B70BF020C2883800744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
-		A6B70BF420C2CBD600744235 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
-		A6B70BF620C2CDD700744235 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		A6B70BF820C3AB9200744235 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		A6B70BF920C3AB9200744235 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
 		A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A6C1D7F720BB9680000593AD /* TextCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell_1.swift; sourceTree = "<group>"; };
 		A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell_2.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				9FD7257520A08C7200451EEB /* Article.swift */,
 				A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */,
+				A6B70BF920C3AB9200744235 /* Trip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,7 +151,6 @@
 				A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */,
 				A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */,
 				A6B70BEA20C24D9D00744235 /* MapCell_4.swift */,
-				A6B70BF620C2CDD700744235 /* AlbumCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,10 +163,11 @@
 				A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */,
 				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
-				A6B70BF420C2CBD600744235 /* AlbumViewController.swift */,
 				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
+				A6B70BF820C3AB9200744235 /* TripViewController.swift */,
 				A6B70BF020C2883800744235 /* MyLocationManager.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
+				A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -344,10 +347,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B70BFC20C3AB9300744235 /* Trip.swift in Sources */,
 				A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
+				A6B70BFB20C3AB9300744235 /* TripViewController.swift in Sources */,
 				A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */,
-				A6B70BF520C2CBD600744235 /* AlbumViewController.swift in Sources */,
 				A6F04E9520BFA81300FAE8F7 /* DetailTableViewController.swift in Sources */,
 				A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */,
 				A6F04EFF20C0E08000FAE8F7 /* Favorite.swift in Sources */,
@@ -357,6 +361,7 @@
 				A6F04E6A20BE2E1100FAE8F7 /* ContactsViewController.swift in Sources */,
 				A6F04F0920C0F52C00FAE8F7 /* RoundedTextField.swift in Sources */,
 				A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */,
+				A6B70BFD20C3AB9300744235 /* TripCollectionViewCell.swift in Sources */,
 				A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */,
 				A6F04E6C20BE3E1B00FAE8F7 /* MapViewController.swift in Sources */,
 				A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */,
@@ -364,7 +369,6 @@
 				A6F04E9E20BFC57E00FAE8F7 /* ActionKit.swift in Sources */,
 				A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */,
 				A6F04F0620C0E32C00FAE8F7 /* UIColor+Ext.swift in Sources */,
-				A6B70BF720C2CDD700744235 /* AlbumCollectionViewCell.swift in Sources */,
 				A6F04E9720BFAC3A00FAE8F7 /* imageCell.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,
 				A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */,
