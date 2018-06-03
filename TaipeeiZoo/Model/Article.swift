@@ -51,9 +51,6 @@ class Article {
 //            image_URL = nil
 //        }
         
-        
-        
-        
     }
 
     class func downLoadItem(completionHandler:@escaping ([Article]?, Error?) -> Void){
@@ -73,6 +70,26 @@ class Article {
                 var articles = [Article]()
                 for articleDict in articleArray{
                     let article = Article(rawData: articleDict)
+                    
+                    if article.name_EN == "" {
+                        print("name_EN 抓取失敗")
+                        article.name_EN = "To Be Determined"
+                    }
+                    else { print("name_EN 抓取成功")}
+                    
+                    if article.location == "" {
+                        print("Location 抓取失敗")
+                        article.location = "展館待定"
+                    }
+                    else { print("Location 抓取成功")}
+                    
+                    if article.geo == ""
+                    {
+                        article.geo = "MULTIPOINT ((121.5831587 24.9971109))"
+                        print("assign a Geo")
+                    }
+                    else { print("geo 抓取成功")}
+                    
                     articles.append(article)
                 }
                 print("下載完成")

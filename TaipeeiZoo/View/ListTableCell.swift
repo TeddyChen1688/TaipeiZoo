@@ -16,6 +16,9 @@ class ListTableCell: UITableViewCell {
             photoView.clipsToBounds = true
         }
     }
+    
+    
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var name_ENLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!

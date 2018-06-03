@@ -27,8 +27,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-    
-    
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
@@ -38,9 +36,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        tableView.delegate = self
-//        tableView.dataSource = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         searchBar.delegate = self
@@ -69,34 +64,14 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
 
     
     func downLoadLatestArticles(){
-        Article.downLoadItem { (articles_raw, error) in
+        Article.downLoadItem { (articles, error) in
             if let error = error {
                 print("fail \(error)")
                 return
             }
-            if let articles_raw = articles_raw {
-                
-                var articles = [Article]()
-                for article in articles_raw {
-                    
-                    print("\(article.name_EN)")
-                    if article.name_EN == " " {
-                         article.name_EN = "A"
-                        
-                        print("\(article.name_EN)")
-                    }
-                    else {
-                        // print("name_EN 資料存在")
-                        print(article)
-                        
-                    }
-                    articles.append(article)
-                   
-                }
-                
-                
+            if let articles = articles {
                 print(articles)
-
+                // self.articles = articles
                 self.articles = articles.sorted(by: { $0.name_EN! < $1.name_EN! })
                 self.refreshControl?.endRefreshing()
             }
@@ -153,6 +128,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         if(searchActive) {
             return filtered.count
         }
+        print (" article .count is \(articles.count)")
         return articles.count
     }
 
@@ -186,44 +162,14 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             
 //        }
             print("id is \(article.id)");
+            c.idLabel.text = article.id;
             c.nameLabel?.text = article.name;
             print("\(article.name)");
-            
-            var name_EN = article.name_EN
-            
-            if name_EN == "" {
-                print("name_EN 抓取失敗")
-               c.name_ENLabel?.text = "To Be Determined"
-            }
-            
-            else {
-                c.name_ENLabel?.text = article.name_EN
-            }
-            
-            var location = article.location
-    
-            if location == "" {
-                print("location 抓取失敗")
-                c.locationLabel?.text = "位置待定"
-                
-            }
-            else {
-                
+            c.name_ENLabel?.text = article.name_EN
             c.locationLabel?.text = article.location
             
-            }
-            
-
             var geo = article.geo
             
-            if geo == ""
-            {
-                geo = "MULTIPOINT ((121.5831587 24.9971109))"
-                print("assign a Geo")
-            }
-
-            else
-            {
                 print("Geo is \(geo)")
                 let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
                 let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
@@ -239,13 +185,9 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 self.articles[indexPath.row].lat = lat
                 print("lat is \(lat)")
             
-            }
-            
         }
         return cell
     }
-        
-
     
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
