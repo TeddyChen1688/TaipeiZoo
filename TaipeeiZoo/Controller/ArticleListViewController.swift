@@ -52,8 +52,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         
         // 啟用旋轉指示器
         spinner.startAnimating()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
