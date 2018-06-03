@@ -20,6 +20,10 @@
 		A6B70BFB20C3AB9300744235 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF820C3AB9200744235 /* TripViewController.swift */; };
 		A6B70BFC20C3AB9300744235 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF920C3AB9200744235 /* Trip.swift */; };
 		A6B70BFD20C3AB9300744235 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */; };
+		A6B70BFF20C3C33200744235 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B70BFE20C3C33200744235 /* Onboarding.storyboard */; };
+		A6B70C0120C3C35C00744235 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */; };
+		A6B70C0320C3C36500744235 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70C0220C3C36500744235 /* WalkthroughPageViewController.swift */; };
+		A6B70C0520C3C36C00744235 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70C0420C3C36C00744235 /* WalkthroughViewController.swift */; };
 		A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */; };
 		A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F720BB9680000593AD /* TextCell_1.swift */; };
 		A6C1D7FA20BBA228000593AD /* FeatureCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */; };
@@ -60,6 +64,10 @@
 		A6B70BF820C3AB9200744235 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		A6B70BF920C3AB9200744235 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
+		A6B70BFE20C3C33200744235 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		A6B70C0220C3C36500744235 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		A6B70C0420C3C36C00744235 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		A6C1D7F520BB93E3000593AD /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A6C1D7F720BB9680000593AD /* TextCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell_1.swift; sourceTree = "<group>"; };
 		A6C1D7F920BBA228000593AD /* FeatureCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell_2.swift; sourceTree = "<group>"; };
@@ -120,10 +128,9 @@
 				A6F04F0320C0E32B00FAE8F7 /* Extensions */,
 				9FD7257720A08C7D00451EEB /* Model */,
 				A6C1D80020BBC3B7000593AD /* Controller */,
+				A6B70C0620C3C38700744235 /* Storyboard */,
 				A6C1D7FF20BBC3A4000593AD /* View */,
-				9FD72567209F0FF700451EEB /* Main.storyboard */,
 				9FD7256A209F0FFA00451EEB /* Assets.xcassets */,
-				9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */,
 				9FD7256F209F0FFA00451EEB /* Info.plist */,
 				A6F04E9820BFC57E00FAE8F7 /* Utilities */,
 			);
@@ -138,6 +145,16 @@
 				A6B70BF920C3AB9200744235 /* Trip.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A6B70C0620C3C38700744235 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9FD72567209F0FF700451EEB /* Main.storyboard */,
+				A6B70BFE20C3C33200744235 /* Onboarding.storyboard */,
+				9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		A6C1D7FF20BBC3A4000593AD /* View */ = {
@@ -168,6 +185,9 @@
 				A6B70BF020C2883800744235 /* MyLocationManager.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 				A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */,
+				A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */,
+				A6B70C0220C3C36500744235 /* WalkthroughPageViewController.swift */,
+				A6B70C0420C3C36C00744235 /* WalkthroughViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +301,7 @@
 				9FD7256E209F0FFA00451EEB /* LaunchScreen.storyboard in Resources */,
 				9FD7256B209F0FFA00451EEB /* Assets.xcassets in Resources */,
 				9FD72569209F0FF700451EEB /* Main.storyboard in Resources */,
+				A6B70BFF20C3C33200744235 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,14 +371,17 @@
 				A6B70BFC20C3AB9300744235 /* Trip.swift in Sources */,
 				A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
+				A6B70C0120C3C35C00744235 /* WalkthroughContentViewController.swift in Sources */,
 				A6B70BFB20C3AB9300744235 /* TripViewController.swift in Sources */,
 				A6C1D7F620BB93E3000593AD /* UINavigationController+Ext.swift in Sources */,
 				A6F04E9520BFA81300FAE8F7 /* DetailTableViewController.swift in Sources */,
 				A6F04EA020BFC57E00FAE8F7 /* UIControl+ActionKit.swift in Sources */,
 				A6F04EFF20C0E08000FAE8F7 /* Favorite.swift in Sources */,
+				A6B70C0520C3C36C00744235 /* WalkthroughViewController.swift in Sources */,
 				A6C1D7FE20BBB7E8000593AD /* ListTableCell.swift in Sources */,
 				A6F04EFD20C0DE8800FAE8F7 /* FavoriteListViewController.swift in Sources */,
 				9FD7257620A08C7200451EEB /* Article.swift in Sources */,
+				A6B70C0320C3C36500744235 /* WalkthroughPageViewController.swift in Sources */,
 				A6F04E6A20BE2E1100FAE8F7 /* ContactsViewController.swift in Sources */,
 				A6F04F0920C0F52C00FAE8F7 /* RoundedTextField.swift in Sources */,
 				A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */,

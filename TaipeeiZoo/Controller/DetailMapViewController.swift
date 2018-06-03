@@ -63,16 +63,10 @@ import MapKit
             let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
             let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
 //
-                // 將起迄點放到陣列中
-                let routes = [currentLocationMapItem, destinationMapItem]
+            // 將起迄點放到陣列中
+            let routes = [currentLocationMapItem, destinationMapItem]
         
-                // 設定為開車模式
-                let options = [MKLaunchOptionsDirectionsModeKey:
-                    MKLaunchOptionsDirectionsModeWalking]
-        
-                // 開啟地圖開始導航
-                MKMapItem.openMaps(with: routes, launchOptions: options)
-        
+    
            // 總結設定 MKDirectionRequest 的輸入參數:Source,destination,transportType
             let request = MKDirectionsRequest()
             request.source = currentLocationMapItem
@@ -92,8 +86,9 @@ import MapKit
                 let pointAnnotation = MKPointAnnotation()
                 self.mapView.removeAnnotations(self.mapView.annotations) //把先前加的點先清除
                 pointAnnotation.coordinate = destinationCoordinate
-                pointAnnotation.title = self.article.name
-                pointAnnotation.subtitle = self.article.location
+                
+                pointAnnotation.title = self.article.location
+                pointAnnotation.subtitle = self.article.name
 //
                 self.mapView.addAnnotation(pointAnnotation)     //加一個點在 map, 會一直加
                 self.mapView.showsUserLocation = true // 顯示自己位置
@@ -116,6 +111,13 @@ import MapKit
                 self.mapView.showsCompass = true
                 self.mapView.showsTraffic = true
                 self.mapView.showsScale = true
+                
+                // 設定為 walking 模式
+                let options = [MKLaunchOptionsDirectionsModeKey:
+                    MKLaunchOptionsDirectionsModeWalking]
+                
+                // 開啟地圖開始導航
+                MKMapItem.openMaps(with: routes, launchOptions: options)
 
             })  // end of calculateETA
           } // end of request current location
