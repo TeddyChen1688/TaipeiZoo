@@ -175,7 +175,6 @@
 				A683B2BC20A179A70090E60B /* ArticleListViewController.swift */,
 				A6F04E9420BFA81300FAE8F7 /* DetailTableViewController.swift */,
 				A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */,
-				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
 				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
 				A6B70BF820C3AB9200744235 /* TripViewController.swift */,
@@ -185,6 +184,7 @@
 				A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */,
 				A6B70C0220C3C36500744235 /* WalkthroughPageViewController.swift */,
 				A6B70C0420C3C36C00744235 /* WalkthroughViewController.swift */,
+				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

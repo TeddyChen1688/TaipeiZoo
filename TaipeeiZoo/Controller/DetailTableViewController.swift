@@ -112,10 +112,12 @@ class DetailTableViewController: UITableViewController {
             let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
             let lng_String = String((geo_array?.first!)!) as NSString
             let lng = lng_String.doubleValue
+            article.lng = lng
 
             print("lng is \(lng)")
             let lat_String = String((geo_array?.last!)!) as NSString
             let lat = lat_String.doubleValue
+            article.lat = lat
 
             print("lat is \(lat)")
             

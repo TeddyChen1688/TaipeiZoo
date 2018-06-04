@@ -18,7 +18,7 @@ class ListTableCell: UITableViewCell {
     }
     
     
-   @IBOutlet weak var idLabel: UILabel!
+  //  @IBOutlet weak var idLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var name_ENLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!

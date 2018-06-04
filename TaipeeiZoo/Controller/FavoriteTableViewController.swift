@@ -29,7 +29,13 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             }
     
     
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: UIImageView!{
+        didSet {
+            photoImageView.layer.cornerRadius = 40
+            photoImageView.clipsToBounds = true
+        }
+    }
+    
     
     var favorite: FavoriteMO!
     

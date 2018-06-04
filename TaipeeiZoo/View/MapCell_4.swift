@@ -26,7 +26,8 @@ class MapCell_4: UITableViewCell {
  
         let destinationCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         // Add annotation
-         print(destinationCoordinate)
+         print("destinationCoordinate from MapCell is \(destinationCoordinate)")
+        print("location from MapCell is \(location)")
         let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
     
         //            //create a MapItem for destination
@@ -41,6 +42,8 @@ class MapCell_4: UITableViewCell {
         
         pointAnnotation.coordinate = destinationCoordinate
         pointAnnotation.title = location
+        
+        print("pointAnnotation.title from MapCell is \(pointAnnotation.title)")
         self.mapView.addAnnotation(pointAnnotation)
         
         let degree = 0.5 * 1.0 / 111
