@@ -33,6 +33,27 @@ import MapKit
         super.viewDidLoad()
         locationManager.delegate = self
         mapView.delegate = self
+        
+        //create a MapItem for destination
+        let destinationCoordinate = CLLocationCoordinate2D(latitude: self.article.lat, longitude: self.article.lng)
+        let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+        let pointAnnotation = MKPointAnnotation()
+        self.mapView.removeAnnotations(self.mapView.annotations) //把先前加的點先清除
+        pointAnnotation.coordinate = destinationCoordinate
+        
+        pointAnnotation.title = self.article.location
+        pointAnnotation.subtitle = self.article.name
+        
+        self.mapView.addAnnotation(pointAnnotation)
+        
+        let degree = self.distanceSlider.value * 1.0 / 111
+        
+        print("degree is \(degree)")
+        let span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(degree), longitudeDelta: CLLocationDegrees(degree))
+        let region = MKCoordinateRegion(center: pointAnnotation.coordinate, span: span)
+        self.mapView.region = region
+        
     }
     
     @IBAction func searchTapped(_ sender: Any) {

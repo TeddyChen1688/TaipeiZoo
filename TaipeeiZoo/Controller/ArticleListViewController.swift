@@ -56,7 +56,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         spinner.startAnimating()
     }
     
-    
+
     override func viewDidAppear(_ animated: Bool) {
         
         if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
@@ -94,8 +94,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 
             for article in articles {
                 // 取得動物名的第一個字母並建立字典
-                // let firstLetterIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
-               // let animalKey = article.name_EN![..<firstLetterIndex]
                 let animalKey = String(article.name_EN!.first!)
                 print("\(animalKey)")
                     
@@ -110,11 +108,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             
             animalSectionTitles = [String](animalsDict.keys)
             animalSectionTitles = animalSectionTitles.sorted(by: { $0 < $1 })
-            
-            print("==================================================")
-            print("animalSectionTitles --   \(animalSectionTitles)")
-            print("==================================================")
-            print("animalsDict --   \(animalsDict)")
             self.animalSectionTitles = animalSectionTitles
             self.animalsDict = animalsDict
             self.articles = articles
@@ -125,7 +118,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
+        searchActive = true;
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -173,34 +166,35 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // 回傳區塊的總數
-        if searchActive == true {
-            return 0
-        }
-        else {
+//        if searchActive == true {
+//            return 0
+//        }
+//        else {
         return animalSectionTitles.count
-        }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if searchActive == true {
-            return "Find"
-        }
-        else {
+//        if searchActive == true {
+//            return "Find"
+//        }
+//        else {
         return animalSectionTitles[section]
-        }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive) {
-            return filtered.count
-        }
-        print (" article.count is \(articles.count)")
+//        if(searchActive) {
+//            return filtered.count
+//        }
+//        print (" article.count is \(articles.count)")
         
         let animalKey = animalSectionTitles[section]
         guard let animalValues = animalsDict[animalKey] else {
             return 0
         }
         return animalValues.count
+            print("animalValues.count is \(animalValues.count)")
        // return articles.count
     }
 
@@ -208,14 +202,13 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
         
         var article : Article
+        searchActive = false
         if(searchActive){   article = filtered[indexPath.row]   }
         else{
-            article = articles[indexPath.row]
+            
             let animalKey = animalSectionTitles[indexPath.section]
-            if let animalValues = animalsDict[animalKey] {
-            article = animalValues[indexPath.row]
-            }
-        
+            let animalValues = animalsDict[animalKey]
+            article = animalValues![indexPath.row]
             let imageURL: URL?
             if let imageURLString = article.Pic01_URLString {
                 imageURL = URL (string: imageURLString)
@@ -239,7 +232,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 c.locationLabel?.text = article.location
             
                 var geo = article.geo
-                print("Geo is \(geo)")
+                print("Geo is \(String(describing: geo))")
                 let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
                 let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
                 let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
@@ -288,9 +281,10 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 article = filtered[indexPath.row]
             }
             else{
-                article = articles[indexPath.row]
+                let animalKey = animalSectionTitles[indexPath.section]
+                let animalValues = animalsDict[animalKey]
+                article = animalValues![indexPath.row]
             }
-            
             detailVC.article = article
             print(article)
         }

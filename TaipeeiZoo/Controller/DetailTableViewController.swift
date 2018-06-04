@@ -105,10 +105,19 @@ class DetailTableViewController: UITableViewController {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
             
-            let lat = article.lat
+            let geo = article.geo
+            print("geo is \(String(describing: geo))")
+            let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
+            let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
+            let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
+            let lng_String = String((geo_array?.first!)!) as NSString
+            let lng = lng_String.doubleValue
+
+            print("lng is \(lng)")
+            let lat_String = String((geo_array?.last!)!) as NSString
+            let lat = lat_String.doubleValue
+
             print("lat is \(lat)")
-            let lng = article.lng
-             print("lng is \(lng)")
             
             cell.configure(lat: lat, lng: lng)
             
