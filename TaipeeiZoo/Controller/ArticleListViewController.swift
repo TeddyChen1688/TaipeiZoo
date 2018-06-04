@@ -125,7 +125,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
+        searchActive = false;
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -142,8 +142,12 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if(searchText == ""){print("search");searchActive = false
-        }else{print("searchText");                filtered = articles.filter ({ (article_f) -> Bool in
+        if(searchText == ""){
+            print("search");
+            searchActive = false
+        }else{
+            print("searchText");
+            filtered = articles.filter ({ (article_f) -> Bool in
                 let tmp: String = article_f.name
                 let range = tmp.range(of:searchText, options: String.CompareOptions.caseInsensitive)
                 return range != nil
@@ -169,11 +173,21 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // 回傳區塊的總數
+        if searchActive == true {
+            return 0
+        }
+        else {
         return animalSectionTitles.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchActive == true {
+            return "Find"
+        }
+        else {
         return animalSectionTitles[section]
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

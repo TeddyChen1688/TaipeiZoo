@@ -112,6 +112,8 @@ class Article {
                         }
                             
                         else { print("字首正確")}
+                        
+                        article.name_EN = article.name_EN?.capitalized
                     
                         if article.location == "" {
 //                            print("Location 抓取失敗")
