@@ -26,6 +26,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             }
         }
     }
+    var animalSectionTitles = [String]()
+    var animalsDict = [String: [Article]]()
     
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
@@ -82,13 +84,43 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 print("fail \(error)")
                 return
             }
-            if let articles = articles {
-                print(articles)
-                // self.articles = articles
-                self.articles = articles.sorted(by: { $0.name_EN! < $1.name_EN! })
-               // self.articles = articles.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedDescending }
-                self.refreshControl?.endRefreshing()
+            let articles = articles!
+               //  print(articles)
+                
+            articles.sorted(by: { $0.name_EN! < $1.name_EN! })
+                
+            var animalsDict = [String: [Article]]()
+            var animalSectionTitles = [String]()
+                
+            for article in articles {
+                // 取得動物名的第一個字母並建立字典
+                // let firstLetterIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
+               // let animalKey = article.name_EN![..<firstLetterIndex]
+                let animalKey = String(article.name_EN!.first!)
+                print("\(animalKey)")
+                    
+                if var animalValues = animalsDict[animalKey] {
+                    animalValues.append(article)
+                    animalsDict[animalKey] = animalValues
+                } else {
+                    animalsDict[animalKey] = [article]
+                }
+                
             }
+            
+            animalSectionTitles = [String](animalsDict.keys)
+            animalSectionTitles = animalSectionTitles.sorted(by: { $0 < $1 })
+            
+            print("==================================================")
+            print("animalSectionTitles --   \(animalSectionTitles)")
+            print("==================================================")
+            print("animalsDict --   \(animalsDict)")
+            self.animalSectionTitles = animalSectionTitles
+            self.animalsDict = animalsDict
+            self.articles = articles
+            
+            self.refreshControl?.endRefreshing()
+            
         }
     }
     
@@ -130,77 +162,100 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // 回傳區塊的總數
+        return animalSectionTitles.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return animalSectionTitles[section]
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(searchActive) {
             return filtered.count
         }
-        print (" article .count is \(articles.count)")
-        return articles.count
+        print (" article.count is \(articles.count)")
+        
+        let animalKey = animalSectionTitles[section]
+        guard let animalValues = animalsDict[animalKey] else {
+            return 0
+        }
+        return animalValues.count
+       // return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
         
         var article : Article
-        
-        
-        
         if(searchActive){   article = filtered[indexPath.row]   }
-        else{   article = articles[indexPath.row]       }
-        
-        let imageURL: URL?
-        if let imageURLString = article.Pic01_URLString {
-            imageURL = URL (string: imageURLString)
-        }
-        else {  imageURL = nil   }
-        
-        if let c = cell as? ListTableCell {
-            
-            c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
-                
-                let screenWidth:CGFloat = UIScreen.main.bounds.width
-                if let width = img?.size.width , let height = img?.size.height {
-                    self.articles[indexPath.row].imageHeight = screenWidth / width * height
-                }
+        else{
+            article = articles[indexPath.row]
+            let animalKey = animalSectionTitles[indexPath.section]
+            if let animalValues = animalsDict[animalKey] {
+            article = animalValues[indexPath.row]
             }
+        
+            let imageURL: URL?
+            if let imageURLString = article.Pic01_URLString {
+                imageURL = URL (string: imageURLString)
+            }
+            else {  imageURL = nil   }
+        
+            if let c = cell as? ListTableCell {
             
-//          cell.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
+                c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
+                
+                    let screenWidth:CGFloat = UIScreen.main.bounds.width
+                    if let width = img?.size.width , let height = img?.size.height {
+                        self.articles[indexPath.row].imageHeight = screenWidth / width * height
+                    }
+                }
+                print("id is \(article.id)");
+                c.idLabel.text = article.id;
+                c.nameLabel?.text = article.name;
+                print("\(article.name)");
+                c.name_ENLabel?.text = article.name_EN
+                c.locationLabel?.text = article.location
             
-//        }
-            print("id is \(article.id)");
-            c.idLabel.text = article.id;
-            c.nameLabel?.text = article.name;
-            print("\(article.name)");
-            c.name_ENLabel?.text = article.name_EN
-            c.locationLabel?.text = article.location
-            
-            var geo = article.geo
-            
+                var geo = article.geo
                 print("Geo is \(geo)")
                 let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
                 let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
                 let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
-            
                 let lng_String = String((geo_array?.first!)!) as NSString
                 let lng = lng_String.doubleValue
                 self.articles[indexPath.row].lng = lng
                 print("lng is \(lng)")
-            
                 let lat_String = String((geo_array?.last!)!) as NSString
                 let lat = lat_String.doubleValue
                 self.articles[indexPath.row].lat = lat
                 print("lat is \(lat)")
-            
+            }
         }
         return cell
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return animalSectionTitles
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let headerView = view as! UITableViewHeaderFooterView
+        headerView.backgroundView?.backgroundColor = UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+        headerView.textLabel?.textColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        
+        headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
     }
     
  
