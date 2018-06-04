@@ -119,7 +119,9 @@ class DetailTableViewController: UITableViewController {
 
             print("lat is \(lat)")
             
-            cell.configure(lat: lat, lng: lng)
+            let location = article.location
+            
+            cell.configure(lat: lat, lng: lng, location: location!)
             
             return cell
             
