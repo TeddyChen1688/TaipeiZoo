@@ -14,10 +14,11 @@ import MapKit
 class MapViewController: UIViewController,  MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    var spinner = UIActivityIndicatorView()
     var articles = [Article](){
         didSet{
             DispatchQueue.main.async{
-             //   self.spinner.stopAnimating()
+                self.spinner.stopAnimating()
             }
         }
     }
@@ -64,6 +65,17 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
         self.mapView.showsCompass = true
         self.mapView.showsScale = true
         downLoadLatestArticles()
+        
+        spinner.activityIndicatorViewStyle = .gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        // 定義旋轉指示器的佈局約束條件
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+                                      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        // 啟用旋轉指示器
+        spinner.startAnimating()
     }
     
     func downLoadLatestArticles(){
@@ -131,5 +143,5 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
 }
 
 //        // 移動地圖
-//        mapView.setCenter(a3.coordinate, animated: true)
+//        
 

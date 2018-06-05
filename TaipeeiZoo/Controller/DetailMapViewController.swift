@@ -11,8 +11,6 @@ import MapKit
 
    class DetailMapViewController: UIViewController,  MKMapViewDelegate {
     var article: Article!
-// var selectedPin:MKPlacemark? = nil
-//  var currentPlacemark: CLPlacemark?
     var destinationPlacemark: MKPlacemark?
     let myLocationManager = MyLocationManager()
     
@@ -20,7 +18,7 @@ import MapKit
     @IBOutlet weak var distanceChangedLabel: UILabel!
     @IBOutlet weak var storeDistanceLabel: UILabel!
     @IBOutlet weak var walkingTimeLabel: UILabel!
-      @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
 
     @IBAction func distanceChanged(_ sender: Any) {
         let distance = round(distanceSlider.value * 100) / 100
@@ -35,10 +33,14 @@ import MapKit
         mapView.delegate = self
         
         let destinationCoordinate = CLLocationCoordinate2D(latitude: self.article.lat, longitude: self.article.lng)
+        
         let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
         self.destinationPlacemark = destinationPlacemark
+        print("At Beginning: \(destinationPlacemark.coordinate)")
         let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
         destinationMapItem.name = self.article.name
+        print(" Before requestlocation: \(destinationPlacemark.coordinate)")
+        self.mapView.setCenter(destinationPlacemark.coordinate, animated: true)
         dropPinZoomIn(placemark: destinationPlacemark)
         
         myLocationManager.requestLocation(completionHandler: { location in
@@ -62,6 +64,22 @@ import MapKit
             self.request = request
         })
     }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        print("viewDidAppear")
+        mapView.delegate = self
+        dropPinZoomIn(placemark: self.destinationPlacemark!)
+        print("viewDidAppear to  get Direction: \(self.destinationPlacemark?.coordinate)")
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        print("viewWillAppear")
+        mapView.delegate = self
+        dropPinZoomIn(placemark: self.destinationPlacemark!)
+        print("viewWillAppear to  get Direction: \(self.destinationPlacemark?.coordinate)")
+    }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         if annotation is MKUserLocation {
@@ -81,9 +99,10 @@ import MapKit
     }
     
     func getDirections(){
-        let directions = MKDirections(request: request)
+        let directions = MKDirections(request: self.request)
             directions.calculateETA(completionHandler: { response, error in
-                if let error = error {  print("路徑規劃錯誤: \(error)")
+                if let error = error {
+                    print("路徑規劃錯誤: \(error)")
                     return
                 }
                 let response = response!
@@ -109,6 +128,7 @@ import MapKit
                 self.mapView.showsCompass = true
                 self.mapView.showsTraffic = true
                 self.mapView.showsScale = true
+                print("End of get Direction: \(self.destinationPlacemark?.coordinate)")
             })  // end of get Direction
      }
     

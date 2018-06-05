@@ -9,13 +9,10 @@
 import Foundation
 import UIKit
 import SDWebImage         // To Optimize the Photo-download process
-class ArticleListViewController: UITableViewController, UISearchBarDelegate{
+class ArticleListViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating{
 // 由於下載是非同步事件, 若 tableViewdatasource 錯過了下載完成就不會更新畫面
 // 因此強迫資料更新時(didSet), 要 tableViewdatasource 重新載入資料保證成功.
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    var searchActive : Bool = false
     var filtered = [Article]()
     var articles = [Article](){
         didSet{
@@ -30,6 +27,10 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     var locationKeys = [String]()
     var locationDict = [String: [Article]]()
     
+    
+    var searchController: UISearchController!
+    var searchResults: [Article] = []
+    
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
@@ -41,8 +42,21 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        searchBar.delegate = self
+  //      searchBar.delegate = self
       //  downLoadLatestArticles()
+        
+        // Adding a search bar
+        searchController = UISearchController(searchResultsController: nil)
+        // self.navigationItem.searchController = searchController
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "寶貝的中英文名, 或是以展館來找尋....."
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
+        //        self.navigationItem.searchController = searchController
+        tableView.tableHeaderView = searchController.searchBar
         
         spinner.activityIndicatorViewStyle = .gray
         spinner.hidesWhenStopped = true
@@ -106,45 +120,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if(searchText == ""){
-            print("search");
-            searchActive = false
-        }else{
-            print("searchText");
-            filtered = articles.filter ({ (article_f) -> Bool in
-                let tmp: String = article_f.name
-                let range = tmp.range(of:searchText, options: String.CompareOptions.caseInsensitive)
-                return range != nil
-            })
-            if(filtered.count == 0){
-                searchActive = false;
-            } else {
-                searchActive = true;
-            }
-        }
-        DispatchQueue.main.async {      
-            self.tableView.reloadData()
-         //   self.view.endEditing(false)
-        }
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -153,49 +129,49 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // 回傳區塊的總數
-//        if searchActive == true {
-//            return 0
-//        }
-//        else {
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+        
         return animalSectionTitles.count
-//        }
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if searchActive == true {
-//            return "Find"
-//        }
-//        else {
-        return animalSectionTitles[section]
-//        }
+        
+        if searchController.isActive{
+            return "Find"
+        }
+        else {
+            return animalSectionTitles[section]
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if(searchActive) {
-//            return filtered.count
-//        }
-//        print (" article.count is \(articles.count)")
         
-        let animalKey = animalSectionTitles[section]
-        guard let animalValues = animalsDict[animalKey] else {
-            return 0
-        }
-        return animalValues.count
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+            let animalKey = animalSectionTitles[section]
+            guard let animalValues = animalsDict[animalKey] else {
+                return 0
+            }
             print("animalValues.count is \(animalValues.count)")
-       // return articles.count
+            return animalValues.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
         
         var article : Article
-        searchActive = false
-        if(searchActive){   article = filtered[indexPath.row]   }
-        else{
-            
-            let animalKey = animalSectionTitles[indexPath.section]
-            let animalValues = animalsDict[animalKey]
-            article = animalValues![indexPath.row]
+        let animalKey = animalSectionTitles[indexPath.section]
+        let animalValues = animalsDict[animalKey]
+        article = animalValues![indexPath.row]
+ 
+        article = (searchController.isActive) ? searchResults[indexPath.row] : animalValues![indexPath.row]
+        
+        
             let imageURL: URL?
             if let imageURLString = article.Pic01_URLString {
                 imageURL = URL (string: imageURLString)
@@ -217,23 +193,17 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 print("\(article.name)");
                 c.name_ENLabel?.text = article.name_EN
                 c.locationLabel?.text = article.location
-            
-//                var geo = article.geo
-//                print("Geo is \(String(describing: geo))")
-//                let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
-//                let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
-//                let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
-//                let lng_String = String((geo_array?.first!)!) as NSString
-//                let lng = lng_String.doubleValue
-//                self.articles[indexPath.row].lng = lng
-//                print("lng is \(lng)")
-//                let lat_String = String((geo_array?.last!)!) as NSString
-//                let lat = lat_String.doubleValue
-//                self.articles[indexPath.row].lat = lat
-//                print("lat is \(lat)")
             }
-        }
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchController.isActive {
+            return false
+        } else {
+            return true
+        }
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -252,6 +222,24 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
     }
     
+    func filterContent(for searchText: String) {
+        var article : Article
+        searchResults = articles.filter({ (article) -> Bool in
+            if let name = article.name, let name_EN = article.name_EN, let location =  article.location {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText) || name_EN.localizedCaseInsensitiveContains(searchText) ||  location.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            
+            return false
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -261,11 +249,11 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             let detailVC = segue.destination as! DetailTableViewController
             let indexPath = tableView.indexPath(for: cell)!
             
-        //    let article = articles[indexPath.row]
             var article : Article
             
-            if(searchActive){
-                article = filtered[indexPath.row]
+            
+            if searchController.isActive {
+                article = searchResults[indexPath.row]
             }
             else{
                 let animalKey = animalSectionTitles[indexPath.section]

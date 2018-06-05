@@ -18,7 +18,7 @@ let ArticlesUrl = URL (string: "http://data.taipei/opendata/datalist/apiAccess?s
 
 class Article {
     var id: String
-    var name: String
+    var name: String?
     var name_EN: String?
     var location: String?
     var habit: String?
@@ -34,11 +34,11 @@ class Article {
     var lng: Double = 0.0
     var lat: Double = 0.0
     var chk_flag: Bool = false
-    var locationchk: Bool = false
+
     
     init(rawData: [String: Any]){
         id = rawData["_id"] as! String
-        name = rawData["A_Name_Ch"] as! String
+        name = rawData["A_Name_Ch"] as? String
         name_EN = rawData["A_Name_En"] as? String
         location = rawData["A_Location"] as? String
         habit = rawData["A_Habitat"] as? String
