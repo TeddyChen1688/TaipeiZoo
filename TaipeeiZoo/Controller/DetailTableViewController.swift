@@ -10,11 +10,11 @@ import UIKit
 import SDWebImage
 import AVFoundation
 import AVKit
-// import ActionKit
 
 class DetailTableViewController: UITableViewController {
     var article: Article!
- //   var player:AVPlayer?
+    var player:AVPlayer?
+    var playerItem:AVPlayerItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class DetailTableViewController: UITableViewController {
         
         navigationItem.largeTitleDisplayMode = .never
         tableView.contentInsetAdjustmentBehavior = .never
-        
         
         //       downloadArticleImage()
     }
@@ -49,6 +48,11 @@ class DetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        func playUsingAVPlayer(url: URL) {
+            player = AVPlayer(url: url)
+            player?.play()
+        }
+        
         switch indexPath.row {
             
         case 0:
@@ -61,7 +65,7 @@ class DetailTableViewController: UITableViewController {
                 }
                 c.nameLabel.text = article.name
                 print("\(String(describing: c.nameLabel.text))")
-                c.locationLabel.text = article.location
+          //      c.locationLabel.text = article.location
                 
                 let imageURL: URL?
                 if let imageURLString = article.Pic02_URLString {
@@ -73,13 +77,37 @@ class DetailTableViewController: UITableViewController {
             
                 c.playVideo?.addControlEvent(.touchUpInside) {
                     let videoURL = URL(string: self.article.video_URLString!)
-                    let player = AVPlayer(url: videoURL!)
-                    let avpvv = AVPlayerViewController()
-                    avpvv.player = player
-                    self.present(avpvv, animated: true){
-                    avpvv.player!.play()
-                    }
+                    print("videoURL \(videoURL)")
+                    UIApplication.shared.open(videoURL!, options: [:], completionHandler: nil)
+                    
+//                    let player = AVPlayer(url: videoURL!)
+//                    let avpvv = AVPlayerViewController()
+//                    avpvv.player = player
+//                    self.present(avpvv, animated: true){
+//                    avpvv.player!.play()
+//                    }
                 }
+                c.playSoundButton.addControlEvent(.touchUpInside, {
+                    print("button click")
+                    self.tableView.reloadData()
+                    guard let url = URL(string: self.article.Voice01_URLString!  ) else {
+                        print("Invalid URL")
+                        return
+                    }
+                    print("AuduioURL \(url)")
+                    if let myplayer = self.player{
+                        if ((myplayer.rate != 0) && (myplayer.error == nil)) {
+                            myplayer.pause()
+                            c.playSoundButton.setImage(UIImage(named: "music"), for: .normal)
+                        }else{
+                            c.playSoundButton.setImage(UIImage(named: "pause"), for: .normal)
+                            playUsingAVPlayer(url:url )
+                        }
+                    }else{
+                        c.playSoundButton.setImage(UIImage(named: "pause"), for: .normal)
+                        playUsingAVPlayer(url:url )
+                    }
+                })
             }
             else {   print ("error to get cell back")    }
             
@@ -104,35 +132,14 @@ class DetailTableViewController: UITableViewController {
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
-            
-            let geo = article.geo
-            print("geo is \(String(describing: geo))")
-            let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
-            let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
-            let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
-            let lng_String = String((geo_array?.first!)!) as NSString
-            let lng = lng_String.doubleValue
-            article.lng = lng
+    
+            cell.configure(lat: article.lat, lng: article.lng, location: article.location!)
+                return cell
 
-            print("lng is \(lng)")
-            let lat_String = String((geo_array?.last!)!) as NSString
-            let lat = lat_String.doubleValue
-            article.lat = lat
-
-            print("lat is \(lat)")
-            
-            let location = article.location
-            
-            cell.configure(lat: lat, lng: lng, location: location!)
-            
-            return cell
-            
-            
         default:
             fatalError("Failed to instantiate the table view cell for detail view controller")
         }
     }
-    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,43 +151,12 @@ class DetailTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showMap" {
-//            let destinationController = segue.destination as! MapViewController
-//            destinationController.restaurant = restaurant
-//
-//        } else if segue.identifier == "showReview" {
-//            let destinationController = segue.destination as! ReviewViewController
-//            destinationController.restaurant = restaurant
-//        }
-//    }
-    
-    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //    func downloadArticleImage(){
-    //        if let imageURL = article.image_URL {
-    //            // let imageURL = article.image_URL
-    //            print(article.image_URL)
-    //            let session = URLSession.shared
-    //            let task = session.dataTask(with: imageURL){ data, response, error in
-    //                if let error = error {
-    //                    print("fail")
-    //                    return
-    //                }
-    //                let data = data!
-    //                let image = UIImage(data: data)
-    //                DispatchQueue.main.async {
-    //                    self.headerView.headerImageView.image = image
-    //                }
-    //            }
-    //            task.resume()
-    //        }
-    //    }
     
 
 }

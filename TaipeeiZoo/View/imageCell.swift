@@ -13,12 +13,14 @@ class imageCell: UITableViewCell {
     @IBOutlet weak var headerViewImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet weak var playVideo: UIButton!
+    @IBOutlet weak var playSoundButton: UIButton!
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    
    // @IBOutlet weak var backButton: UIButton!
-    @IBOutlet var locationLabel: UILabel! {
-        didSet {
-            locationLabel.layer.cornerRadius = 5.0
-            locationLabel.layer.masksToBounds = true
-        }
-    }
+  //  @IBOutlet var locationLabel: UILabel! {
+//        didSet {
+//            locationLabel.layer.cornerRadius = 5.0
+//            locationLabel.layer.masksToBounds = true
+//        }
+//    }
 }
