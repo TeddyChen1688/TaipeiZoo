@@ -19,10 +19,12 @@ class FavoriteCell: UITableViewCell {
     
     @IBOutlet var thumbnailImageView: UIImageView! {
         didSet {
-           //  thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.width / 2
+            thumbnailImageView.layer.cornerRadius = 40
             thumbnailImageView.clipsToBounds = true
         }
     }
+    
+    
     @IBOutlet var heartImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()

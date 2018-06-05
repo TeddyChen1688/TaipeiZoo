@@ -23,10 +23,11 @@ class DetailTableViewController: UITableViewController {
         tableView.dataSource = self
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.prefersLargeTitles = true
+       navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .white
         
-        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.largeTitleDisplayMode = .always
         tableView.contentInsetAdjustmentBehavior = .never
         
         //       downloadArticleImage()
@@ -73,7 +74,7 @@ class DetailTableViewController: UITableViewController {
                 }
                 else {   imageURL = nil  }
                 
-                c.headerViewImage?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached)
+                c.headerViewImage?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "tree.jpg"), options: .refreshCached)
             
                 c.playVideo?.addControlEvent(.touchUpInside) {
                     let videoURL = URL(string: self.article.video_URLString!)

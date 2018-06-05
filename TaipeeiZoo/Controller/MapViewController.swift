@@ -46,6 +46,9 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         let degree = 1 * 1.0 / 111
         let span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(degree), longitudeDelta: CLLocationDegrees(degree))
         

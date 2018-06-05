@@ -42,8 +42,13 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-  //      searchBar.delegate = self
-      //  downLoadLatestArticles()
+  
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.contentInsetAdjustmentBehavior = .always
+        navigationController?.hidesBarsOnSwipe = false
+        
+        //      searchBar.delegate = self
+        //  downLoadLatestArticles()
         
         // Adding a search bar
         searchController = UISearchController(searchResultsController: nil)
@@ -83,14 +88,12 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
         navigationController?.hidesBarsOnSwipe = true
     }
-
-    
+  
     func downLoadLatestArticles(){
         Article.downLoadItem { (articles, error) in
             if let error = error {
@@ -116,11 +119,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
             animalSectionTitles = animalSectionTitles.sorted(by: { $0 < $1 })
             self.animalSectionTitles = animalSectionTitles
             self.animalsDict = animalsDict
-            
         }
     }
-    
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -132,13 +132,11 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         if searchController.isActive {
             return searchResults.count
         } else {
-        
-        return animalSectionTitles.count
+            return animalSectionTitles.count
         }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         if searchController.isActive{
             return "Find"
         }
@@ -171,7 +169,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
  
         article = (searchController.isActive) ? searchResults[indexPath.row] : animalValues![indexPath.row]
         
-        
             let imageURL: URL?
             if let imageURLString = article.Pic01_URLString {
                 imageURL = URL (string: imageURLString)
@@ -180,7 +177,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         
             if let c = cell as? ListTableCell {
             
-                c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "traif.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
+                c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "tree.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
                 
                     let screenWidth:CGFloat = UIScreen.main.bounds.width
                     if let width = img?.size.width , let height = img?.size.height {
@@ -188,13 +185,12 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
                     }
                 }
                 print("id is \(article.id)");
-           c.idLabel.text = article.id;
+       //    c.idLabel.text = article.id;
                 c.nameLabel?.text = article.name;
                 print("\(article.name)");
                 c.name_ENLabel?.text = article.name_EN
                 c.locationLabel?.text = article.location
             }
-        
         return cell
     }
     
@@ -216,10 +212,10 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView = view as! UITableViewHeaderFooterView
-        headerView.backgroundView?.backgroundColor = UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+        headerView.backgroundView?.backgroundColor = UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 0.5)
         headerView.textLabel?.textColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
         
-        headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
+        headerView.textLabel?.font = UIFont(name: "Rubik", size: 25.0)
     }
     
     func filterContent(for searchText: String) {
