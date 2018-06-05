@@ -34,6 +34,7 @@ class Article {
     var lng: Double = 0.0
     var lat: Double = 0.0
     var chk_flag: Bool = false
+    var locationchk: Bool = false
     
     init(rawData: [String: Any]){
         id = rawData["_id"] as! String
@@ -78,7 +79,6 @@ class Article {
                     let article = Article(rawData: articleDict)
                     
                     for article_OK in articles {
-                        
                         if article.name == article_OK.name  {
                             article.chk_flag = true
                         }
@@ -87,7 +87,6 @@ class Article {
                     if article.chk_flag == true {
                      //   print("same data is downloaded")
                     }
-                    
                     else {
                         
                         if article.name_EN == "" {
@@ -152,6 +151,20 @@ class Article {
                             print("assign a Geo")
                         }
                         else { print("geo 抓取成功")}
+                        
+                        var geo = article.geo
+                        print("Geo is \(String(describing: geo))")
+                        let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
+                        let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
+                        let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
+                        let lng_String = String((geo_array?.first!)!) as NSString
+                        let lng = lng_String.doubleValue
+                        article.lng = lng
+                        print("lng is \(lng)")
+                        let lat_String = String((geo_array?.last!)!) as NSString
+                        let lat = lat_String.doubleValue
+                        article.lat = lat
+                        print("lat is \(lat)")
                         
                         articles.append(article)                    }
                     

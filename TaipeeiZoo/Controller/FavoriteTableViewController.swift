@@ -42,16 +42,13 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-        
-        
         // Configure navigation bar appearance
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 450
+        tableView.estimatedRowHeight = 410
     }
     
     // MARK: - UITableViewDelegate methods

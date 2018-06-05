@@ -14,6 +14,7 @@
 		9FD7256E209F0FFA00451EEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */; };
 		9FD7257620A08C7200451EEB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7257520A08C7200451EEB /* Article.swift */; };
 		A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A683B2BC20A179A70090E60B /* ArticleListViewController.swift */; };
+		A69AF8F720C6012A00256D52 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69AF8F620C6012A00256D52 /* Building.swift */; };
 		A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEA20C24D9D00744235 /* MapCell_4.swift */; };
 		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
 		A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF020C2883800744235 /* MyLocationManager.swift */; };
@@ -57,6 +58,7 @@
 		9FD7257520A08C7200451EEB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		A4898B491C6CCADB8AE7C57D /* Pods_TaipeiZoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaipeiZoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A683B2BC20A179A70090E60B /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
+		A69AF8F620C6012A00256D52 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		A6B70BEA20C24D9D00744235 /* MapCell_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell_4.swift; sourceTree = "<group>"; };
 		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		A6B70BF020C2883800744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		9FD72562209F0FF700451EEB /* TaipeeiZoo */ = {
 			isa = PBXGroup;
 			children = (
+				A69AF8F520C545A500256D52 /* PageViewController */,
 				A6F04F0320C0E32B00FAE8F7 /* Extensions */,
 				9FD7257720A08C7D00451EEB /* Model */,
 				A6C1D80020BBC3B7000593AD /* Controller */,
@@ -140,8 +143,19 @@
 			children = (
 				9FD7257520A08C7200451EEB /* Article.swift */,
 				A6F04EFE20C0E08000FAE8F7 /* Favorite.swift */,
+				A69AF8F620C6012A00256D52 /* Building.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A69AF8F520C545A500256D52 /* PageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */,
+				A6B70C0220C3C36500744235 /* WalkthroughPageViewController.swift */,
+				A6B70C0420C3C36C00744235 /* WalkthroughViewController.swift */,
+			);
+			path = PageViewController;
 			sourceTree = "<group>";
 		};
 		A6B70C0620C3C38700744235 /* Storyboard */ = {
@@ -172,6 +186,7 @@
 		A6C1D80020BBC3B7000593AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 				A683B2BC20A179A70090E60B /* ArticleListViewController.swift */,
 				A6F04E9420BFA81300FAE8F7 /* DetailTableViewController.swift */,
 				A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */,
@@ -181,10 +196,6 @@
 				A6B70BF020C2883800744235 /* MyLocationManager.swift */,
 				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 				A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */,
-				A6B70C0020C3C35C00744235 /* WalkthroughContentViewController.swift */,
-				A6B70C0220C3C36500744235 /* WalkthroughPageViewController.swift */,
-				A6B70C0420C3C36C00744235 /* WalkthroughViewController.swift */,
-				A6F04E6B20BE3E1B00FAE8F7 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -388,6 +399,7 @@
 				A6C1D7FC20BBA23C000593AD /* DetailTextCell_3.swift in Sources */,
 				A6F04E9E20BFC57E00FAE8F7 /* ActionKit.swift in Sources */,
 				A6F04F0220C0E17E00FAE8F7 /* TaipeiZoo.xcdatamodeld in Sources */,
+				A69AF8F720C6012A00256D52 /* Building.swift in Sources */,
 				A6F04F0620C0E32C00FAE8F7 /* UIColor+Ext.swift in Sources */,
 				A6F04E9720BFAC3A00FAE8F7 /* imageCell.swift in Sources */,
 				9FD72564209F0FF700451EEB /* AppDelegate.swift in Sources */,

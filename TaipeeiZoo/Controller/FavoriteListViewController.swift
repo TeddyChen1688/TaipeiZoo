@@ -26,7 +26,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         tableView.cellLayoutMarginsFollowReadableWidth = true
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 410
+        tableView.estimatedRowHeight = 100
 //
 //
 //        // Configure navigation bar appearance

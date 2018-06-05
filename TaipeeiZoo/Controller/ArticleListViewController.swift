@@ -17,7 +17,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     
     var searchActive : Bool = false
     var filtered = [Article]()
-    
     var articles = [Article](){
         didSet{
             DispatchQueue.main.async{
@@ -28,6 +27,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
     }
     var animalSectionTitles = [String]()
     var animalsDict = [String: [Article]]()
+    var locationKeys = [String]()
+    var locationDict = [String: [Article]]()
     
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
@@ -51,12 +52,10 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         spinner.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
                                       spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
-        
         // 啟用旋轉指示器
         spinner.startAnimating()
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         
         if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
@@ -82,37 +81,57 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         Article.downLoadItem { (articles, error) in
             if let error = error {
                 print("fail \(error)")
-                return
-            }
-            let articles = articles!
-               //  print(articles)
-                
+                return }
+            let articles = articles! //  print(articles)
             articles.sorted(by: { $0.name_EN! < $1.name_EN! })
                 
             var animalsDict = [String: [Article]]()
             var animalSectionTitles = [String]()
-                
             for article in articles {
                 // 取得動物名的第一個字母並建立字典
                 let animalKey = String(article.name_EN!.first!)
                 print("\(animalKey)")
-                    
                 if var animalValues = animalsDict[animalKey] {
                     animalValues.append(article)
                     animalsDict[animalKey] = animalValues
                 } else {
                     animalsDict[animalKey] = [article]
                 }
-                
             }
-            
             animalSectionTitles = [String](animalsDict.keys)
             animalSectionTitles = animalSectionTitles.sorted(by: { $0 < $1 })
             self.animalSectionTitles = animalSectionTitles
             self.animalsDict = animalsDict
-            self.articles = articles
             
-            self.refreshControl?.endRefreshing()
+//            var locationKeys = [String]()
+//            var locationDict = [String: [Article]]()
+//            print("articles.count is \(articles.count)")
+//            for article in articles {
+//               // 取得動物的展館地址建立字典
+//                if var locationKey = article.location {
+//                    locationKey = String(locationKey.split(separator: ";", maxSplits: 3)[0])
+//                }
+//
+//                if var locationValues = locationDict[locationKey]{
+//                    locationValues.append(article)
+//                    print("locationKey is \(locationKey)")
+//                    locationDict[locationKey] = locationValues
+//                } else
+//                {
+//                locationDict[locationKey] = [article]
+//                }
+//
+//
+//           //  print("locationKeys is \(locationKeys)")
+//            self.locationDict = locationDict
+//            self.locationKeys = locationKeys
+//
+//            self.articles = articles
+//            self.refreshControl?.endRefreshing()
+//            }
+//            // print("locationDict is \(self.locationDict)")
+//            print("locationKeys.count is \(self.locationKeys.count)")
+//            print("locationKeys is \(self.locationKeys)")
             
         }
     }
@@ -145,15 +164,13 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 let range = tmp.range(of:searchText, options: String.CompareOptions.caseInsensitive)
                 return range != nil
             })
-        
             if(filtered.count == 0){
                 searchActive = false;
             } else {
                 searchActive = true;
             }
         }
-        DispatchQueue.main.async {
-            
+        DispatchQueue.main.async {      
             self.tableView.reloadData()
          //   self.view.endEditing(false)
         }
@@ -231,19 +248,19 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
                 c.name_ENLabel?.text = article.name_EN
                 c.locationLabel?.text = article.location
             
-                var geo = article.geo
-                print("Geo is \(String(describing: geo))")
-                let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
-                let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
-                let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
-                let lng_String = String((geo_array?.first!)!) as NSString
-                let lng = lng_String.doubleValue
-                self.articles[indexPath.row].lng = lng
-                print("lng is \(lng)")
-                let lat_String = String((geo_array?.last!)!) as NSString
-                let lat = lat_String.doubleValue
-                self.articles[indexPath.row].lat = lat
-                print("lat is \(lat)")
+//                var geo = article.geo
+//                print("Geo is \(String(describing: geo))")
+//                let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
+//                let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
+//                let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
+//                let lng_String = String((geo_array?.first!)!) as NSString
+//                let lng = lng_String.doubleValue
+//                self.articles[indexPath.row].lng = lng
+//                print("lng is \(lng)")
+//                let lat_String = String((geo_array?.last!)!) as NSString
+//                let lat = lat_String.doubleValue
+//                self.articles[indexPath.row].lat = lat
+//                print("lat is \(lat)")
             }
         }
         return cell
