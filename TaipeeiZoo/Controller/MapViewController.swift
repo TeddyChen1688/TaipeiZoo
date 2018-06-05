@@ -61,6 +61,8 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
             mapView.setRegion(region, animated: true)
         }
         mapView.delegate = self
+        self.mapView.showsCompass = true
+        self.mapView.showsScale = true
         downLoadLatestArticles()
     }
     
@@ -110,6 +112,16 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
         // button.addTarget(self, action: nil, for: UIControlEvents.touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMainList"{
+            print("翻頁了...")
+            let nextVC = segue.destination as! ArticleListViewController
+            nextVC.articles = self.articles
+            nextVC.animalSectionTitles = self.animalSectionTitles
+            nextVC.animalsDict = self.animalsDict
+        }
     }
 
     override func didReceiveMemoryWarning() {

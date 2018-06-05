@@ -42,7 +42,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         searchBar.delegate = self
-        downLoadLatestArticles()
+      //  downLoadLatestArticles()
         
         spinner.activityIndicatorViewStyle = .gray
         spinner.hidesWhenStopped = true
@@ -102,36 +102,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate{
             animalSectionTitles = animalSectionTitles.sorted(by: { $0 < $1 })
             self.animalSectionTitles = animalSectionTitles
             self.animalsDict = animalsDict
-            
-//            var locationKeys = [String]()
-//            var locationDict = [String: [Article]]()
-//            print("articles.count is \(articles.count)")
-//            for article in articles {
-//               // 取得動物的展館地址建立字典
-//                if var locationKey = article.location {
-//                    locationKey = String(locationKey.split(separator: ";", maxSplits: 3)[0])
-//                }
-//
-//                if var locationValues = locationDict[locationKey]{
-//                    locationValues.append(article)
-//                    print("locationKey is \(locationKey)")
-//                    locationDict[locationKey] = locationValues
-//                } else
-//                {
-//                locationDict[locationKey] = [article]
-//                }
-//
-//
-//           //  print("locationKeys is \(locationKeys)")
-//            self.locationDict = locationDict
-//            self.locationKeys = locationKeys
-//
-//            self.articles = articles
-//            self.refreshControl?.endRefreshing()
-//            }
-//            // print("locationDict is \(self.locationDict)")
-//            print("locationKeys.count is \(self.locationKeys.count)")
-//            print("locationKeys is \(self.locationKeys)")
             
         }
     }
