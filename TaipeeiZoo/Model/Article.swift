@@ -93,24 +93,24 @@ class Article {
                            //  print("name_EN 抓取失敗")
                             article.name_EN = "To Be Determined"
                         }
-                        else { print("name_EN 抓取成功 \(String(describing: article.name_EN))\(String(describing: article.name_EN!.first))")}
+                     //   else { print("name_EN 抓取成功 \(String(describing: article.name_EN))\(String(describing: article.name_EN!.first))")}
                         
                         if article.id == "191" || article.id == "192" || article.id == "194" {
-                            print("=========================================================")
+                     //       print("=========================================================")
                             let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
                             article.name_EN = article.name_EN?.substring(from: startIndex!)
-                            print(article.name_EN!)
+                     //       print(article.name_EN!)
                     
                         }
                             
                         if article.id == "27" || article.id == "71" || article.id == "84" || article.id == "237" || article.id == "72" || article.id == "86"{
-                            print("=========================================================")
+                      //      print("=========================================================")
                             let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
                             article.name_EN = article.name_EN?.substring(from: startIndex!)
-                            print(article.name_EN!)
+                      //      print(article.name_EN!)
                         }
                             
-                        else { print("字首正確")}
+                        //else { print("字首正確")}
                         
                         article.name_EN = article.name_EN?.capitalized
                     
@@ -118,60 +118,60 @@ class Article {
 //                            print("Location 抓取失敗")
                             article.location = "展館待定"
                         }
-                        else { print("Location 抓取成功")}
+                       // else { print("Location 抓取成功")}
                         
                         
                         if article.habit == "" {
 //                            print("habit 抓取失敗")
                             article.habit = "( 目前查無資料 )"
                         }
-                        else { print(" feature 抓取成功")}
+                       // else { print(" feature 抓取成功")}
                         if article.feature == "" {
 //                            print("habit 抓取失敗")
                             article.feature = "( 目前查無資料 )"
                         }
-                        else { print("feature 抓取成功")}
+                        //else { print("feature 抓取成功")}
                         
                         if article.diet == "" {
 //                            print("habit 抓取失敗")
                             article.diet = "( 目前查無資料 )"
                         }
-                        else { print("diet 抓取成功")}
+                       // else { print("diet 抓取成功")}
                         
                         if article.Pic02_URLString == "" {
 //                            print("Pic02_URLString 抓取失敗")
                             article.Pic02_URLString = article.Pic01_URLString
                         }
-                        else { print("Pic02_URLString 抓取成功")}
+                        //else { print("Pic02_URLString 抓取成功")}
                         
                         if article.video_URLString == "" {
                         //  print("video_URLString 抓取失敗")
                         // article.video_URLString = (URL(string:"https://www.youtube.com/watch?v=6QxKgcjgxWw"))?.absoluteString
                             article.video_URLString = "https://www.youtube.com/watch?v=6QxKgcjgxWw"
                         }
-                        else { print("video_URLString 抓取成功")}
+                        //else { print("video_URLString 抓取成功")}
                     
                         
                         if article.geo == ""
                         {
                             article.geo = "MULTIPOINT ((121.5831587 24.9971109))"
-                            print("assign a Geo")
+                        //    print("assign a Geo")
                         }
-                        else { print("geo 抓取成功")}
+                        //else { print("geo 抓取成功")}
                         
                         var geo = article.geo
-                        print("Geo is \(String(describing: geo))")
+                       // print("Geo is \(String(describing: geo))")
                         let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
                         let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]
                         let geo_array = geo_StringB?.split(separator: " ", maxSplits: 3)
                         let lng_String = String((geo_array?.first!)!) as NSString
                         let lng = lng_String.doubleValue
                         article.lng = lng
-                        print("lng is \(lng)")
+                        //print("lng is \(lng)")
                         let lat_String = String((geo_array?.last!)!) as NSString
                         let lat = lat_String.doubleValue
                         article.lat = lat
-                        print("lat is \(lat)")
+                        //print("lat is \(lat)")
                         
                         articles.append(article)                    }
                     

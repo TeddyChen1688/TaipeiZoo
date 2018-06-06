@@ -8,24 +8,16 @@
 
 import Foundation
 import UIKit
-import SDWebImage
 import MapKit
 
 class MapViewController: UIViewController,  MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    var spinner = UIActivityIndicatorView()
-    var articles = [Article](){
-        didSet{
-            DispatchQueue.main.async{
-                self.spinner.stopAnimating()
-            }
-        }
-    }
+    var articles = [Article]()
     var article: Article!
     var animalSectionTitles = [String]()
     var animalsDict = [String: [Article]]()
-    let locationManager = CLLocationManager()
+    var annotations = [MKAnnotation]()
     
     var buildings:[Building] = [
         Building(name: "大貓熊館", lat: 24.9971109, lng: 121.5831587),
@@ -46,39 +38,19 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let degree = 1 * 1.0 / 111
-        let span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(degree), longitudeDelta: CLLocationDegrees(degree))
-        
+        var annotations = [MKAnnotation]()
         for building in buildings{
-            let Annotation = MKPointAnnotation()
+        let Annotation = MKPointAnnotation()
             Annotation.coordinate = CLLocationCoordinate2D(latitude: building.lat, longitude: building.lng)
             Annotation.title = building.name
-            mapView.addAnnotation(Annotation)
-            let Placemark = MKPlacemark(coordinate: Annotation.coordinate, addressDictionary: nil)
-            let MapItem = MKMapItem(placemark: Placemark)
-            mapView.addAnnotation(Annotation)
-            
-            let region = MKCoordinateRegionMake(Placemark.coordinate, span)
-            mapView.setRegion(region, animated: true)
+            annotations.append(Annotation)
         }
-        mapView.delegate = self
+        mapView.showAnnotations(annotations, animated: true)
         self.mapView.showsCompass = true
         self.mapView.showsScale = true
         downLoadLatestArticles()
-        
-        spinner.activityIndicatorViewStyle = .gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        
-        // 定義旋轉指示器的佈局約束條件
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
-                                      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
-        // 啟用旋轉指示器
-        spinner.startAnimating()
     }
     
     func downLoadLatestArticles(){
@@ -88,15 +60,13 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
                 return
             }
             let articles = articles!
-            print(articles)
             articles.sorted(by: { $0.name_EN! < $1.name_EN! })
             var animalsDict = [String: [Article]]()
             var animalSectionTitles = [String]()
             
-            for article in articles {
-                // 取得動物名的第一個字母並建立字典
+            for article in articles {   // 取得動物名的第一個字母並建立字典
                 let animalKey = String(article.name_EN!.first!)
-                print("\(animalKey)")
+               // print("\(animalKey)")
                 if var animalValues = animalsDict[animalKey] {
                     animalValues.append(article)
                     animalsDict[animalKey] = animalValues
@@ -123,9 +93,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
         pinView?.canShowCallout = true
         let button = UIButton(type: .custom)
         button.frame  = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
-        button.setImage(UIImage(named: "phone"), for: .normal)
-        // button.addTarget(self, action: nil, for: UIControlEvents.touchUpInside)
-        pinView?.leftCalloutAccessoryView = button
+        pinView?.leftCalloutAccessoryView = nil
         return pinView
     }
     
@@ -141,10 +109,6 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
-
-//        // 移動地圖
-//        
 

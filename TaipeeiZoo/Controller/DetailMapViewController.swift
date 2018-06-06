@@ -110,7 +110,7 @@ import MapKit
                 let pointAnnotation = MKPointAnnotation()
                 self.mapView.removeAnnotations(self.mapView.annotations) //把先前加的點先清除
                 self.dropPinZoomIn(placemark: self.destinationPlacemark!)
-                self.mapView.showAnnotations([pointAnnotation], animated: true)
+                // self.mapView.showAnnotations([pointAnnotation], animated: true)
                 self.mapView.selectAnnotation(pointAnnotation, animated: true)
                 // 設定為 walking 模式
                 let options = [MKLaunchOptionsDirectionsModeKey:
