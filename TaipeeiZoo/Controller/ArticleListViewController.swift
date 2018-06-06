@@ -56,7 +56,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "寶貝的中英文名, 或是以展館來找尋....."
+        searchController.searchBar.placeholder = "寫下寶貝的中文/英文名來找尋....."
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.backgroundImage = UIImage()
         searchController.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
@@ -222,7 +222,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         var article : Article
         searchResults = articles.filter({ (article) -> Bool in
             if let name = article.name, let name_EN = article.name_EN, let location =  article.location {
-                let isMatch = name.localizedCaseInsensitiveContains(searchText) || name_EN.localizedCaseInsensitiveContains(searchText) ||  location.localizedCaseInsensitiveContains(searchText)
+                let isMatch = name.localizedCaseInsensitiveContains(searchText) || name_EN.localizedCaseInsensitiveContains(searchText)
+                    // ||  location.localizedCaseInsensitiveContains(searchText)
                 return isMatch
             }
             

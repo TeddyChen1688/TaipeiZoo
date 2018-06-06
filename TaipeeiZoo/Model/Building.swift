@@ -17,7 +17,6 @@ class Building {
         self.name = name
         self.lat = lat
         self.lng = lng
-        
     }
         
     convenience init() {

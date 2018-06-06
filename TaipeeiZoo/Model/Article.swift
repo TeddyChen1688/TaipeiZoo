@@ -24,7 +24,6 @@ class Article {
     var habit: String?
     var feature: String?
     var diet: String?
-  //  var image_URL: URL?
     var Pic01_URLString: String?
     var Pic02_URLString: String?
     var video_URLString: String?
@@ -48,16 +47,8 @@ class Article {
         Pic02_URLString = rawData["A_Pic02_URL"] as? String
         video_URLString = rawData["A_Vedio_URL"] as? String
         Voice01_URLString = rawData["A_Voice01_URL"] as? String
-        
         geo = rawData["A_Geo"] as? String
-        
-//        if let image_URLString = rawData["A_Pic01_URL"] as? String{
-//            image_URL = URL(string: image_URLString)
-//        }
-//        else {
-//            image_URL = nil
-//        }
-        
+    
     }
 
     class func downLoadItem(completionHandler:@escaping ([Article]?, Error?) -> Void){
@@ -96,7 +87,6 @@ class Article {
                      //   else { print("name_EN 抓取成功 \(String(describing: article.name_EN))\(String(describing: article.name_EN!.first))")}
                         
                         if article.id == "191" || article.id == "192" || article.id == "194" {
-                     //       print("=========================================================")
                             let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
                             article.name_EN = article.name_EN?.substring(from: startIndex!)
                      //       print(article.name_EN!)
@@ -104,12 +94,10 @@ class Article {
                         }
                             
                         if article.id == "27" || article.id == "71" || article.id == "84" || article.id == "237" || article.id == "72" || article.id == "86"{
-                      //      print("=========================================================")
                             let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
                             article.name_EN = article.name_EN?.substring(from: startIndex!)
                       //      print(article.name_EN!)
                         }
-                            
                         //else { print("字首正確")}
                         
                         article.name_EN = article.name_EN?.capitalized
@@ -119,7 +107,6 @@ class Article {
                             article.location = "展館待定"
                         }
                        // else { print("Location 抓取成功")}
-                        
                         
                         if article.habit == "" {
 //                            print("habit 抓取失敗")
@@ -146,11 +133,9 @@ class Article {
                         
                         if article.video_URLString == "" {
                         //  print("video_URLString 抓取失敗")
-                        // article.video_URLString = (URL(string:"https://www.youtube.com/watch?v=6QxKgcjgxWw"))?.absoluteString
                             article.video_URLString = "https://www.youtube.com/watch?v=6QxKgcjgxWw"
                         }
                         //else { print("video_URLString 抓取成功")}
-                    
                         
                         if article.geo == ""
                         {

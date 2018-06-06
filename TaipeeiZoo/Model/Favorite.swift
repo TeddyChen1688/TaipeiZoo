@@ -22,7 +22,6 @@ class Favorite {
         self.description = description
         self.image = image
         self.isVisited = isVisited
-
     }
     
     convenience init() {

@@ -103,10 +103,6 @@ extension TripViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    
-    
-
-    
 }
 
 extension TripViewController: TripCollectionCellDelegate {
@@ -119,12 +115,3 @@ extension TripViewController: TripCollectionCellDelegate {
 }
 
 
-//    public var trips = [Trip(tripId: "Paris001", city: "Paris", featuredImage: UIImage(named: "paris"), isLiked: false),
-//                         Trip(tripId: "Rome001", city: "Rome",  featuredImage: UIImage(named: "rome"),  isLiked: false),
-//                         Trip(tripId: "Istanbul001", city: "Istanbul", featuredImage: UIImage(named: "istanbul"),  isLiked: false),
-//                         Trip(tripId: "London001", city: "London",  featuredImage: UIImage(named: "london"),  isLiked: false),
-//                         Trip(tripId: "Sydney001", city: "Sydney", featuredImage: UIImage(named: "sydney"), isLiked: false),
-//                         Trip(tripId: "Santorini001", city: "Santorini", featuredImage: UIImage(named: "santorini"), isLiked: false),
-//                         Trip(tripId: "NewYork001", city: "New York",  featuredImage: UIImage(named: "newyork"), isLiked: false),
-//                         Trip(tripId: "Kyoto001", city: "Kyoto",  featuredImage: UIImage(named: "kyoto"), isLiked: false)
-//    ]

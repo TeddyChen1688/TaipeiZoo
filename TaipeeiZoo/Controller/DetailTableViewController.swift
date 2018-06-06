@@ -22,10 +22,9 @@ class DetailTableViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.prefersLargeTitles = true
-       navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .white
         
         navigationItem.largeTitleDisplayMode = .always
@@ -85,7 +84,50 @@ class DetailTableViewController: UITableViewController {
                         self.present(safariController, animated: true, completion: nil)
                     }
                 }
-             //===================================================================
+ 
+            }
+            else {   print ("error to get cell back")   }
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TextCell_1.self), for: indexPath) as! TextCell_1
+            cell.habitLabel.text = article.habit
+            return cell
+            
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeatureCell_2.self), for: indexPath) as! FeatureCell_2
+            cell.featureLabel.text = article.feature
+            return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailTextCell_3.self), for: indexPath) as! DetailTextCell_3
+            cell.dietLabel.text = article.diet
+            return cell
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
+            cell.configure(lat: article.lat, lng: article.lng, location: article.location!)
+                return cell
+
+        default:
+            fatalError("Failed to instantiate the table view cell for detail view controller")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailMap" {
+            let destinationController = segue.destination as! DetailMapViewController
+            destinationController.article = article
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+//===================================================================
 //                c.playSoundButton.addControlEvent(.touchUpInside, {
 //                    guard let url = URL(string: "https://s3.amazonaws.com/kargopolov/kukushka.mp3")else {
 //                        print("Invalid URL")
@@ -113,56 +155,4 @@ class DetailTableViewController: UITableViewController {
 //                        print("=============== Now pause")
 //                    }
 //                })
-                //=========================================================
-            }
-            else {   print ("error to get cell back")   }
-    
-            return cell
-            
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TextCell_1.self), for: indexPath) as! TextCell_1
-
-            cell.habitLabel.text = article.habit
-            return cell
-            
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeatureCell_2.self), for: indexPath) as! FeatureCell_2
-            cell.featureLabel.text = article.feature
-            return cell
-            
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailTextCell_3.self), for: indexPath) as! DetailTextCell_3
-            cell.dietLabel.text = article.diet
-    
-            return cell
-            
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
-    
-            cell.configure(lat: article.lat, lng: article.lng, location: article.location!)
-                return cell
-
-        default:
-            fatalError("Failed to instantiate the table view cell for detail view controller")
-        }
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailMap" {
-            let destinationController = segue.destination as! DetailMapViewController
-            destinationController.article = article
-        }
-    }
-    
-    // MARK: - Navigation
-    
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-}
+//=========================================================
