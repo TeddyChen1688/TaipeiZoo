@@ -601,6 +601,21 @@
             </objects>
             <point key="canvasLocation" x="4232.8000000000002" y="195.6521739130435"/>
         </scene>
+        <!--Play Audio View Controller-->
+        <scene sceneID="OUc-92-z7G">
+            <objects>
+                <viewController id="YYX-R5-xzc" customClass="PlayAudioViewController" customModule="TaipeiZoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TA3-qL-84M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QNv-a0-dsa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBt-z6-Jon" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4192.8000000000002" y="1007.9460269865068"/>
+        </scene>
         <!--Detail Table View Controller-->
         <scene sceneID="UrZ-CY-ZsO">
             <objects>
@@ -637,7 +652,7 @@
                                             <rect key="frame" x="10" y="213" width="355" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="名稱" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7T0-aR-omr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="PMf-iX-gdq"/>
                                                     </constraints>
@@ -646,17 +661,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.0" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kd7-Gb-rWU">
-                                                    <rect key="frame" x="90" y="0.0" width="155" height="40"/>
+                                                    <rect key="frame" x="120" y="0.0" width="170" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9o-NI-V5L">
-                                                    <rect key="frame" x="250" y="0.0" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="Pdr-G2-PHq"/>
-                                                    </constraints>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="music"/>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQH-Jg-9Fg">
                                                     <rect key="frame" x="295" y="0.0" width="60" height="40"/>
                                                     <constraints>
@@ -690,7 +697,6 @@
                                     <outlet property="headerViewImage" destination="9ar-KU-Tlk" id="xko-w0-jF6"/>
                                     <outlet property="imageHeight" destination="RQe-My-a1U" id="o0Q-Hy-uKE"/>
                                     <outlet property="nameLabel" destination="7T0-aR-omr" id="WaI-Li-iMb"/>
-                                    <outlet property="playSoundButton" destination="Q9o-NI-V5L" id="UOt-iK-sOr"/>
                                     <outlet property="playVideo" destination="LQH-Jg-9Fg" id="15u-VI-RWM"/>
                                 </connections>
                             </tableViewCell>
@@ -1087,7 +1093,6 @@
         <image name="empty" width="310" height="372"/>
         <image name="heart" width="128" height="128"/>
         <image name="heart-tick" width="22" height="21"/>
-        <image name="music" width="225" height="225"/>
         <image name="save" width="20" height="20"/>
         <image name="video-1" width="270" height="187"/>
     </resources>

@@ -138,7 +138,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if searchController.isActive{
-            return "Find"
+            return "喔, 找到了!"
         }
         else {
             return animalSectionTitles[section]

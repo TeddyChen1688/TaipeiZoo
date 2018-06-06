@@ -25,14 +25,76 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TaipeeiZoo/Controller/DetailTableViewController.swift"
-            timestampString = "549893622.9060971"
+            filePath = "TaipeeiZoo/Controller/PlayAudioViewController.swift"
+            timestampString = "549953143.916919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaipeiZoo.ViewController.playButton.getter : Swift.Optional&lt;__ObjC.UIButton&gt;"
+                  moduleName = "TaipeiZoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eva/Desktop/TaipeiZoo/TaipeeiZoo/Controller/PlayAudioViewController.swift"
+                  timestampString = "549953144.120245"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaipeiZoo.ViewController.playButton.setter : Swift.Optional&lt;__ObjC.UIButton&gt;"
+                  moduleName = "TaipeiZoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eva/Desktop/TaipeiZoo/TaipeeiZoo/Controller/PlayAudioViewController.swift"
+                  timestampString = "549953144.12263"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaipeiZoo.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; TaipeiZoo.ViewController"
+                  moduleName = "TaipeiZoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eva/Desktop/TaipeiZoo/TaipeeiZoo/Controller/PlayAudioViewController.swift"
+                  timestampString = "549953144.124958"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaipeiZoo.ViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;TaipeiZoo.ViewController&gt;"
+                  moduleName = "TaipeiZoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eva/Desktop/TaipeiZoo/TaipeeiZoo/Controller/PlayAudioViewController.swift"
+                  timestampString = "549953144.127244"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "228">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

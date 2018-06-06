@@ -10,11 +10,12 @@ import UIKit
 import SDWebImage
 import AVFoundation
 import AVKit
+import SafariServices
 
 class DetailTableViewController: UITableViewController {
     var article: Article!
-    var player:AVPlayer?
-    var playerItem:AVPlayerItem?
+    var player: AVPlayer?
+    var playerItem: AVPlayerItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,41 +78,45 @@ class DetailTableViewController: UITableViewController {
                 c.headerViewImage?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "tree.jpg"), options: .refreshCached)
             
                 c.playVideo?.addControlEvent(.touchUpInside) {
-                    let videoURL = URL(string: self.article.video_URLString!)
-                    print("videoURL \(videoURL)")
-                    UIApplication.shared.open(videoURL!, options: [:], completionHandler: nil)
                     
-//                    let player = AVPlayer(url: videoURL!)
-//                    let avpvv = AVPlayerViewController()
-//                    avpvv.player = player
-//                    self.present(avpvv, animated: true){
-//                    avpvv.player!.play()
-//                    }
+                    if let video_Url = URL(string: self.article.video_URLString!) {
+                        print("button click with VideoURL \(video_Url)")
+                        let safariController = SFSafariViewController(url: video_Url)
+                        self.present(safariController, animated: true, completion: nil)
+                    }
                 }
-                c.playSoundButton.addControlEvent(.touchUpInside, {
-                    print("button click")
-                    self.tableView.reloadData()
-                    guard let url = URL(string: self.article.Voice01_URLString!  ) else {
-                        print("Invalid URL")
-                        return
-                    }
-                    print("AuduioURL \(url)")
-                    if let myplayer = self.player{
-                        if ((myplayer.rate != 0) && (myplayer.error == nil)) {
-                            myplayer.pause()
-                            c.playSoundButton.setImage(UIImage(named: "music"), for: .normal)
-                        }else{
-                            c.playSoundButton.setImage(UIImage(named: "pause"), for: .normal)
-                            playUsingAVPlayer(url:url )
-                        }
-                    }else{
-                        c.playSoundButton.setImage(UIImage(named: "pause"), for: .normal)
-                        playUsingAVPlayer(url:url )
-                    }
-                })
+             //===================================================================
+//                c.playSoundButton.addControlEvent(.touchUpInside, {
+//                    guard let url = URL(string: "https://s3.amazonaws.com/kargopolov/kukushka.mp3")else {
+//                        print("Invalid URL")
+//                        return
+//                        }
+//                    print("button click with AuduioURL \(url)")
+//                    self.tableView.reloadData()
+//
+//                    self.playerItem = AVPlayerItem(url: url)
+//                    let playerItem = self.playerItem!
+//                    let player = AVPlayer(playerItem: playerItem)
+//
+//                    let playerLayer = AVPlayerLayer(player: player)
+//                    playerLayer.frame  = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
+//                    self.view.layer.addSublayer(playerLayer)
+//
+//                    if  player.rate == 0 {
+//                        player.play()
+//                        print("=============== Now Play with  player.rate \(player.rate)")
+//                        c.playSoundButton.setImage(UIImage(named: "pause"), for: .normal)
+//                    }else{
+//                        c.playSoundButton.setImage(UIImage(named: "music"), for: .normal)
+//                                // playUsingAVPlayer(url:url )
+//                        player.pause()
+//                        print("=============== Now pause")
+//                    }
+//                })
+                //=========================================================
             }
-            else {   print ("error to get cell back")    }
-            
+            else {   print ("error to get cell back")   }
+    
             return cell
             
         case 1:

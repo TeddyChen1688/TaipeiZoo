@@ -143,8 +143,15 @@ class Article {
                             article.Pic02_URLString = article.Pic01_URLString
                         }
                         else { print("Pic02_URLString 抓取成功")}
+                        
+                        if article.video_URLString == "" {
+                        //  print("video_URLString 抓取失敗")
+                        // article.video_URLString = (URL(string:"https://www.youtube.com/watch?v=6QxKgcjgxWw"))?.absoluteString
+                            article.video_URLString = "https://www.youtube.com/watch?v=6QxKgcjgxWw"
+                        }
+                        else { print("video_URLString 抓取成功")}
                     
-                    
+                        
                         if article.geo == ""
                         {
                             article.geo = "MULTIPOINT ((121.5831587 24.9971109))"

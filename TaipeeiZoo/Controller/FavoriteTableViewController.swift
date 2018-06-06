@@ -56,9 +56,9 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-            let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
+            let photoSourceRequestController = UIAlertController(title: "", message: "拍照 or 相簿", preferredStyle: .actionSheet)
             
-            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            let cameraAction = UIAlertAction(title: "拍照", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
@@ -69,7 +69,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
                 }
             })
             
-            let photoLibraryAction = UIAlertAction(title: "Photo library", style: .default, handler: { (action) in
+            let photoLibraryAction = UIAlertAction(title: "相簿", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
@@ -128,7 +128,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     @IBAction func saveButtonTapped(sender: AnyObject) {
         
         if nameTextField.text == "" || descriptionTextField.text == "" {
-            let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "等一下", message: " 呵呵, 要填完才上傳喔! ", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
