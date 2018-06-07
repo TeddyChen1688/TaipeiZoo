@@ -69,8 +69,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         
         // 定義旋轉指示器的佈局約束條件
         spinner.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
-                                      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0), spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
         // 啟用旋轉指示器
         spinner.startAnimating()
     }
@@ -91,6 +90,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
+        navigationController?.navigationBar.tintColor = .blue
         navigationController?.hidesBarsOnSwipe = true
     }
   

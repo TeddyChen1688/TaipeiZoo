@@ -22,21 +22,35 @@ class DetailTableViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        // setup transparent NavigationBar when 1st time load, and change the attribute of root NavigationController
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
         
+        navigationController?.navigationBar.tintColor = .white
         navigationItem.largeTitleDisplayMode = .always
         tableView.contentInsetAdjustmentBehavior = .never
-        
         //       downloadArticleImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // "viewwillAppear" control the outlook of pop-forward and back
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.tintColor = .white
+        
+        // Hide the back left button when setting "true"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // "viewwillAppear" control the outlook of pop-forward and back
+        super.viewDidAppear(animated)
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.tintColor = .white
+        
+        // Hide the back left button when setting "true"
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -470,10 +470,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eo4-6E-CGP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="468.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="469"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-a2-CUD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="468.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="469"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="iA9-a2-CUD" secondAttribute="height" multiplier="4:5" id="k2Q-zM-n2a"/>
                                         </constraints>
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUd-rf-BkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4377" y="184"/>
+            <point key="canvasLocation" x="4255" y="195"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="a9V-0v-oz4">
@@ -750,7 +750,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjU-N9-O2y">
-                                            <rect key="frame" x="0.0" y="10" width="375" height="290"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="290" id="Fys-B9-8p3"/>
                                             </constraints>
@@ -759,7 +759,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="GjU-N9-O2y" secondAttribute="trailing" id="fxL-td-sFM"/>
                                         <constraint firstItem="GjU-N9-O2y" firstAttribute="leading" secondItem="Ooy-80-eln" secondAttribute="leading" id="g1B-k8-foW"/>
-                                        <constraint firstItem="GjU-N9-O2y" firstAttribute="top" secondItem="Ooy-80-eln" secondAttribute="top" constant="10" id="oxd-e3-Cbp"/>
+                                        <constraint firstItem="GjU-N9-O2y" firstAttribute="top" secondItem="Ooy-80-eln" secondAttribute="top" id="oxd-e3-Cbp"/>
                                         <constraint firstAttribute="bottom" secondItem="GjU-N9-O2y" secondAttribute="bottom" id="w9u-eX-fmb"/>
                                     </constraints>
                                 </tableViewCellContentView>
