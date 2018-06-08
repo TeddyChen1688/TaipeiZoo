@@ -17,6 +17,7 @@ class FavoriteCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView! {
         didSet {
             thumbnailImageView.layer.cornerRadius = 40
@@ -26,6 +27,7 @@ class FavoriteCell: UITableViewCell {
     
     
     @IBOutlet var heartImageView: UIImageView!
+    @IBOutlet weak var summaryLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

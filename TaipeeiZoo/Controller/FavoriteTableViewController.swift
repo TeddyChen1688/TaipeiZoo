@@ -43,7 +43,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         super.viewDidLoad()
         
         // Configure navigation bar appearance
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.shadowImage = UIImage()
         
         tableView.separatorStyle = .none
@@ -80,8 +80,11 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
                 }
             })
             
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel) { action in }
+
             photoSourceRequestController.addAction(cameraAction)
             photoSourceRequestController.addAction(photoLibraryAction)
+            photoSourceRequestController.addAction(cancelAction) //加入 cancel 按鈕
             
             present(photoSourceRequestController, animated: true, completion: nil)
             
@@ -90,6 +93,11 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
+        
+        
+        
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             print("selectedImage is \(selectedImage)")
             photoImageView.image = selectedImage
@@ -145,6 +153,13 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             favorite.name = nameTextField.text
             favorite.summary = descriptionTextField.text
             favorite.isVisited = false
+            
+            let now = Date ()
+            let postDate = Double(round(now.timeIntervalSince1970 * 1000))
+            let postDateReversed = -postDate
+            print("On FavoriteTableViewController: postDateReversed \(postDateReversed)")
+            
+            favorite.postDateReversed = postDateReversed
             
             if let favoriteImage = photoImageView.image {
                 favorite.image = UIImagePNGRepresentation(favoriteImage) as! NSData

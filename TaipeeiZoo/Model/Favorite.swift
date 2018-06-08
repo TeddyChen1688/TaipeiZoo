@@ -13,18 +13,20 @@ class Favorite {
     var description: String
     var image: String
     var isVisited: Bool
+    var postDateReversed: Int
 
     var managedObject: FavoriteMO?
     
-    init(name: String,  description: String, image: String, isVisited: Bool) {
+    init(name: String,  description: String, image: String, isVisited: Bool, postDateReversed: Int) {
         
         self.name = name
         self.description = description
         self.image = image
         self.isVisited = isVisited
+        self.postDateReversed = postDateReversed
     }
     
     convenience init() {
-        self.init(name: "",  description: "", image: "", isVisited: false)
+        self.init(name: "",  description: "", image: "", isVisited: false, postDateReversed: 0)
     }
 }

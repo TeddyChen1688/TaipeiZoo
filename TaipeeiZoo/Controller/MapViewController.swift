@@ -40,8 +40,10 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
         mapView.delegate = self
         navigationController?.navigationBar.tintColor = .blue
          navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = .clear
+//        navigationController?.navigationBar.shadowImage = UIImage()
         
         var annotations = [MKAnnotation]()
         for building in buildings{
@@ -68,8 +70,8 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .blue
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     

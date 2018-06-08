@@ -3,10 +3,11 @@
     <entity name="Favorite" representedClassName="FavoriteMO" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="isVisited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postDateReversed" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorite" positionX="-9" positionY="36" width="128" height="105"/>
+        <element name="Favorite" positionX="-9" positionY="36" width="128" height="120"/>
     </elements>
 </model>

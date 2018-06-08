@@ -105,7 +105,17 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         if let favoritesImage = favorites[indexPath.row].image {
             cell.thumbnailImageView.image = UIImage(data: favoritesImage as Data)
         }
-
+ 
+        let storedDate = favorites[indexPath.row].postDateReversed
+        let storedDateMS = -storedDate as! Double
+        let publishedDate = Date(timeIntervalSince1970: storedDateMS / 1000)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-MM-dd HH:mm"
+        
+        cell.dateLabel.text = dateFormatter.string(from: publishedDate)
+        
+        cell.summaryLabel.text = favorites[indexPath.row].summary
         cell.heartImageView.isHidden = favorites[indexPath.row].isVisited ? false : true
         
         return cell
