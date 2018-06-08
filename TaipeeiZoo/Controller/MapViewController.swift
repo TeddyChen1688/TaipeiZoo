@@ -39,6 +39,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         navigationController?.navigationBar.tintColor = .blue
+         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         

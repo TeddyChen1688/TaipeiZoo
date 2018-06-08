@@ -26,6 +26,7 @@
 		A69AF91020C6AD4000256D52 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A69AF90520C6AD3D00256D52 /* Rubik-Medium.ttf */; };
 		A69AF91120C6AD4000256D52 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A69AF90620C6AD3D00256D52 /* Rubik-MediumItalic.ttf */; };
 		A69AF91220C6AD4000256D52 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A69AF90720C6AD3D00256D52 /* Rubik-Regular.ttf */; };
+		A69AF91620CA11A200256D52 /* Zoo.png in Resources */ = {isa = PBXBuildFile; fileRef = A69AF91520CA11A200256D52 /* Zoo.png */; };
 		A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEA20C24D9D00744235 /* MapCell_4.swift */; };
 		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
 		A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF020C2883800744235 /* MyLocationManager.swift */; };
@@ -81,6 +82,7 @@
 		A69AF90520C6AD3D00256D52 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		A69AF90620C6AD3D00256D52 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		A69AF90720C6AD3D00256D52 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		A69AF91520CA11A200256D52 /* Zoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Zoo.png; sourceTree = "<group>"; };
 		A6B70BEA20C24D9D00744235 /* MapCell_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell_4.swift; sourceTree = "<group>"; };
 		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		A6B70BF020C2883800744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				9FD72567209F0FF700451EEB /* Main.storyboard */,
 				A6B70BFE20C3C33200744235 /* Onboarding.storyboard */,
 				9FD7256C209F0FFA00451EEB /* LaunchScreen.storyboard */,
+				A69AF91520CA11A200256D52 /* Zoo.png */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			files = (
 				A69AF90920C6AD4000256D52 /* Rubik-Black.ttf in Resources */,
 				A69AF90820C6AD4000256D52 /* OFL.txt in Resources */,
+				A69AF91620CA11A200256D52 /* Zoo.png in Resources */,
 				9FD7256E209F0FFA00451EEB /* LaunchScreen.storyboard in Resources */,
 				9FD7256B209F0FFA00451EEB /* Assets.xcassets in Resources */,
 				A69AF90A20C6AD4000256D52 /* Rubik-BlackItalic.ttf in Resources */,

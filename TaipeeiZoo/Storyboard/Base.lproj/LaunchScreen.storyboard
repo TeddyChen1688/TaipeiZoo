@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,36 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MiE-hh-0UM">
-                                <rect key="frame" x="0.0" y="200" width="375" height="66"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch Screen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0i-fU-VMR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
-                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Zoo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vP-ht-Idt">
-                                        <rect key="frame" x="0.0" y="42" width="375" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市立動物園" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0i-fU-VMR">
+                                <rect key="frame" x="64.5" y="141.5" width="247" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <color key="textColor" red="0.34645647321428569" green="0.31788504464285716" blue="0.78353794642857144" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Zoo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-ks-H1N">
+                                <rect key="frame" x="97" y="243.5" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="731-e5-Gh1"/>
+                                    <constraint firstAttribute="height" constant="180" id="Rp0-e9-Kgf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.78200503119999998" green="1" blue="0.99731884900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MiE-hh-0UM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="5At-lB-ktx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MiE-hh-0UM" secondAttribute="trailing" id="K9m-yy-FDi"/>
-                            <constraint firstItem="MiE-hh-0UM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zNq-7l-DFW"/>
+                            <constraint firstItem="fZb-ks-H1N" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="M51-vs-4y2"/>
+                            <constraint firstItem="fZb-ks-H1N" firstAttribute="top" secondItem="a0i-fU-VMR" secondAttribute="bottom" constant="60" id="NE3-QC-GbX"/>
+                            <constraint firstItem="a0i-fU-VMR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hLd-CH-Qmk"/>
+                            <constraint firstItem="fZb-ks-H1N" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="u6o-cn-2SK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Zoo.png" width="1024" height="1024"/>
+    </resources>
 </document>
