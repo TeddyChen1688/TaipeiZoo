@@ -23,7 +23,7 @@
                                 <color key="textColor" red="0.34645647321428569" green="0.31788504464285716" blue="0.78353794642857144" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Zoo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-ks-H1N">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-ks-H1N">
                                 <rect key="frame" x="97" y="243.5" width="180" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="731-e5-Gh1"/>
@@ -47,6 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Zoo.png" width="1024" height="1024"/>
+        <image name="happy" width="78" height="86"/>
     </resources>
 </document>

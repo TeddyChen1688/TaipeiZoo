@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rubik-LightItalic.ttf">
+            <string>Rubik-LightItalic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--台北市立動物園-->
         <scene sceneID="NOP-QY-FLJ">
@@ -43,7 +48,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="英文名稱" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9u-eK-Ol8">
                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="26.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <fontDescription key="fontDescription" name="Rubik-LightItalic" family="Rubik" pointSize="22"/>
                                                             <color key="textColor" red="0.0" green="0.26344866071428569" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -192,11 +197,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="wmy-WV-Ad1">
-                                                    <rect key="frame" x="157.5" y="171" width="60" height="80"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="wmy-WV-Ad1">
+                                                    <rect key="frame" x="107.5" y="151" width="160" height="120"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Krx-9d-XNt"/>
-                                                        <constraint firstAttribute="width" constant="60" id="c2T-Mz-XTg"/>
+                                                        <constraint firstAttribute="height" constant="120" id="Krx-9d-XNt"/>
+                                                        <constraint firstAttribute="width" constant="160" id="c2T-Mz-XTg"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -522,38 +527,6 @@
             </objects>
             <point key="canvasLocation" x="4255" y="195"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="a9V-0v-oz4">
-            <objects>
-                <tableViewController id="N65-IJ-8OO" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aXx-De-cfv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <mapView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="nda-bb-dec">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </mapView>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="IpR-TH-bks">
-                                <rect key="frame" x="0.0" y="678" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IpR-TH-bks" id="xly-gW-opp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="N65-IJ-8OO" id="3b7-dY-2FQ"/>
-                            <outlet property="delegate" destination="N65-IJ-8OO" id="rk8-35-WbJ"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rCu-Wt-bHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4376.8000000000002" y="876.61169415292363"/>
-        </scene>
         <!--Detail Table View Controller-->
         <scene sceneID="UrZ-CY-ZsO">
             <objects>
@@ -599,16 +572,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.0" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kd7-Gb-rWU">
-                                                    <rect key="frame" x="120" y="0.0" width="170" height="40"/>
+                                                    <rect key="frame" x="120" y="0.0" width="190" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQH-Jg-9Fg">
-                                                    <rect key="frame" x="295" y="0.0" width="60" height="40"/>
+                                                    <rect key="frame" x="315" y="0.0" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="KCa-em-fSf"/>
-                                                        <constraint firstAttribute="width" constant="60" id="aFH-FD-si3"/>
+                                                        <constraint firstAttribute="width" constant="40" id="aFH-FD-si3"/>
                                                     </constraints>
-                                                    <state key="normal" image="video-1"/>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" image="video"/>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -842,7 +816,7 @@
             </objects>
             <point key="canvasLocation" x="2828" y="-1307"/>
         </scene>
-        <!--Trip View Controller-->
+        <!--心愛的寶貝-->
         <scene sceneID="YPu-dK-VvG">
             <objects>
                 <viewController id="54u-Ke-1F2" customClass="TripViewController" customModule="TaipeiZoo" customModuleProvider="target" sceneMemberID="viewController">
@@ -870,7 +844,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="380"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2bk-Rf-JSM">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2bk-Rf-JSM">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="311"/>
                                                 </imageView>
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="WtV-lB-Udu">
@@ -927,7 +901,7 @@
                                     <outlet property="delegate" destination="54u-Ke-1F2" id="1BY-xO-yEp"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心愛的寶貝" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBf-tK-MEx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBf-tK-MEx">
                                 <rect key="frame" x="16" y="116" width="190" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="8zM-2U-SsD"/>
@@ -938,7 +912,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lextronic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1B-Rz-C0S">
-                                <rect key="frame" x="16" y="530" width="71.5" height="24"/>
+                                <rect key="frame" x="16" y="530" width="79" height="24"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -947,6 +921,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BWT-XU-HQK" firstAttribute="trailing" secondItem="Puu-YE-Eye" secondAttribute="trailing" id="55Y-lz-1Bw"/>
+                            <constraint firstItem="Puu-YE-Eye" firstAttribute="trailing" secondItem="M1B-Rz-C0S" secondAttribute="trailing" constant="280" id="5S4-pi-2nE"/>
                             <constraint firstItem="BWT-XU-HQK" firstAttribute="top" secondItem="cBf-tK-MEx" secondAttribute="bottom" constant="12" id="7XS-O1-Epv"/>
                             <constraint firstItem="BWT-XU-HQK" firstAttribute="leading" secondItem="Puu-YE-Eye" secondAttribute="leading" id="8VB-iv-8nk"/>
                             <constraint firstItem="M1B-Rz-C0S" firstAttribute="leading" secondItem="Puu-YE-Eye" secondAttribute="leading" constant="16" id="Ccb-zZ-6sa"/>
@@ -964,7 +939,7 @@
                         <viewLayoutGuide key="safeArea" id="Puu-YE-Eye"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="EIr-Gt-m2B">
+                    <navigationItem key="navigationItem" title="心愛的寶貝" id="EIr-Gt-m2B">
                         <barButtonItem key="leftBarButtonItem" systemItem="camera" id="Z5B-6T-1R9">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -1033,6 +1008,6 @@
         <image name="heart" width="128" height="128"/>
         <image name="heart-tick" width="22" height="21"/>
         <image name="save" width="20" height="20"/>
-        <image name="video-1" width="270" height="187"/>
+        <image name="video" width="256" height="256"/>
     </resources>
 </document>

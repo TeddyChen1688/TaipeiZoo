@@ -238,8 +238,8 @@
 				A6F04E6D20BE65EB00FAE8F7 /* FavoriteTableViewController.swift */,
 				A6F04EFC20C0DE8800FAE8F7 /* FavoriteListViewController.swift */,
 				A6B70BF820C3AB9200744235 /* TripViewController.swift */,
-				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 				A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */,
+				A6F04E6920BE2E1100FAE8F7 /* ContactsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -11,7 +11,7 @@ import CoreData
 
 class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    
+    var favorite: FavoriteMO!
     @IBOutlet weak var nameTextField: RoundedTextField!{
         didSet {
             nameTextField.tag = 1
@@ -20,14 +20,12 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
     }
     
-    
     @IBOutlet weak var descriptionTextField: UITextField!{
-                didSet {
-                    descriptionTextField.tag = 2
-                    descriptionTextField.delegate = self
-                }
-            }
-    
+        didSet {
+            descriptionTextField.tag = 2
+            descriptionTextField.delegate = self
+        }
+    }
     
     @IBOutlet weak var photoImageView: UIImageView!{
         didSet {
@@ -36,70 +34,49 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
     }
     
-    
-    var favorite: FavoriteMO!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Configure navigation bar appearance
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 410
+//        tableView.separatorStyle = .none
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 410
     }
     
     // MARK: - UITableViewDelegate methods
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
             let photoSourceRequestController = UIAlertController(title: "", message: "拍照 or 相簿", preferredStyle: .actionSheet)
-            
             let cameraAction = UIAlertAction(title: "拍照", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .camera
-                    
                     self.present(imagePicker, animated: true, completion: nil)
                 }
             })
-            
             let photoLibraryAction = UIAlertAction(title: "相簿", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .photoLibrary
-                    
                     self.present(imagePicker, animated: true, completion: nil)
                 }
             })
-            
             let cancelAction = UIAlertAction(title: "取消", style: .cancel) { action in }
-
             photoSourceRequestController.addAction(cameraAction)
             photoSourceRequestController.addAction(photoLibraryAction)
             photoSourceRequestController.addAction(cancelAction) //加入 cancel 按鈕
-            
             present(photoSourceRequestController, animated: true, completion: nil)
-            
         }
     }
     
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
-        
-        
-        
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            print("selectedImage is \(selectedImage)")
             photoImageView.image = selectedImage
             photoImageView.contentMode = .scaleAspectFit
             photoImageView.clipsToBounds = true
@@ -121,29 +98,23 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     }
     
     // MARK: - UITextFieldDelegate methods
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextTextField = view.viewWithTag(textField.tag + 1) {
             textField.resignFirstResponder()
             nextTextField.becomeFirstResponder()
         }
-        
         return true
     }
     
     // MARK: - Action method (Exercise #2)
-    
     @IBAction func saveButtonTapped(sender: AnyObject) {
-        
         if nameTextField.text == "" || descriptionTextField.text == "" {
             let alertController = UIAlertController(title: "等一下", message: " 呵呵, 要填完才上傳喔! ", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
-            
             return
         }
-        
         print("Name: \(nameTextField.text ?? "")")
         print("Description: \(descriptionTextField.text ?? "")")
         
@@ -157,21 +128,14 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             let now = Date ()
             let postDate = Double(round(now.timeIntervalSince1970 * 1000))
             let postDateReversed = -postDate
-            print("On FavoriteTableViewController: postDateReversed \(postDateReversed)")
-            
             favorite.postDateReversed = postDateReversed
             
             if let favoriteImage = photoImageView.image {
-                favorite.image = UIImagePNGRepresentation(favoriteImage) as! NSData
+                favorite.image = UIImagePNGRepresentation(favoriteImage)! as NSData
             }
-            
-            print("Saving data to context ...")
+            // print("Saving data to context ...")
             appDelegate.saveContext()
         }
-        
         dismiss(animated: true, completion: nil)
     }
-    
-
-    
 }

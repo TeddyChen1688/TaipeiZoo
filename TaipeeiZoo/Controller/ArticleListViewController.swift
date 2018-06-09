@@ -8,34 +8,21 @@
 
 import Foundation
 import UIKit
-import SDWebImage         // To Optimize the Photo-download process
+import SDWebImage
 class ArticleListViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating{
-// 由於下載是非同步事件, 若 tableViewdatasource 錯過了下載完成就不會更新畫面
-// 因此強迫資料更新時(didSet), 要 tableViewdatasource 重新載入資料保證成功.
     
     var filtered = [Article]()
-    var articles = [Article](){
-        didSet{
-            DispatchQueue.main.async{
-                self.spinner.stopAnimating()
-                self.tableView.reloadData()
-            }
-        }
-    }
+    var articles = [Article]()
     var animalSectionTitles = [String]()
     var animalsDict = [String: [Article]]()
     var locationKeys = [String]()
     var locationDict = [String: [Article]]()
-    
-    
     var searchController: UISearchController!
     var searchResults: [Article] = []
     
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
-    
-    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +34,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         tableView.contentInsetAdjustmentBehavior = .always
         navigationController?.hidesBarsOnSwipe = false
         
-        //      searchBar.delegate = self
-        //  downLoadLatestArticles()
-        
-        // Adding a search bar
+        // Adding a search controller
         searchController = UISearchController(searchResultsController: nil)
         // self.navigationItem.searchController = searchController
         tableView.tableHeaderView = searchController.searchBar
@@ -60,77 +44,20 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.backgroundImage = UIImage()
         searchController.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
-        //        self.navigationItem.searchController = searchController
         tableView.tableHeaderView = searchController.searchBar
-        
-        spinner.activityIndicatorViewStyle = .gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        
-        // 定義旋轉指示器的佈局約束條件
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0), spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
-        // 啟用旋轉指示器
-        spinner.startAnimating()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
-            
-            present(walkthroughViewController, animated: true, completion: nil)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
         navigationController?.navigationBar.tintColor = .blue
-        navigationController?.hidesBarsOnSwipe = true
-    }
-  
-    func downLoadLatestArticles(){
-        Article.downLoadItem { (articles, error) in
-            if let error = error {
-                print("fail \(error)")
-                return }
-            let articles = articles! //  print(articles)
-            articles.sorted(by: { $0.name_EN! < $1.name_EN! })
-                
-            var animalsDict = [String: [Article]]()
-            var animalSectionTitles = [String]()
-            for article in articles {
-                // 取得動物名的第一個字母並建立字典
-                let animalKey = String(article.name_EN!.first!)
-                print("\(animalKey)")
-                if var animalValues = animalsDict[animalKey] {
-                    animalValues.append(article)
-                    animalsDict[animalKey] = animalValues
-                } else {
-                    animalsDict[animalKey] = [article]
-                }
-            }
-            animalSectionTitles = [String](animalsDict.keys)
-            animalSectionTitles = animalSectionTitles.sorted(by: { $0 < $1 })
-            self.animalSectionTitles = animalSectionTitles
-            self.animalsDict = animalsDict
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        navigationController?.hidesBarsOnSwipe = false
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // 回傳區塊的總數
         if searchController.isActive {
-            return searchResults.count
+            return 1
         } else {
             return animalSectionTitles.count
         }
@@ -138,7 +65,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if searchController.isActive{
-            return "喔, 找到了!"
+            return ""
         }
         else {
             return animalSectionTitles[section]
@@ -146,7 +73,6 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if searchController.isActive {
             return searchResults.count
         } else {
@@ -161,45 +87,38 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
-        
         var article : Article
         let animalKey = animalSectionTitles[indexPath.section]
         let animalValues = animalsDict[animalKey]
-        article = animalValues![indexPath.row]
- 
         article = (searchController.isActive) ? searchResults[indexPath.row] : animalValues![indexPath.row]
+        print("indexPath.row is \(indexPath.row)")
+        let imageURL: URL?
+        if let imageURLString = article.Pic01_URLString {
+            imageURL = URL (string: imageURLString)
+        }
+        else {  imageURL = nil   }
         
-            let imageURL: URL?
-            if let imageURLString = article.Pic01_URLString {
-                imageURL = URL (string: imageURLString)
-            }
-            else {  imageURL = nil   }
-        
-            if let c = cell as? ListTableCell {
-            
-                c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "tree.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
+        let c = cell // as? ListTableCell {
+        do {
+            c.photoView?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "tree.jpg"), options: .refreshCached) {(img, err, cachetype, url) in
                 
-                    let screenWidth:CGFloat = UIScreen.main.bounds.width
-                    if let width = img?.size.width , let height = img?.size.height {
-                        self.articles[indexPath.row].imageHeight = screenWidth / width * height
-                    }
+                let screenWidth:CGFloat = UIScreen.main.bounds.width
+                if let width = img?.size.width , let height = img?.size.height {
+                    self.articles[indexPath.row].imageHeight = screenWidth / width * height
                 }
-                print("id is \(article.id)");
-       //    c.idLabel.text = article.id;
-                c.nameLabel?.text = article.name;
-                print("\(article.name)");
-                c.name_ENLabel?.text = article.name_EN
-                c.locationLabel?.text = article.location
             }
+       //    c.idLabel.text = article.id;
+            c.nameLabel?.text = article.name;
+            print("\(String(describing: article.name))");
+            c.name_ENLabel?.text = article.name_EN
+            c.locationLabel?.text = article.location
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if searchController.isActive {
-            return false
-        } else {
-            return true
-        }
+        if searchController.isActive {  return false
+        }else {    return true         }
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -214,19 +133,15 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         let headerView = view as! UITableViewHeaderFooterView
         headerView.backgroundView?.backgroundColor = UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 0.5)
         headerView.textLabel?.textColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-        
         headerView.textLabel?.font = UIFont(name: "Rubik", size: 25.0)
     }
     
     func filterContent(for searchText: String) {
-        var article : Article
         searchResults = articles.filter({ (article) -> Bool in
-            if let name = article.name, let name_EN = article.name_EN, let location =  article.location {
+            if let name = article.name, let name_EN = article.name_EN {
                 let isMatch = name.localizedCaseInsensitiveContains(searchText) || name_EN.localizedCaseInsensitiveContains(searchText)
-                    // ||  location.localizedCaseInsensitiveContains(searchText)
                 return isMatch
             }
-            
             return false
         })
     }
@@ -239,16 +154,12 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "ShowDetail"{
             print("翻頁了...")
             let cell = sender as! UITableViewCell
             let detailVC = segue.destination as! DetailTableViewController
             let indexPath = tableView.indexPath(for: cell)!
-            
             var article : Article
-            
-            
             if searchController.isActive {
                 article = searchResults[indexPath.row]
             }
@@ -258,8 +169,11 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
                 article = animalValues![indexPath.row]
             }
             detailVC.article = article
-            print(article)
+        //    print(article)
         }
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }

@@ -13,13 +13,10 @@ import CoreData
 class FavoriteListViewController: UITableViewController, NSFetchedResultsControllerDelegate{
     
     // MARK: - Properties
-    
     var favorites: [FavoriteMO] = []
-    
+    var fetchResultController: NSFetchedResultsController<FavoriteMO>!
     @IBOutlet var emptyRestaurantView: UIView!
     
-    var fetchResultController: NSFetchedResultsController<FavoriteMO>!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,9 +28,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
 //        // Configure navigation bar appearance
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-
-         navigationController?.hidesBarsOnSwipe = true
-//
+        navigationController?.hidesBarsOnSwipe = true
 //        // Prepare the empty view
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = true
@@ -47,7 +42,6 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
             let context = appDelegate.persistentContainer.viewContext
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
-
             do {
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
@@ -57,14 +51,10 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
                 print(error)
             }
         }
-
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.hidesBarsOnSwipe = true
     }
 
@@ -74,7 +64,6 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
     }
 
     // MARK: - UITableViewDataSource Protocol
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         if favorites.count > 0 {
             tableView.backgroundView?.isHidden = true
@@ -83,41 +72,31 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
             tableView.backgroundView?.isHidden = false
             tableView.separatorStyle = .none
         }
-        
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return favorites.count
     }
 
-   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // Configure the cell...
-
         let cellIdentifier = "FavoriteCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FavoriteCell
-        
-        // Configure the cell...
         cell.nameLabel.text = favorites[indexPath.row].name
         if let favoritesImage = favorites[indexPath.row].image {
             cell.thumbnailImageView.image = UIImage(data: favoritesImage as Data)
         }
- 
         let storedDate = favorites[indexPath.row].postDateReversed
-        let storedDateMS = -storedDate as! Double
+        let storedDateMS = -storedDate 
         let publishedDate = Date(timeIntervalSince1970: storedDateMS / 1000)
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "y-MM-dd HH:mm"
         
         cell.dateLabel.text = dateFormatter.string(from: publishedDate)
-        
         cell.summaryLabel.text = favorites[indexPath.row].summary
         cell.heartImageView.isHidden = favorites[indexPath.row].isVisited ? false : true
-        
         return cell
     }
    
@@ -131,17 +110,14 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
                 let context = appDelegate.persistentContainer.viewContext
                 let restaurantToDelete = self.fetchResultController.object(at: indexPath)
                 context.delete(restaurantToDelete)
-                
                 appDelegate.saveContext()
             }
-            
             // Call completion handler with true to indicate
             completionHandler(true)
         }
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
             let defaultText = "Just checking in at " + self.favorites[indexPath.row].name!
-            
             let activityController: UIActivityViewController
             
             if let favoriteImage = self.favorites[indexPath.row].image,
@@ -161,7 +137,6 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
             self.present(activityController, animated: true, completion: nil)
             completionHandler(true)
         }
-        
         // Customize the action buttons
         deleteAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
         deleteAction.image = UIImage(named: "delete")
@@ -169,7 +144,6 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         shareAction.image = UIImage(named: "share")
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
-        
         return swipeConfiguration
     }
     
@@ -178,26 +152,21 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
             let cell = tableView.cellForRow(at: indexPath) as! FavoriteCell
             self.favorites[indexPath.row].isVisited = (self.favorites[indexPath.row].isVisited) ? false : true
             cell.heartImageView.isHidden = self.favorites[indexPath.row].isVisited ? false : true
-            
             completionHandler(true)
         }
         
         // Customize the action button
         checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
         checkInAction.image = self.favorites[indexPath.row].isVisited ? UIImage(named: "undo") : UIImage(named: "tick")
-        
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
-        
         return swipeConfiguration
     }
-    
     
     // MARK: - NSFetchedResultsControllerDelegate methods
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
@@ -226,5 +195,4 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-
 }

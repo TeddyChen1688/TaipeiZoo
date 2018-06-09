@@ -11,14 +11,12 @@ import CoreData
 
 class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
 
+    var favorites: [FavoriteMO] = []
+    var fetchResultController: NSFetchedResultsController<FavoriteMO>!
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
-    
-    var favorites: [FavoriteMO] = []
     @IBOutlet var emptyRestaurantView: UIView!
     
-    var fetchResultController: NSFetchedResultsController<FavoriteMO>!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,14 +26,12 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         backgroundImageView.addSubview(blurEffectView)
-        
         collectionView.backgroundColor = UIColor.clear
         
         if UIScreen.main.bounds.size.height == 568.0 {
             let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             flowLayout.itemSize = CGSize(width: 250.0, height: 330.0)
         }
-        
         
    // Fetch data from data store
         let fetchRequest: NSFetchRequest<FavoriteMO> = FavoriteMO.fetchRequest()

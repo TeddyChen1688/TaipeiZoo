@@ -13,11 +13,18 @@ import MapKit
 class MapViewController: UIViewController,  MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    var articles = [Article]()
+    var articles = [Article](){
+        didSet{
+            DispatchQueue.main.async{
+                self.spinner.stopAnimating()
+            }
+        }
+    }
     var article: Article!
     var animalSectionTitles = [String]()
     var animalsDict = [String: [Article]]()
     var annotations = [MKAnnotation]()
+    var spinner = UIActivityIndicatorView()
     
     var buildings:[Building] = [
         Building(name: "大貓熊館", lat: 24.9971109, lng: 121.5831587),
@@ -38,7 +45,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        navigationController?.navigationBar.tintColor = .blue
+        navigationController?.navigationBar.tintColor = .red
          navigationController?.navigationBar.prefersLargeTitles = true
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        self.navigationController?.navigationBar.isTranslucent = true
@@ -55,12 +62,22 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
         mapView.showAnnotations(annotations, animated: true)
         self.mapView.showsCompass = true
         self.mapView.showsScale = true
+        
         downLoadLatestArticles()
+        
+        spinner.activityIndicatorViewStyle = .gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        // 定義旋轉指示器的佈局約束條件
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0), spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        // 啟用旋轉指示器
+        spinner.startAnimating()
         
         if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
             return
         }
-        
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
             present(walkthroughViewController, animated: true, completion: nil)
@@ -69,7 +86,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = .blue
+        navigationController?.navigationBar.tintColor = .red
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -81,8 +98,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
                 print("fail \(error)")
                 return
             }
-            let articles = articles!
-            articles.sorted(by: { $0.name_EN! < $1.name_EN! })
+            guard let articles = articles?.sorted(by: { $0.name_EN! < $1.name_EN! }) else{return}
             var animalsDict = [String: [Article]]()
             var animalSectionTitles = [String]()
             

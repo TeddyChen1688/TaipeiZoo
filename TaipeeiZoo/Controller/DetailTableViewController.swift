@@ -22,15 +22,13 @@ class DetailTableViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        // setup transparent NavigationBar when 1st time load, and change the attribute of root NavigationController
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         navigationController?.navigationBar.tintColor = .white
         navigationItem.largeTitleDisplayMode = .always
         tableView.contentInsetAdjustmentBehavior = .never
-        //       downloadArticleImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +37,6 @@ class DetailTableViewController: UITableViewController {
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.tintColor = .white
-        
         // Hide the back left button when setting "true"
     }
     
@@ -49,8 +46,6 @@ class DetailTableViewController: UITableViewController {
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.tintColor = .white
-        
-        // Hide the back left button when setting "true"
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -62,17 +57,14 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         func playUsingAVPlayer(url: URL) {
             player = AVPlayer(url: url)
             player?.play()
         }
-        
         switch indexPath.row {
             
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath)
-            
             if let c = cell as? imageCell {
                 if( article.imageHeight > 0){
                     c.imageHeight.constant = article.imageHeight
@@ -91,14 +83,12 @@ class DetailTableViewController: UITableViewController {
                 c.headerViewImage?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "tree.jpg"), options: .refreshCached)
             
                 c.playVideo?.addControlEvent(.touchUpInside) {
-                    
                     if let video_Url = URL(string: self.article.video_URLString!) {
                         print("button click with VideoURL \(video_Url)")
                         let safariController = SFSafariViewController(url: video_Url)
                         self.present(safariController, animated: true, completion: nil)
                     }
                 }
- 
             }
             else {   print ("error to get cell back")   }
             return cell
