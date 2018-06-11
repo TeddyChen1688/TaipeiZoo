@@ -89,7 +89,7 @@ class Article {
                            //  print("name_EN 抓取失敗")
                             article.name_EN = "To Be Determined"
                         }
-                     //   else { print("name_EN 抓取成功 \(String(describing: article.name_EN))\(String(describing: article.name_EN!.first))")}
+
                         
                         if article.id == "191" || article.id == "192" || article.id == "194" {
                             let startIndex = article.name_EN?.index((article.name_EN?.startIndex)!, offsetBy: 1)
@@ -117,7 +117,7 @@ class Article {
                             //                            print("Location 抓取失敗")
                             article.distribution = "( 目前查無資料 )"
                         }
-                         else { print("distribution 抓取成功 \(article.distribution)")}
+                      //   else { print("distribution 抓取成功 \(article.distribution)")}
                         
                         if article.habit == "" {
 //                            print("habit 抓取失敗")
@@ -134,7 +134,7 @@ class Article {
                             //                            print("Location 抓取失敗")
                             article.behavior = "( 目前查無資料 )"
                         }
-                        else { print("behavior 抓取成功 \(article.behavior)")}
+                     //   else { print("behavior 抓取成功 \(article.behavior)")}
                         
                         if article.diet == "" {
 //                            print("habit 抓取失敗")

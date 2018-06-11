@@ -80,7 +80,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
             guard let animalValues = animalsDict[animalKey] else {
                 return 0
             }
-            print("animalValues.count is \(animalValues.count)")
+           // print("animalValues.count is \(animalValues.count)")
             return animalValues.count
         }
     }
@@ -91,7 +91,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         let animalKey = animalSectionTitles[indexPath.section]
         let animalValues = animalsDict[animalKey]
         article = (searchController.isActive) ? searchResults[indexPath.row] : animalValues![indexPath.row]
-        print("indexPath.row is \(indexPath.row)")
+        // print("indexPath.row is \(indexPath.row)")
         let imageURL: URL?
         if let imageURLString = article.Pic01_URLString {
             imageURL = URL (string: imageURLString)
