@@ -21,8 +21,10 @@ class Article {
     var name: String?
     var name_EN: String?
     var location: String?
+    var distribution: String?
     var habit: String?
     var feature: String?
+    var behavior: String?
     var diet: String?
     var Pic01_URLString: String?
     var Pic02_URLString: String?
@@ -40,8 +42,10 @@ class Article {
         name = rawData["A_Name_Ch"] as? String
         name_EN = rawData["A_Name_En"] as? String
         location = rawData["A_Location"] as? String
+        distribution = rawData["A_Distribution"] as? String
         habit = rawData["A_Habitat"] as? String
         feature = rawData["A_Feature"] as? String
+        behavior = rawData["A_Behavior"] as? String
         diet = rawData["A_Diet"] as? String
         Pic01_URLString = rawData["A_Pic01_URL"] as? String
         Pic02_URLString = rawData["A_Pic02_URL"] as? String
@@ -108,6 +112,12 @@ class Article {
                         }
                        // else { print("Location 抓取成功")}
                         
+                        if article.distribution == "" {
+                            //                            print("Location 抓取失敗")
+                            article.distribution = "( 目前查無資料 )"
+                        }
+                         else { print("distribution 抓取成功 \(article.distribution)")}
+                        
                         if article.habit == "" {
 //                            print("habit 抓取失敗")
                             article.habit = "( 目前查無資料 )"
@@ -118,6 +128,12 @@ class Article {
                             article.feature = "( 目前查無資料 )"
                         }
                         //else { print("feature 抓取成功")}
+                        
+                        if article.behavior == "" {
+                            //                            print("Location 抓取失敗")
+                            article.behavior = "( 目前查無資料 )"
+                        }
+                        else { print("behavior 抓取成功 \(article.behavior)")}
                         
                         if article.diet == "" {
 //                            print("habit 抓取失敗")
@@ -144,7 +160,7 @@ class Article {
                         }
                         //else { print("geo 抓取成功")}
                         
-                        var geo = article.geo
+                        let geo = article.geo
                        // print("Geo is \(String(describing: geo))")
                         let geo_StringA = geo?.split(separator: "(", maxSplits: 3)[1]
                         let geo_StringB = geo_StringA?.split(separator: ")", maxSplits: 3)[0]

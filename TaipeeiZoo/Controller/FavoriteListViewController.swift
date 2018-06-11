@@ -117,7 +117,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         }
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
-            let defaultText = "Just checking in at " + self.favorites[indexPath.row].name!
+            let defaultText = "在台北動物園的我和最愛的" + self.favorites[indexPath.row].name!
             let activityController: UIActivityViewController
             
             if let favoriteImage = self.favorites[indexPath.row].image,

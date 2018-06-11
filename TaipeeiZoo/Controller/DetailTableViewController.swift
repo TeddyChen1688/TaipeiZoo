@@ -53,7 +53,7 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,16 +99,26 @@ class DetailTableViewController: UITableViewController {
             return cell
             
         case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DistributionCell.self), for: indexPath) as! DistributionCell
+            cell.distributionLabel.text = article.distribution
+            return cell
+            
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeatureCell_2.self), for: indexPath) as! FeatureCell_2
             cell.featureLabel.text = article.feature
             return cell
             
-        case 3:
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BehaviorCell.self), for: indexPath) as! BehaviorCell
+            cell.behaviorLabel.text = article.behavior
+            return cell
+            
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailTextCell_3.self), for: indexPath) as! DetailTextCell_3
             cell.dietLabel.text = article.diet
             return cell
             
-        case 4:
+        case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
             cell.configure(lat: article.lat, lng: article.lng, location: article.location!)
                 return cell

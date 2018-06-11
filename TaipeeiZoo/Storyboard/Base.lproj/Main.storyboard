@@ -494,13 +494,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eo4-6E-CGP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="469"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-a2-CUD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="469"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="iA9-a2-CUD" secondAttribute="height" multiplier="4:5" id="k2Q-zM-n2a"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     </mapView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -532,7 +529,7 @@
             <objects>
                 <tableViewController id="d7x-my-Qyo" customClass="DetailTableViewController" customModule="TaipeiZoo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dNR-RB-kgg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -546,7 +543,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-KU-Tlk" userLabel="image View">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="258"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="250" id="RQe-My-a1U"/>
+                                                <constraint firstAttribute="height" priority="999" constant="250" id="RQe-My-a1U"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-NJ-UvA">
@@ -649,8 +646,48 @@
                                     <outlet property="habitLabel" destination="NLS-z9-rdx" id="k6r-gS-Ybi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeatureCell_2" rowHeight="100" id="sGv-Zn-Fda" userLabel="FeatureCell_2" customClass="FeatureCell_2" customModule="TaipeiZoo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistributionCell" rowHeight="100" id="4u3-a5-U8A" customClass="DistributionCell" customModule="TaipeiZoo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="386" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4u3-a5-U8A" id="Hmj-cA-9It">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gy7-ta-kje">
+                                            <rect key="frame" x="5" y="5" width="365" height="90"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="寶貝的老家在哪裡啊..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbO-jf-5e8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="0.0" green="0.2634486607" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="DistributionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxW-qn-PUG">
+                                                    <rect key="frame" x="0.0" y="30" width="365" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qxW-qn-PUG" firstAttribute="leading" secondItem="tbO-jf-5e8" secondAttribute="leading" id="mKH-q0-0u1"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tbO-jf-5e8" firstAttribute="leading" secondItem="Hmj-cA-9It" secondAttribute="leading" priority="750" id="3FZ-2k-PTz"/>
+                                        <constraint firstItem="gy7-ta-kje" firstAttribute="leading" secondItem="Hmj-cA-9It" secondAttribute="leading" constant="5" id="Piy-Hg-4tv"/>
+                                        <constraint firstAttribute="bottom" secondItem="gy7-ta-kje" secondAttribute="bottom" constant="5" id="gnY-RZ-whw"/>
+                                        <constraint firstAttribute="trailing" secondItem="gy7-ta-kje" secondAttribute="trailing" constant="5" id="rYN-EK-Hot"/>
+                                        <constraint firstItem="gy7-ta-kje" firstAttribute="top" secondItem="Hmj-cA-9It" secondAttribute="top" constant="5" id="zh7-cZ-F3j"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="distributionLabel" destination="qxW-qn-PUG" id="wQY-qh-qG9"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeatureCell_2" rowHeight="100" id="sGv-Zn-Fda" userLabel="FeatureCell_2" customClass="FeatureCell_2" customModule="TaipeiZoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="486" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sGv-Zn-Fda" id="rUT-Gg-ClQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -685,8 +722,45 @@
                                     <outlet property="featureLabel" destination="Pcm-r3-jha" id="Tc1-gd-6aq"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BehaviorCell" rowHeight="100" id="fqm-VX-Mva" userLabel="BehaviorCell" customClass="BehaviorCell" customModule="TaipeiZoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="586" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fqm-VX-Mva" id="Ooy-80-eln">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MHr-hD-Fr5">
+                                            <rect key="frame" x="5" y="5" width="365" height="90"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="寶貝愛運動" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi0-aj-eKe" userLabel="寶貝愛吃什麼?">
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="0.0" green="0.2634486607" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="behaviorLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-NF-GhU">
+                                                    <rect key="frame" x="0.0" y="30" width="365" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MHr-hD-Fr5" firstAttribute="top" secondItem="Ooy-80-eln" secondAttribute="top" constant="5" id="8Gc-k9-6hi"/>
+                                        <constraint firstItem="MHr-hD-Fr5" firstAttribute="leading" secondItem="Ooy-80-eln" secondAttribute="leading" constant="5" id="d0n-ES-tD8"/>
+                                        <constraint firstAttribute="bottom" secondItem="MHr-hD-Fr5" secondAttribute="bottom" constant="5" id="e5C-fx-0ho"/>
+                                        <constraint firstAttribute="trailing" secondItem="MHr-hD-Fr5" secondAttribute="trailing" constant="5" id="eKw-NX-SnO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="behaviorLabel" destination="4GY-NF-GhU" id="SY3-wr-2Dp"/>
+                                    <segue destination="mVP-yx-OXJ" kind="show" identifier="showDetailMap" id="0wH-oE-W24"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTextCell_3" rowHeight="100" id="3a0-6n-jUp" customClass="DetailTextCell_3" customModule="TaipeiZoo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="486" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="686" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3a0-6n-jUp" id="GhN-bu-Uzr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -721,30 +795,29 @@
                                     <outlet property="dietLabel" destination="bnx-I6-j20" id="Up4-3d-oiY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapCell_4" rowHeight="300" id="fqm-VX-Mva" userLabel="MapCell_4" customClass="MapCell_4" customModule="TaipeiZoo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="586" width="375" height="300"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapCell_4" rowHeight="300" id="APc-88-GeW" userLabel="MapCell_4" customClass="MapCell_4" customModule="TaipeiZoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="786" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fqm-VX-Mva" id="Ooy-80-eln">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="APc-88-GeW" id="Jai-7g-jgt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjU-N9-O2y">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7G-OC-CEu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="290" id="Fys-B9-8p3"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="290" id="dy8-Vj-qcJ"/>
                                             </constraints>
                                         </mapView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="GjU-N9-O2y" secondAttribute="trailing" id="fxL-td-sFM"/>
-                                        <constraint firstItem="GjU-N9-O2y" firstAttribute="leading" secondItem="Ooy-80-eln" secondAttribute="leading" id="g1B-k8-foW"/>
-                                        <constraint firstItem="GjU-N9-O2y" firstAttribute="top" secondItem="Ooy-80-eln" secondAttribute="top" id="oxd-e3-Cbp"/>
-                                        <constraint firstAttribute="bottom" secondItem="GjU-N9-O2y" secondAttribute="bottom" id="w9u-eX-fmb"/>
+                                        <constraint firstAttribute="trailing" secondItem="y7G-OC-CEu" secondAttribute="trailing" id="Eo0-bC-BTv"/>
+                                        <constraint firstAttribute="bottom" secondItem="y7G-OC-CEu" secondAttribute="bottom" id="PGK-wg-JxI"/>
+                                        <constraint firstItem="y7G-OC-CEu" firstAttribute="leading" secondItem="Jai-7g-jgt" secondAttribute="leading" id="SEm-zE-ob9"/>
+                                        <constraint firstItem="y7G-OC-CEu" firstAttribute="top" secondItem="Jai-7g-jgt" secondAttribute="top" id="eqJ-1Y-yAE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="mapView" destination="GjU-N9-O2y" id="iu3-pq-5LP"/>
-                                    <segue destination="mVP-yx-OXJ" kind="show" identifier="showDetailMap" id="0wH-oE-W24"/>
+                                    <outlet property="mapView" destination="y7G-OC-CEu" id="upY-HY-phc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -753,7 +826,7 @@
                             <outlet property="delegate" destination="d7x-my-Qyo" id="rV7-Co-eN8"/>
                         </connections>
                     </tableView>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQ2-Na-Djd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
