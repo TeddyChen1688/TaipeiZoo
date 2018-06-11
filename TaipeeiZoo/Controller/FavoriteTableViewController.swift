@@ -20,16 +20,26 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
     }
     
-    @IBOutlet weak var descriptionTextField: UITextField!{
+//    @IBOutlet weak var descriptionTextField: UITextField!{
+//        didSet {
+//            descriptionTextField.tag = 2
+//            descriptionTextField.delegate = self
+//        }
+//    }
+    
+    @IBOutlet weak var descriptionTextView: UITextView!{
         didSet {
-            descriptionTextField.tag = 2
-            descriptionTextField.delegate = self
+            descriptionTextView.tag = 2
+            //descriptionTextField.delegate = self
+            descriptionTextView.layer.cornerRadius = 5.0
+            descriptionTextView.layer.masksToBounds = true
         }
     }
     
+    
     @IBOutlet weak var photoImageView: UIImageView!{
         didSet {
-            photoImageView.layer.cornerRadius = 40
+            photoImageView.layer.cornerRadius = 10
             photoImageView.clipsToBounds = true
         }
     }
@@ -108,7 +118,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     
     // MARK: - Action method (Exercise #2)
     @IBAction func saveButtonTapped(sender: AnyObject) {
-        if nameTextField.text == "" || descriptionTextField.text == "" {
+        if nameTextField.text == "" || descriptionTextView.text == "" || photoImageView.image == nil {
             let alertController = UIAlertController(title: "等一下", message: " 呵呵, 要填完才上傳喔! ", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
@@ -116,13 +126,13 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             return
         }
         print("Name: \(nameTextField.text ?? "")")
-        print("Description: \(descriptionTextField.text ?? "")")
+        print("Description: \(descriptionTextView.text ?? "")")
         
         // Saving the restaurant to database
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             favorite = FavoriteMO(context: appDelegate.persistentContainer.viewContext)
             favorite.name = nameTextField.text
-            favorite.summary = descriptionTextField.text
+            favorite.summary = descriptionTextView.text
             favorite.isVisited = false
             
             let now = Date ()

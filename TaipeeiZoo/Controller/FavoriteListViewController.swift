@@ -96,6 +96,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         
         cell.dateLabel.text = dateFormatter.string(from: publishedDate)
         cell.summaryLabel.text = favorites[indexPath.row].summary
+        print("cell.summaryLabel.text is \(cell.summaryLabel.text)")
         cell.heartImageView.isHidden = favorites[indexPath.row].isVisited ? false : true
         return cell
     }
@@ -117,7 +118,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         }
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
-            let defaultText = "在台北動物園的我和最愛的" + self.favorites[indexPath.row].name!
+            let defaultText = "在台北動物園的我,和我最愛的:" + self.favorites[indexPath.row].name!
             let activityController: UIActivityViewController
             
             if let favoriteImage = self.favorites[indexPath.row].image,

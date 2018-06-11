@@ -89,6 +89,9 @@ class DetailTableViewController: UITableViewController {
                         self.present(safariController, animated: true, completion: nil)
                     }
                 }
+                c.chkVideoImageView.isHidden = article.chk_video ? false : true
+                
+               //  cell.heartImageView.isHidden = favorites[indexPath.row].isVisited ? false : true
             }
             else {   print ("error to get cell back")   }
             return cell

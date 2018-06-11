@@ -15,8 +15,10 @@ class imageCell: UITableViewCell {
     @IBOutlet weak var playVideo: UIButton!
    //  @IBOutlet weak var playSoundButton: UIButton!
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
+  //  @IBOutlet weak var chkVideoImageView: UIImageView!
     
-   // @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var chkVideoImageView: UIImageView!
+    // @IBOutlet weak var backButton: UIButton!
   //  @IBOutlet var locationLabel: UILabel! {
 //        didSet {
 //            locationLabel.layer.cornerRadius = 5.0

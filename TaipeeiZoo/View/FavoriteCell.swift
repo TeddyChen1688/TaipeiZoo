@@ -10,13 +10,11 @@ import UIKit
 
 class FavoriteCell: UITableViewCell {
     
-    
     @IBOutlet var nameLabel: UILabel! {
         didSet {
             nameLabel.numberOfLines = 0
         }
     }
-    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView! {
         didSet {
@@ -24,10 +22,9 @@ class FavoriteCell: UITableViewCell {
             thumbnailImageView.clipsToBounds = true
         }
     }
-    
-    
     @IBOutlet var heartImageView: UIImageView!
     @IBOutlet weak var summaryLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

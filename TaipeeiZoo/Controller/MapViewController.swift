@@ -45,7 +45,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        navigationController?.navigationBar.tintColor = .red
+        navigationController?.navigationBar.tintColor = .blue
          navigationController?.navigationBar.prefersLargeTitles = true
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        self.navigationController?.navigationBar.isTranslucent = true
@@ -86,7 +86,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = .red
+        navigationController?.navigationBar.tintColor = .blue
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.setNavigationBarHidden(false, animated: true)

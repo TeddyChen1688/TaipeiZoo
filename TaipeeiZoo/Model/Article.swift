@@ -35,6 +35,7 @@ class Article {
     var lng: Double = 0.0
     var lat: Double = 0.0
     var chk_flag: Bool = false
+    var chk_video: Bool = true
 
     
     init(rawData: [String: Any]){
@@ -150,6 +151,7 @@ class Article {
                         if article.video_URLString == "" {
                         //  print("video_URLString 抓取失敗")
                             article.video_URLString = "https://www.youtube.com/watch?v=6QxKgcjgxWw"
+                            article.chk_video = false
                         }
                         //else { print("video_URLString 抓取成功")}
                         
