@@ -20,12 +20,6 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
     }
     
-//    @IBOutlet weak var descriptionTextField: UITextField!{
-//        didSet {
-//            descriptionTextField.tag = 2
-//            descriptionTextField.delegate = self
-//        }
-//    }
     
     @IBOutlet weak var descriptionTextView: UITextView!{
         didSet {
@@ -36,10 +30,9 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
     }
     
-    
     @IBOutlet weak var photoImageView: UIImageView!{
         didSet {
-            photoImageView.layer.cornerRadius = 10
+            photoImageView.layer.cornerRadius = 2
             photoImageView.clipsToBounds = true
         }
     }
@@ -48,10 +41,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-//        tableView.separatorStyle = .none
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 410
+
     }
     
     // MARK: - UITableViewDelegate methods
@@ -88,7 +78,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.image = selectedImage
-            photoImageView.contentMode = .scaleAspectFit
+            photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
         }
         
@@ -139,7 +129,11 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             let postDate = Double(round(now.timeIntervalSince1970 * 1000))
             let postDateReversed = -postDate
             favorite.postDateReversed = postDateReversed
+            print("favorite.postDateReversed: \(favorite.postDateReversed)")
             
+            
+            photoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2*3))
+
             if let favoriteImage = photoImageView.image {
                 favorite.image = UIImagePNGRepresentation(favoriteImage)! as NSData
             }
