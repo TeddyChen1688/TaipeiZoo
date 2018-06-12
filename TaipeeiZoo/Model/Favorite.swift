@@ -15,7 +15,6 @@ class Favorite {
     var isVisited: Bool
     var postDate: Double
 
-
     var managedObject: FavoriteMO?
     
     init(name: String,  description: String, image: String, isVisited: Bool, postDate: Double) {
@@ -27,7 +26,7 @@ class Favorite {
         self.postDate = postDate
     }
     
-    convenience init() {
-        self.init(name: "",  description: "", image: "", isVisited: false, postDate: 0)
-    }
+//    convenience init() {
+//        self.init(name: "",  description: "", image: "", isVisited: false, postDate: 0)
+//    }
 }

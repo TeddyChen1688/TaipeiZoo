@@ -20,7 +20,6 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         }
     }
     
-    
     @IBOutlet weak var descriptionTextView: UITextView!{
         didSet {
             descriptionTextView.tag = 2
@@ -123,7 +122,8 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             favorite = FavoriteMO(context: appDelegate.persistentContainer.viewContext)
             favorite.name = nameTextField.text
             favorite.summary = descriptionTextView.text
-            favorite.isVisited = false
+            // favorite.isVisited = false
+            favorite.isVisited = photoImageView.isHighlighted ? false : true
             
             let now = Date ()
             let postDate = Double(round(now.timeIntervalSince1970 * 1000))
