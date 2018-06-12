@@ -137,6 +137,8 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             // print("Saving data to context ...")
             appDelegate.saveContext()
         }
+        
+        UserDefaults.standard.set(true, forKey: "hasSaveNewUserDataToDataStore")
         dismiss(animated: true, completion: nil)
     }
 }

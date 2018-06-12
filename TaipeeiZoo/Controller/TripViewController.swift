@@ -32,23 +32,32 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
             let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             flowLayout.itemSize = CGSize(width: 250.0, height: 330.0)
         }
+        // Fetch data from data store
+        fetchDataFmDataStore()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "hasSaveNewUserDataToDataStore") {
+            fetchDataFmDataStore()
+        }
+        UserDefaults.standard.set(false, forKey: "hasSaveNewUserDataToDataStore")
+            dismiss(animated: true, completion: nil)
+    }
         
-   // Fetch data from data store
+    func fetchDataFmDataStore(){
         let fetchRequest: NSFetchRequest<FavoriteMO> = FavoriteMO.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        do {
-            DispatchQueue.main.async{
-                // self.spinner.stopAnimating()
-                self.collectionView.reloadData()
-            }
-        }
-        
+//        do {
+//            DispatchQueue.main.async{
+//                self.collectionView.reloadData()
+//            }
+//        }
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             let context = appDelegate.persistentContainer.viewContext
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
-            
             do {
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
