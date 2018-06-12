@@ -21,7 +21,7 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
         super.viewDidLoad()
 
         // Apply blurring effect
-        backgroundImageView.image = UIImage(named: "cloud")
+        backgroundImageView.image = UIImage(named: "tree")
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
@@ -53,6 +53,7 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
                     favorites = fetchedObjects
+                    favorites = favorites.sorted(by: { $0.postDate > $1.postDate })
                     self.collectionView.reloadData()
                 }
             } catch {

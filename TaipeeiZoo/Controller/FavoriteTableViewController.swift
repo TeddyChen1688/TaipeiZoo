@@ -127,11 +127,8 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             
             let now = Date ()
             let postDate = Double(round(now.timeIntervalSince1970 * 1000))
-            let postDateReversed = -postDate
-            favorite.postDateReversed = postDateReversed
-            print("favorite.postDateReversed: \(favorite.postDateReversed)")
-            
-            
+            favorite.postDate = postDate
+            print("favorite.postDate: \(favorite.postDate)")
             photoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2*3))
 
             if let favoriteImage = photoImageView.image {

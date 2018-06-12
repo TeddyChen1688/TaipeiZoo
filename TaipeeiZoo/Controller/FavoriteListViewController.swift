@@ -46,6 +46,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
                     favorites = fetchedObjects
+                    favorites = favorites.sorted(by: { $0.postDate > $1.postDate })
                 }
             } catch {
                 print(error)
@@ -89,15 +90,14 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
             cell.thumbnailImageView.image = UIImage(data: favoritesImage as Data)
             cell.thumbnailImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2));
         }
-        let storedDate = favorites[indexPath.row].postDateReversed
-        let storedDateMS = -storedDate 
-        let publishedDate = Date(timeIntervalSince1970: storedDateMS / 1000)
+        let storedDate = favorites[indexPath.row].postDate
+        print("storedDate is \(storedDate)")
+        let publishedDate = Date(timeIntervalSince1970: storedDate / 1000)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "y-MM-dd HH:mm"
-        
         cell.dateLabel.text = dateFormatter.string(from: publishedDate)
         cell.summaryLabel.text = favorites[indexPath.row].summary
-        print("cell.summaryLabel.text is \(cell.summaryLabel.text)")
+        print("cell.summaryLabel.text is \(String(describing: cell.summaryLabel.text))")
         cell.heartImageView.isHidden = favorites[indexPath.row].isVisited ? false : true
         return cell
     }
@@ -142,7 +142,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         // Customize the action buttons
         deleteAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
         deleteAction.image = UIImage(named: "delete")
-        shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+        shareAction.backgroundColor = UIColor(red: 100.0/255.0, green: 200.0/255.0, blue: 38.0/255.0, alpha: 1.0)
         shareAction.image = UIImage(named: "share")
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])

@@ -11,7 +11,7 @@ import UIKit
 import SDWebImage
 class ArticleListViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating{
     
-    var filtered = [Article]()
+ //   var filtered = [Article]()
     var articles = [Article]()
     var animalSectionTitles = [String]()
     var animalsDict = [String: [Article]]()

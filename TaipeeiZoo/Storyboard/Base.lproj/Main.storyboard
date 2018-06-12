@@ -582,10 +582,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                         </stackView>
                                         <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noe-gx-XcF" userLabel="Dim">
-                                            <rect key="frame" x="0.0" y="204.5" width="375" height="53.5"/>
+                                            <rect key="frame" x="0.0" y="210" width="375" height="48"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="noe-gx-XcF" secondAttribute="height" multiplier="7:1" id="8Ev-NC-hW4"/>
+                                                <constraint firstAttribute="height" constant="48" id="uEH-WC-WQr"/>
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="O8r-jM-LZB">
