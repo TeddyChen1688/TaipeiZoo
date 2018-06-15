@@ -76,9 +76,11 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            photoImageView.image = selectedImage
+            let compressedImage = resize(selectedImage)
+            photoImageView.image = compressedImage
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
+
         }
         
         let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
@@ -94,6 +96,62 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         bottomConstraint.isActive = true
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func compressImage (_ image: UIImage) -> UIImage {
+        
+        let actualHeight:CGFloat = image.size.height
+        let actualWidth:CGFloat = image.size.width
+        let imgRatio:CGFloat = actualWidth/actualHeight
+        let maxWidth:CGFloat = 1024.0
+        let resizedHeight:CGFloat = maxWidth/imgRatio
+        let compressionQuality:CGFloat = 0.5
+        
+        let rect:CGRect = CGRect(x: 0, y: 0, width: maxWidth, height: resizedHeight)
+        UIGraphicsBeginImageContext(rect.size)
+        image.draw(in: rect)
+        let img: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let imageData:Data = UIImageJPEGRepresentation(img, compressionQuality)!
+        UIGraphicsEndImageContext()
+        
+        return UIImage(data: imageData)!
+        
+    }
+    
+    func resize(_ image: UIImage) -> UIImage {
+        var actualHeight = Float(image.size.height)
+        var actualWidth = Float(image.size.width)
+        let maxHeight: Float = 300.0
+        let maxWidth: Float = 400.0
+        var imgRatio: Float = actualWidth / actualHeight
+        let maxRatio: Float = maxWidth / maxHeight
+        let compressionQuality: Float = 0.5
+        //50 percent compression
+        if actualHeight > maxHeight || actualWidth > maxWidth {
+            if imgRatio < maxRatio {
+                //adjust width according to maxHeight
+                imgRatio = maxHeight / actualHeight
+                actualWidth = imgRatio * actualWidth
+                actualHeight = maxHeight
+            }
+            else if imgRatio > maxRatio {
+                //adjust height according to maxWidth
+                imgRatio = maxWidth / actualWidth
+                actualHeight = imgRatio * actualHeight
+                actualWidth = maxWidth
+            }
+            else {
+                actualHeight = maxHeight
+                actualWidth = maxWidth
+            }
+        }
+        let rect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
+        UIGraphicsBeginImageContext(rect.size)
+        image.draw(in: rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let imageData = UIImageJPEGRepresentation(img!, CGFloat(compressionQuality))
+        UIGraphicsEndImageContext()
+        return UIImage(data: imageData!) ?? UIImage()
     }
     
     // MARK: - UITextFieldDelegate methods
@@ -129,7 +187,7 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
             let postDate = Double(round(now.timeIntervalSince1970 * 1000))
             favorite.postDate = postDate
             print("favorite.postDate: \(favorite.postDate)")
-            photoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2*3))
+          //  photoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2*3))
 
             if let favoriteImage = photoImageView.image {
                 favorite.image = UIImagePNGRepresentation(favoriteImage)! as NSData

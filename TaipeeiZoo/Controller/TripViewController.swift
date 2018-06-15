@@ -101,7 +101,7 @@ extension TripViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let favoritesImage = favorites[indexPath.row].image {
             
             cell.imageView.image = UIImage(data: favoritesImage as Data)
-            cell.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2));
+
         }
         cell.isLiked = favorites[indexPath.row].isVisited
         cell.delegate = self

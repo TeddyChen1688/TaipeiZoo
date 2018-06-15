@@ -88,7 +88,6 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         cell.nameLabel.text = favorites[indexPath.row].name
         if let favoritesImage = favorites[indexPath.row].image {
             cell.thumbnailImageView.image = UIImage(data: favoritesImage as Data)
-            cell.thumbnailImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2));
         }
         let storedDate = favorites[indexPath.row].postDate
         print("storedDate is \(storedDate)")
