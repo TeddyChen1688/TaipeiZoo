@@ -22,7 +22,7 @@ class Favorite {
         self.name = name
         self.description = description
         self.image = image
-        self.isVisited = isVisited
+        self.isVisited = false
         self.postDate = postDate
     }
     

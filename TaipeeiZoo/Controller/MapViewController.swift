@@ -87,9 +87,11 @@ class MapViewController: UIViewController,  MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .blue
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+//       navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+//       navigationController?.navigationBar.shadowImage = nil
+       self.navigationController?.navigationBar.isTranslucent = true
+        print("viewWillAppear")
+    //self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func downLoadLatestArticles(){

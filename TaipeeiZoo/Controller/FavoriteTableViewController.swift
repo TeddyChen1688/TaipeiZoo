@@ -175,13 +175,14 @@ class FavoriteTableViewController: UITableViewController,UITextFieldDelegate, UI
         print("Name: \(nameTextField.text ?? "")")
         print("Description: \(descriptionTextView.text ?? "")")
         
-        // Saving the restaurant to database
+        // Saving to database
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             favorite = FavoriteMO(context: appDelegate.persistentContainer.viewContext)
             favorite.name = nameTextField.text
             favorite.summary = descriptionTextView.text
             // favorite.isVisited = false
-            favorite.isVisited = photoImageView.isHighlighted ? false : true
+            // favorite.isVisited = photoImageView.isHighlighted ? false : true
+            favorite.isVisited =  false
             
             let now = Date ()
             let postDate = Double(round(now.timeIntervalSince1970 * 1000))

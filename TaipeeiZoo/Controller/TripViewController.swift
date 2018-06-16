@@ -23,7 +23,7 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
 
         // Apply blurring effect
         backgroundImageView.image = UIImage(named: "tree")
-        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffect = UIBlurEffect(style: .extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         backgroundImageView.addSubview(blurEffectView)
@@ -45,16 +45,12 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
         UserDefaults.standard.set(false, forKey: "hasSaveNewUserDataToDataStore")
             dismiss(animated: true, completion: nil)
     }
-        
+    
+    
     func fetchDataFmDataStore(){
         let fetchRequest: NSFetchRequest<FavoriteMO> = FavoriteMO.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-//        do {
-//            DispatchQueue.main.async{
-//                self.collectionView.reloadData()
-//            }
-//        }
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             let context = appDelegate.persistentContainer.viewContext
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -77,9 +73,9 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
 }
 
 extension TripViewController: UICollectionViewDelegate, UICollectionViewDataSource {

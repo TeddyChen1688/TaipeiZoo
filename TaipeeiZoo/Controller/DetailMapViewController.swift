@@ -21,10 +21,14 @@ import MapKit
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
+        self.title = "走,去看寶貝!"
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.navigationBar.tintColor = .blue
+        
         
         let destinationCoordinate = CLLocationCoordinate2D(latitude: self.article.lat, longitude: self.article.lng)
         let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
@@ -58,18 +62,10 @@ import MapKit
         super.viewWillAppear(true)
         // Show the Navigation Bar
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
        // navigationController?.navigationBar.backgroundColor = UIColor(red: 0, green: 0.2, blue: 0, alpha: 0.1)
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(true)
-//        // Hide the Navigation Bar
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
-//        // navigationController?.navigationBar.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
-//
-//    }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         if annotation is MKUserLocation {
@@ -80,11 +76,14 @@ import MapKit
         pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         pinView?.pinTintColor = UIColor.orange
         pinView?.canShowCallout = true
+        // pinView?.backgroundColor =  UIColor(red: 0.208, green:0.596 , blue: 0.859, alpha: 1);
         let button = UIButton(type: .custom)
         button.frame  = CGRect(x: 0.0, y: 0.0, width: 30, height: 30)
+       //  button.backgroundColor = UIColor(red: 0.208, green:0.596 , blue: 0.859, alpha: 1)
         button.setImage(UIImage(named: "walker"), for: .normal)
         button.addTarget(self, action: #selector(DetailMapViewController.getDirections), for: UIControlEvents.touchUpInside)
         pinView?.leftCalloutAccessoryView = button
+        pinView?.animatesDrop = true
         return pinView
     }
     

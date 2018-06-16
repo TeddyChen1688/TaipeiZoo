@@ -26,9 +26,9 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
  //       tableView.estimatedRowHeight = 100
 //
 //        // Configure navigation bar appearance
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.hidesBarsOnSwipe = true
 //        // Prepare the empty view
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = true
@@ -56,7 +56,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
+        navigationController?.hidesBarsOnSwipe = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +68,7 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
     override func numberOfSections(in tableView: UITableView) -> Int {
         if favorites.count > 0 {
             tableView.backgroundView?.isHidden = true
-            tableView.separatorStyle = .singleLine
+            tableView.separatorStyle = .none
         } else {
             tableView.backgroundView?.isHidden = false
             tableView.separatorStyle = .none

@@ -11,7 +11,7 @@ import UIKit
 import SDWebImage
 class ArticleListViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating{
     
- //   var filtered = [Article]()
+    var filtered = [Article]()
     var articles = [Article]()
     var animalSectionTitles = [String]()
     var animalsDict = [String: [Article]]()
@@ -26,6 +26,19 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.navigationItem.leftBarButtonItem = nil;
+//        self.navigationItem.hidesBackButton = true
+    
+//        var backImg: UIImage = UIImage(named: "back.pdf")!
+//        backImg = backImg.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+//        let newBackButton = UIBarButtonItem (
+//            image: backImg,
+//            style: UIBarButtonItemStyle.plain,
+//            target: self,
+//            action: #selector(back)
+//        )
+//        self.navigationItem.leftBarButtonItem = newBackButton
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -47,9 +60,15 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         tableView.tableHeaderView = searchController.searchBar
     }
     
+    func back(sender: UIBarButtonItem){
+        print("返回")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = .blue
         navigationController?.hidesBarsOnSwipe = false
     }

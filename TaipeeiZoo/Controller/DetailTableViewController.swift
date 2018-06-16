@@ -23,10 +23,8 @@ class DetailTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .white
         navigationItem.largeTitleDisplayMode = .always
         tableView.contentInsetAdjustmentBehavior = .never
     }
@@ -34,9 +32,12 @@ class DetailTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         // "viewwillAppear" control the outlook of pop-forward and back
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.tintColor = .white
+        
         // Hide the back left button when setting "true"
     }
     
@@ -48,6 +49,13 @@ class DetailTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear")
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        print("viewWillDisappear shadowImage = nil")
+    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
