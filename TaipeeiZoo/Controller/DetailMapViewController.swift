@@ -107,7 +107,11 @@ import MapKit
     
     func dropPinZoomIn(placemark:MKPlacemark, annotation: MKAnnotation){
         self.mapView.removeAnnotations(self.mapView.annotations)
-        self.mapView.addAnnotation(annotation)
+        
+        self.mapView.showAnnotations([annotation], animated: true)
+        self.mapView.selectAnnotation(annotation, animated: true)
+        
+      //  self.mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(self.degree), longitudeDelta: CLLocationDegrees(self.degree))
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)

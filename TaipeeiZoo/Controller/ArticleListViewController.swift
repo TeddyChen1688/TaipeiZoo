@@ -141,6 +141,8 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+
+        
         return animalSectionTitles
     }
     

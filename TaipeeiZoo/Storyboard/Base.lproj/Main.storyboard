@@ -324,7 +324,7 @@
             </objects>
             <point key="canvasLocation" x="3612" y="-1837"/>
         </scene>
-        <!--最愛的都在這裡-->
+        <!--最愛的寶貝都在這裡-->
         <scene sceneID="zXc-36-xUW">
             <objects>
                 <tableViewController id="XZZ-ht-7Rg" customClass="FavoriteListViewController" customModule="TaipeiZoo" customModuleProvider="target" sceneMemberID="viewController">
@@ -425,7 +425,7 @@
                             <outlet property="delegate" destination="XZZ-ht-7Rg" id="d3a-mx-vP6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="最愛的都在這裡" largeTitleDisplayMode="always" id="5dh-oF-9Ri"/>
+                    <navigationItem key="navigationItem" title="最愛的寶貝都在這裡" largeTitleDisplayMode="always" id="5dh-oF-9Ri"/>
                     <connections>
                         <outlet property="emptyRestaurantView" destination="ipd-ef-SnR" id="0TK-ie-cdg"/>
                     </connections>
@@ -595,20 +595,20 @@
                                                     <rect key="frame" x="90" y="0.0" width="175" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="cool" translatesAutoresizingMaskIntoConstraints="NO" id="GzV-MU-peu">
+                                                <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="redSpot" translatesAutoresizingMaskIntoConstraints="NO" id="GzV-MU-peu">
                                                     <rect key="frame" x="270" y="0.0" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="750" constant="40" id="nJm-wk-Wa2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQH-Jg-9Fg">
+                                                <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQH-Jg-9Fg">
                                                     <rect key="frame" x="315" y="0.0" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="KCa-em-fSf"/>
                                                         <constraint firstAttribute="width" constant="40" id="aFH-FD-si3"/>
                                                     </constraints>
                                                     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" image="video"/>
+                                                    <state key="normal" image="videoPlayButton4"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1119,11 +1119,11 @@
     <resources>
         <image name="camera" width="225" height="225"/>
         <image name="close" width="16" height="16"/>
-        <image name="cool" width="78" height="83"/>
         <image name="empty" width="1242" height="2208"/>
         <image name="heart" width="128" height="128"/>
         <image name="redHeart" width="225" height="225"/>
+        <image name="redSpot" width="16" height="16"/>
         <image name="save" width="20" height="20"/>
-        <image name="video" width="256" height="256"/>
+        <image name="videoPlayButton4" width="412" height="288"/>
     </resources>
 </document>
