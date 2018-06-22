@@ -58,10 +58,10 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
         
         if let index = walkthroughPageViewController?.currentIndex {
             switch index {
-            case 0...1:
+            case 0...4:
                 walkthroughPageViewController?.forwardPage()
                 
-            case 2:
+            case 5:
                 UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
                 dismiss(animated: true, completion: nil)
                 
@@ -77,10 +77,10 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
         // Update UI buttons
         if let index = walkthroughPageViewController?.currentIndex {
             switch index {
-            case 0...1:
+            case 0...4:
                 nextButton.setTitle("NEXT", for: .normal)
                 skipButton.isHidden = false
-            case 2:
+            case 5:
                 nextButton.setTitle("GET STARTED", for: .normal)
                 skipButton.isHidden = true
             default: break

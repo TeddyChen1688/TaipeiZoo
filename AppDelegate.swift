@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 自訂標籤列
         UITabBar.appearance().tintColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha:1)
         UITabBar.appearance().barTintColor = UIColor.black
+        // sleep(5)
         // Override point for customization after application launch.
         
 //        let backButtonImage = UIImage(named: "back")

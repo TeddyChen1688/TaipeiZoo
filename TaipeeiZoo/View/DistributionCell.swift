@@ -10,6 +10,7 @@ import UIKit
 
 class DistributionCell: UITableViewCell {
 
+    
     @IBOutlet weak var distributionLabel: UILabel!{
         didSet {
             distributionLabel.numberOfLines = 0

@@ -10,11 +10,13 @@ import UIKit
 
 class TextCell_1: UITableViewCell {
     
-    @IBOutlet weak var habitLabel: UILabel!{
-        didSet {
-            habitLabel.numberOfLines = 0
-        }
-    }
+//    @IBOutlet weak var habitLabel: UILabel!{
+//        didSet {
+//            habitLabel.numberOfLines = 0
+//        }
+//    }
+    
+    @IBOutlet weak var habitLabel: UILabel!
     
 
 }

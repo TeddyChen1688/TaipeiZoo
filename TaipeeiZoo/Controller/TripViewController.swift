@@ -23,11 +23,12 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
 
         // Apply blurring effect
         backgroundImageView.image = UIImage(named: "tree")
-        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         backgroundImageView.addSubview(blurEffectView)
         collectionView.backgroundColor = UIColor.clear
+        navigationController?.hidesBarsOnSwipe = true
         
         if UIScreen.main.bounds.size.height == 568.0 {
             let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -39,6 +40,7 @@ class TripViewController: UIViewController, NSFetchedResultsControllerDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
         if UserDefaults.standard.bool(forKey: "hasSaveNewUserDataToDataStore") {
             fetchDataFmDataStore()
         }

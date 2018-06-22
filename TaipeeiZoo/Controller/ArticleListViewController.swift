@@ -20,27 +20,15 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     var searchController: UISearchController!
     var searchResults: [Article] = []
     
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationItem.leftBarButtonItem = nil;
-//        self.navigationItem.hidesBackButton = true
-    
-//        var backImg: UIImage = UIImage(named: "back.pdf")!
-//        backImg = backImg.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-//        let newBackButton = UIBarButtonItem (
-//            image: backImg,
-//            style: UIBarButtonItemStyle.plain,
-//            target: self,
-//            action: #selector(back)
-//        )
-//        self.navigationItem.leftBarButtonItem = newBackButton
         
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
   
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -60,10 +48,10 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         tableView.tableHeaderView = searchController.searchBar
     }
     
-    func back(sender: UIBarButtonItem){
-        print("返回")
-    }
-    
+//    func back(sender: UIBarButtonItem){
+//        print("返回")
+//    }
+//    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
@@ -123,7 +111,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
                 
                 let screenWidth:CGFloat = UIScreen.main.bounds.width
                 if let width = img?.size.width , let height = img?.size.height {
-                    self.articles[indexPath.row].imageHeight = screenWidth / width * height
+                    self.articles[indexPath.row].imageHeight = 1.2 * screenWidth / width * height
                 }
             }
        //    c.idLabel.text = article.id;

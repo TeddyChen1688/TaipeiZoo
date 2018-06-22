@@ -10,9 +10,10 @@ import UIKit
 import MapKit
 class MapCell_4: UITableViewCell, MKMapViewDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
-   
+    // @IBOutlet weak var mapView: MKMapView!
 
+    @IBOutlet weak var mapView: MKMapView!
+    
     func configure(lat: Double, lng: Double, location: String) {
          mapView.delegate = self
  
