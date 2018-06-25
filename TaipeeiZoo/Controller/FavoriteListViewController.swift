@@ -20,8 +20,10 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.cellLayoutMarginsFollowReadableWidth = true
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+//        tableView.cellLayoutMarginsFollowReadableWidth = true
+//        navigationController?.navigationBar.prefersLargeTitles = true
  //       tableView.rowHeight = UITableViewAutomaticDimension
  //       tableView.estimatedRowHeight = 100
 //
@@ -57,6 +59,13 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = false
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+       // navigationController?.hidesBarsOnSwipe = false
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +94,11 @@ class FavoriteListViewController: UITableViewController, NSFetchedResultsControl
         // Configure the cell...
         let cellIdentifier = "FavoriteCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FavoriteCell
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 0.5)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
         cell.nameLabel.text = favorites[indexPath.row].name
         if let favoritesImage = favorites[indexPath.row].image {
             cell.thumbnailImageView.image = UIImage(data: favoritesImage as Data)

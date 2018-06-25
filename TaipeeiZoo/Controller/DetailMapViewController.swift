@@ -24,8 +24,8 @@ import MapKit
         
         self.title = "走,去看寶貝!"
 
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.navigationBar.tintColor = .blue
         

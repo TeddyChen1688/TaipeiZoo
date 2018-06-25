@@ -24,13 +24,17 @@ class DetailTableViewController: UIViewController,UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        UITableView.appearance().contentInsetAdjustmentBehavior = .never
-        
+        navigationController?.hidesBarsOnSwipe = false
+        // self.navigationController?.navigationBar.barTintColor = .red
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.contentInsetAdjustmentBehavior = .never
+        
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        tableView.contentInsetAdjustmentBehavior = .never
+        
         
         // Configure header view
         headerView.nameLabel.text = article.name
@@ -51,29 +55,26 @@ class DetailTableViewController: UIViewController,UITableViewDataSource, UITable
 
         headerView.chkVideoImageView.isHidden = article.chk_video ? false : true
         
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//       navigationItem.largeTitleDisplayMode = .always
- //     tableView.contentInsetAdjustmentBehavior = .never
+
         
         // 2.1.4 導覽列取透明
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
+
         // 2.1.5 變更導覽列項目（像是返回按鈕與標題）的顏色
     //    navigationController?.navigationBar.tintColor = .gray
         //  true - 滑動表格視圖內容時,會隱藏導覽列,滑一滑就不見了
         //  false - 不會隱藏導覽列,再怎麼滑都在
-        navigationController?.hidesBarsOnSwipe = false
+       // navigationController?.hidesBarsOnSwipe = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // "viewwillAppear" control the outlook of pop-forward and back
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.hidesBarsOnSwipe = false
 //        navigationController?.setNavigationBarHidden(false, animated: true)
 //        navigationController?.navigationBar.tintColor = .white
-        tableView.contentInsetAdjustmentBehavior = .never
+ //       self.tableView.contentInsetAdjustmentBehavior = .always
         
         // Hide the back left button when setting "true"
     }
@@ -81,25 +82,25 @@ class DetailTableViewController: UIViewController,UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         // "viewwillAppear" control the outlook of pop-forward and back
         super.viewDidAppear(animated)
-        navigationController?.hidesBarsOnSwipe = false
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.tintColor = .white
-        UITableView.appearance().contentInsetAdjustmentBehavior = .never
+//        navigationController?.hidesBarsOnSwipe = false
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+//        navigationController?.navigationBar.tintColor = .white
+       // UITableView.appearance().contentInsetAdjustmentBehavior = .never
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("viewWillDisappear")
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        print("viewWillDisappear shadowImage = nil")
+//        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = nil
+//        print("viewWillDisappear shadowImage = nil")
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -167,10 +168,14 @@ class DetailTableViewController: UIViewController,UITableViewDataSource, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailTextCell_3.self), for: indexPath) as! DetailTextCell_3
             cell.dietLabel.text = article.diet
             return cell
-
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
             
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SeparatorCell.self), for: indexPath) as! SeparatorCell
+            cell.titleLabel.text = "走,去看寶貝!(按下地圖)"
+            return cell
+            
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapCell_4.self), for: indexPath) as! MapCell_4
             cell.configure(lat: article.lat, lng: article.lng, location: article.location!)
                 return cell
 

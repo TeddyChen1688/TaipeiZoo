@@ -16,9 +16,9 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
 
     // MARK: - Properties
     
-    var pageHeadings = ["右上角按鈕","滑一滑","這就是了！", "按下'行人'跟我來", "和寶貝合照", "寫下留言"]
+    var pageHeadings = ["右上角按鈕","滑一滑,或是輸入名字","這就是了!", "按下'行人'跟我來", "和寶貝合照", "分享中心"]
     var pageImages = ["onboarding-1", "onboarding-2", "onboarding-3", "onboarding-4", "onboarding-5", "onboarding-6"]
-    var pageSubHeadings = ["開始動物園旅行","找到可愛的寶貝","寶貝的生活","跟著地圖去看寶貝", "拍照和分享","分享給我的麻吉"]
+    var pageSubHeadings = ["開始動物園旅行","找到可愛的寶貝","寶貝的生活","跟著地圖去看寶貝", "拍照和感言","分享給我的麻吉"]
     
     var currentIndex = 0
     weak var walkthroughDelegate: WalkthroughPageViewControllerDelegate?

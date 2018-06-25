@@ -30,9 +30,12 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
         
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+        tableView.contentInsetAdjustmentBehavior = .never
   
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.contentInsetAdjustmentBehavior = .always
         navigationController?.hidesBarsOnSwipe = false
         
         // Adding a search controller
@@ -55,6 +58,7 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
+        tableView.contentInsetAdjustmentBehavior = .always
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = .blue
@@ -94,6 +98,11 @@ class ArticleListViewController: UITableViewController, UISearchBarDelegate, UIS
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath) as! ListTableCell
+        if indexPath.row % 2 == 1 {
+            cell.backgroundColor = UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 0.5)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
         var article : Article
         let animalKey = animalSectionTitles[indexPath.section]
         let animalValues = animalsDict[animalKey]

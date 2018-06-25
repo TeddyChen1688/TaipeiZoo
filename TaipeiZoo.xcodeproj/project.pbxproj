@@ -27,6 +27,7 @@
 		A69AF91120C6AD4000256D52 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A69AF90620C6AD3D00256D52 /* Rubik-MediumItalic.ttf */; };
 		A69AF91220C6AD4000256D52 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A69AF90720C6AD3D00256D52 /* Rubik-Regular.ttf */; };
 		A69AF91620CA11A200256D52 /* Zoo.png in Resources */ = {isa = PBXBuildFile; fileRef = A69AF91520CA11A200256D52 /* Zoo.png */; };
+		A6AC8C9F20DFC83600E60215 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AC8C9E20DFC83600E60215 /* SeparatorCell.swift */; };
 		A6B70BEB20C24D9D00744235 /* MapCell_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEA20C24D9D00744235 /* MapCell_4.swift */; };
 		A6B70BED20C2592B00744235 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */; };
 		A6B70BF120C2883800744235 /* MyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B70BF020C2883800744235 /* MyLocationManager.swift */; };
@@ -85,6 +86,7 @@
 		A69AF90620C6AD3D00256D52 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		A69AF90720C6AD3D00256D52 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		A69AF91520CA11A200256D52 /* Zoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Zoo.png; sourceTree = "<group>"; };
+		A6AC8C9E20DFC83600E60215 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		A6B70BEA20C24D9D00744235 /* MapCell_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell_4.swift; sourceTree = "<group>"; };
 		A6B70BEC20C2592B00744235 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		A6B70BF020C2883800744235 /* MyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationManager.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				A6C1D7FD20BBB7E8000593AD /* ListTableCell.swift */,
 				A6F04EFA20C0DE0B00FAE8F7 /* FavoriteCell.swift */,
 				A6B70BFA20C3AB9200744235 /* TripCollectionViewCell.swift */,
+				A6AC8C9E20DFC83600E60215 /* SeparatorCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AC8C9F20DFC83600E60215 /* SeparatorCell.swift in Sources */,
 				A6C1D7F820BB9680000593AD /* TextCell_1.swift in Sources */,
 				A683B2BD20A179A70090E60B /* ArticleListViewController.swift in Sources */,
 				A6B70C0120C3C35C00744235 /* WalkthroughContentViewController.swift in Sources */,
@@ -620,7 +624,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6394V6UJJX;
 				INFOPLIST_FILE = TaipeeiZoo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -640,7 +644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6394V6UJJX;
 				INFOPLIST_FILE = TaipeeiZoo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
